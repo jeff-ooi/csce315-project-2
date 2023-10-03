@@ -38,12 +38,13 @@ with open("./simulation/order_menu_items_junction.csv", "w", newline='') as orde
 # clears the file and writes the header
 with open("./simulation/order_add_ons_junction.csv", "w", newline='') as orderAddOnsJunctionFile:
     orderAddOnsJunctionWriter = csv.writer(orderAddOnsJunctionFile)
-    orderAddOnsJunctionWriter.writerow(["id","order_menu_junction_id","add_on_id"]) # header
+    # orderAddOnsJunctionWriter.writerow(["id","order_menu_junction_id","add_on_id"]) # header
+    orderAddOnsJunctionWriter.writerow(["order_menu_junction_id","add_on_id"])    # header
 
 current_date = datetime.datetime(year=2022,month=1,day=1)
 order_id = 0
 order_menu_junction_id = 0
-order_add_on_junction_id = 0
+# order_add_on_junction_id = 0
 
 with open("./simulation/year_data_simulation.csv", "w", newline='') as ordersFile:
     ordersWriter = csv.writer(ordersFile)
@@ -56,7 +57,7 @@ with open("./simulation/year_data_simulation.csv", "w", newline='') as ordersFil
         # since we need at least $1 million in sales, 1 mil/365 is 2739.73. $250 is variance in sales
         minProfit = random.uniform(2739.73-250,2739.73+250)
         # to create to two peak days, literally the day before the start of the two semesters in 2022
-        if (current_date.date() == datetime.datetime(year=2022,month=1,day=17).date() or current_date.date() == datetime.datetime(year=2022,month=9,day=21).date()):
+        if (current_date.date() == datetime.datetime(year=2022,month=1,day=17).date() or current_date.date() == datetime.datetime(year=2022,month=8,day=21).date()):
             minProfit = 5000
         sumPrice = 0
         
@@ -78,6 +79,9 @@ with open("./simulation/year_data_simulation.csv", "w", newline='') as ordersFil
                     add_ons = MENU_ITEMS[menu_item]
                     # selects a random number of add-ons for the menu item
                     add_ons_amount = random.randrange(0,len(add_ons)+1)
+                    # limits the number of add-ons for menu items with a lot of add-on choices
+                    if (len(add_ons) > 3):
+                        add_ons_amount = random.randrange(0,3+1)
                     
                     with open("./simulation/order_add_ons_junction.csv", "a", newline='') as orderAddOnsJunctionFile:
                         orderAddOnsJunctionWriter = csv.writer(orderAddOnsJunctionFile)
@@ -91,8 +95,9 @@ with open("./simulation/year_data_simulation.csv", "w", newline='') as ordersFil
                             price += ADD_ONS_PRICE[add_on-1]
                             # writes to the "order and add-ons" junction table
                             # though it's really the junction table between the "order and menu item junction table" and "add-ons"
-                            orderAddOnsJunctionWriter.writerow([order_add_on_junction_id,order_menu_junction_id,add_on])
-                            order_add_on_junction_id += 1
+                            # orderAddOnsJunctionWriter.writerow([order_add_on_junction_id,order_menu_junction_id,add_on])
+                            orderAddOnsJunctionWriter.writerow([order_menu_junction_id,add_on])
+                            # order_add_on_junction_id += 1
                     
                     # writes to the "order and menu item" junction table
                     orderMenuJunctionWriter.writerow([order_menu_junction_id,order_id,menu_item])
