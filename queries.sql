@@ -17,3 +17,15 @@ SELECT COUNT(*) FROM inventory;
 "select item price from menu for specific item"
 (item_price.sql)
 SELECT price FROM menu WHERE name = 'The Alley Trio';
+
+"select item name from menu under $5"
+(item_under_5.sql)
+SELECT name FROM menu WHERE price < 5;
+
+"insert new order into orders"
+(insert_order.sql)
+INSERT INTO orders (id, price, date_time) VALUES (555555, 6.99, '2019-01-01 00:00:00');
+
+"update menu item price in menu"
+(update_menu_item.sql)
+UPDATE menu SET price = 6.99 WHERE name = 'The Alley Trio';
