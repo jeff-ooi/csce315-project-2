@@ -52,8 +52,8 @@ with open("./simulation/year_data_simulation.csv", "w", newline='') as ordersFil
     # get a full year of data
     while (current_date.year != 2023):
     # while (current_date.day != 2):
-        # generates a random hour and minute
-        current_date = current_date.replace(hour=random.randrange(8,8+1),minute=random.randrange(0,60))
+        # # generates a random hour and minute
+        # current_date = current_date.replace(hour=random.randrange(8,8+1),minute=random.randrange(0,60))
         # since we need at least $1 million in sales, 1 mil/365 is 2739.73. $250 is variance in sales
         minProfit = random.uniform(2739.73-250,2739.73+250)
         # to create to two peak days, literally the day before the start of the two semesters in 2022
@@ -63,6 +63,8 @@ with open("./simulation/year_data_simulation.csv", "w", newline='') as ordersFil
         
         # will keep generating sales data for the day until the mininum sales for the day is met
         while sumPrice < minProfit:
+            # generates a random hour and minute, hour in 24 hour format
+            current_date = current_date.replace(hour=random.randrange(11,9+12+1),minute=random.randrange(0,60))
             price = 0
             add_ons_amount = 0
             # random number of menu items ordered
