@@ -1,30 +1,22 @@
-"this file is just to store commands"
-"create orders table"
-(create_orders.sql)
+this file is just to store commands
+1-3. drops orders table and the order_menu and order_add_ons junction tables
+4. create orders table
+5. populate orders table
+6. create order_add_ons junction table
+7. populate order_add_ons junction table
+8. create order_menu junction table
+9. populate order_menu junction table
+10-18. Grant permissions
+
+DROP TABLE orders;
+DROP TABLE order_add_ons;
+DROP TABLE order_menu;
 CREATE TABLE orders (id int NOT NULL PRIMARY KEY, price real, date_time timestamp);
-
-"populate orders"
-(populate_orders.sql)
 \copy orders from 'C:\CSCE 315\project 2\csce315-project-2\simulation\year_data_simulation.csv' CSV HEADER
-
-"create order_add_ons junction table"
-(create_order_add_ons_unction.sql)
 CREATE TABLE order_add_ons (order_menu_junction_id int NOT NULL, add_on_id int NOT NULL);
-
-"populate order_add_ons junction table"
-(populate_order_add_ons_junction.sql)
 \copy order_add_ons from 'C:\CSCE 315\project 2\csce315-project-2\simulation\order_add_ons_junction.csv' CSV HEADER
-
-"create order_menu junction table"
-(create_order_menu_junction.sql)
 CREATE TABLE order_menu (id int NOT NULL PRIMARY KEY, order_id int NOT NULL, menu_id int NOT NULL);
-
-"populate order_menu junction table"
-(populate_order_menu_junction.sql)
 \copy order_menu from 'C:\CSCE 315\project 2\csce315-project-2\simulation\order_menu_items_junction.csv' CSV HEADER
-
-"Grant permissions"
-(grant_permissions.sql)
 GRANT ALL PRIVILEGES ON orders TO csce315_971_spencertlogan;
 GRANT ALL PRIVILEGES ON orders TO csce315_908_suhulavu;
 GRANT ALL PRIVILEGES ON orders TO csce315_971_arnav_sood;
@@ -34,4 +26,16 @@ GRANT ALL PRIVILEGES ON order_menu TO csce315_971_arnav_sood;
 GRANT ALL PRIVILEGES ON order_add_ons TO csce315_971_spencertlogan;
 GRANT ALL PRIVILEGES ON order_add_ons TO csce315_908_suhulavu;
 GRANT ALL PRIVILEGES ON order_add_ons TO csce315_971_arnav_sood;
+
+1. drop shifts table
+2. create shifts table
+3. populate shifts table
+4-6. Grant permissions
+
+DROP TABLE shifts;
+CREATE TABLE shifts (employee_id int, start_time int, end_time int, day_of_week int, month int);
+\copy shifts from 'C:\CSCE 315\project 2\csce315-project-2\simulation\shifts.csv' CSV HEADER
+GRANT ALL PRIVILEGES ON shifts TO csce315_971_spencertlogan;
+GRANT ALL PRIVILEGES ON shifts TO csce315_908_suhulavu;
+GRANT ALL PRIVILEGES ON shifts TO csce315_971_arnav_sood;
 
