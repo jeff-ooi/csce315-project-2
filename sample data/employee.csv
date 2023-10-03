@@ -1,4 +1,4 @@
-﻿id,username,password,name,start date,salary,shifts,position
+﻿id,username,password,name,start_date,salary,shifts,position
 1,mleathercharm,hEroWLOGYmpO,Monica Leathercharm,10/31/2010,20,Monday-Sunday (9 - 5),manager
 2,jferreira,rAVetCHaNTIt,Jacenty Ferreira,11/2/2015,16,Monday-Sunday (9 - 5),cashier
 3,xtroy,HIVerMANgThE,Xasan Troy,11/16/2019,12,Monday-Sunday (9 - 5),cashier
