@@ -49,8 +49,8 @@ with open("./simulation/year_data_simulation.csv", "w", newline='') as ordersFil
     ordersWriter = csv.writer(ordersFile)
     ordersWriter.writerow(["id", "price", "date_time"]) # header
     # get a full year of data
-    # while (current_date.year != 2023):
-    while (current_date.day != 2):
+    while (current_date.year != 2023):
+    # while (current_date.day != 2):
         # generates a random hour and minute
         current_date = current_date.replace(hour=random.randrange(8,8+1),minute=random.randrange(0,60))
         # since we need at least $1 million in sales, 1 mil/365 is 2739.73. $250 is variance in sales
