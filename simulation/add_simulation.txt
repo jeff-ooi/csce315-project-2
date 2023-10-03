@@ -33,7 +33,7 @@ GRANT ALL PRIVILEGES ON order_add_ons TO csce315_971_arnav_sood;
 4-6. Grant permissions
 
 DROP TABLE shifts;
-CREATE TABLE shifts (employee_id int, start_time int, end_time int, day_of_week int, month int);
+CREATE TABLE shifts (employee_id int NOT NULL, start_time int, end_time int, day_of_week int, month int);
 \copy shifts from 'C:\CSCE 315\project 2\csce315-project-2\simulation\shifts.csv' CSV HEADER
 GRANT ALL PRIVILEGES ON shifts TO csce315_971_spencertlogan;
 GRANT ALL PRIVILEGES ON shifts TO csce315_908_suhulavu;
