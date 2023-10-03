@@ -47,10 +47,10 @@ order_add_on_junction_id = 0
 
 with open("./simulation/year_data_simulation.csv", "w", newline='') as ordersFile:
     ordersWriter = csv.writer(ordersFile)
-    ordersWriter.writerow(["id", "price", "date/time"]) # header
+    ordersWriter.writerow(["id", "price", "date_time"]) # header
     # get a full year of data
-    while (current_date.year != 2023):
-    # while (current_date.day != 2):
+    # while (current_date.year != 2023):
+    while (current_date.day != 2):
         # generates a random hour and minute
         current_date = current_date.replace(hour=random.randrange(8,8+1),minute=random.randrange(0,60))
         # since we need at least $1 million in sales, 1 mil/365 is 2739.73. $250 is variance in sales
@@ -71,17 +71,19 @@ with open("./simulation/year_data_simulation.csv", "w", newline='') as ordersFil
                 
                 for i in range(amount_ordered):
                     # selects a random menu item by id
-                    menu_item = random.randrange(1,len(MENU_ITEMS)+1)
+                    menu_item = random.choice(list(MENU_ITEMS.keys()))
                     # adds the price of that menu item to the total price of the order 
                     price += MENU_ITEMS_PRICE[menu_item-1]
+                    # gets the add-ons that can be applied to the menu item
+                    add_ons = MENU_ITEMS[menu_item]
                     # selects a random number of add-ons for the menu item
-                    add_ons_amount = random.randrange(0,3)
+                    add_ons_amount = random.randrange(0,len(add_ons)+1)
                     
                     with open("./simulation/order_add_ons_junction.csv", "a", newline='') as orderAddOnsJunctionFile:
                         orderAddOnsJunctionWriter = csv.writer(orderAddOnsJunctionFile)
                         for i in range(add_ons_amount):
                             # selects a random add-on by id
-                            add_on = random.randrange(1,len(ADD_ONS)+1)
+                            add_on = random.choice(add_ons)
                             # first add-on is free?
                             # if i != 0:
                             #     price += ADD_ONS_PRICE[add_on-1]
