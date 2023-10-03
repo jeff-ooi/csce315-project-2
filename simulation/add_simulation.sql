@@ -1,3 +1,4 @@
+"this file is just to store commands"
 "create orders table"
 (create_orders.sql)
 CREATE TABLE orders (id int NOT NULL PRIMARY KEY, price real, date_time timestamp);
