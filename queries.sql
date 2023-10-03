@@ -29,3 +29,33 @@ INSERT INTO orders (id, price, date_time) VALUES (555555, 6.99, '2019-01-01 00:0
 "update menu item price in menu"
 (update_menu_item.sql)
 UPDATE menu SET price = 6.99 WHERE name = 'The Alley Trio';
+
+-- Arnav --
+
+"list all cashier names"
+(list_cashier_names.sql)
+SELECT name FROM employee WHERE position = 'cashier';
+
+"list all manager names"
+(list_manager_names.sql)
+SELECT name FROM employee WHERE position = 'manager';
+
+"insert new manager"
+(insert_manager.sql)
+INSERT INTO employee (id, username, password, name, start_date, salary, shifts, position) VALUES (6, 'tempM', 'tempMPass', 'temp Manager', '2011-10-31', 30, 'Monday-Sunday (9 - 5)', 'manager');
+
+"insert new cashier"
+(insert_cashier.sql)
+INSERT INTO employee (id, username, password, name, start_date, salary, shifts, position) VALUES (6, 'tempC', 'tempCPass', 'temp Cashier', '2019-10-31', 1, 'Monday-Sunday (9 - 5)', 'cashier');
+
+"list all shifts"
+(list_shifts.sql)
+SELECT name, shifts FROM employee;
+
+"list all milk tea"
+(list_milk_tea.sql)
+SELECT name FROM menu WHERE name LIKE '%Milk Tea%';
+
+"list all green tea"
+(list_green_tea.sql)
+SELECT name FROM menu WHERE name LIKE '%Green Tea%';
