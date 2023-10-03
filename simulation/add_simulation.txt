@@ -27,15 +27,23 @@ GRANT ALL PRIVILEGES ON order_add_ons TO csce315_971_spencertlogan;
 GRANT ALL PRIVILEGES ON order_add_ons TO csce315_908_suhulavu;
 GRANT ALL PRIVILEGES ON order_add_ons TO csce315_971_arnav_sood;
 
-1. drop shifts table
-2. create shifts table
-3. populate shifts table
-4-6. Grant permissions
+1-2. drop shifts table and employee_shift junction table
+3. create shifts table
+4. populate shifts table
+5. create employee_shift junction table
+6. populate employee_shift junction table
+7-10. Grant permissions
 
 DROP TABLE shifts;
-CREATE TABLE shifts (employee_id int NOT NULL, start_time int, end_time int, day_of_week int, month int);
+DROP TABLE employee_shift;
+CREATE TABLE shifts (id int NOT NULL PRIMARY KEY, start_time int, end_time int);
 \copy shifts from 'C:\CSCE 315\project 2\csce315-project-2\simulation\shifts.csv' CSV HEADER
+CREATE TABLE employee_shift (id int NOT NULL PRIMARY KEY,shift_id int NOT NULL,employee_id int NOT NULL,month int,day_of_week int);
+\copy employee_shift from 'C:\CSCE 315\project 2\csce315-project-2\simulation\employee_shift.csv' CSV HEADER
 GRANT ALL PRIVILEGES ON shifts TO csce315_971_spencertlogan;
 GRANT ALL PRIVILEGES ON shifts TO csce315_908_suhulavu;
 GRANT ALL PRIVILEGES ON shifts TO csce315_971_arnav_sood;
+GRANT ALL PRIVILEGES ON employee_shift TO csce315_971_spencertlogan;
+GRANT ALL PRIVILEGES ON employee_shift TO csce315_908_suhulavu;
+GRANT ALL PRIVILEGES ON employee_shift TO csce315_971_arnav_sood;
 
