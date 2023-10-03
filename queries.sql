@@ -14,6 +14,6 @@ SELECT SUM(price) FROM orders GROUP BY DATE_PART('day', date_time) ORDER BY SUM(
 (row_count.sql)
 SELECT COUNT(*) FROM inventory;
 
-"select item price from inventory for specific item"
+"select item price from menu for specific item"
 (item_price.sql)
-SELECT item_price FROM inventory WHERE name = 'The Alley Trio';
+SELECT price FROM menu WHERE name = 'The Alley Trio';
