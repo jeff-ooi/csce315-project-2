@@ -42,15 +42,15 @@ SELECT name FROM employee WHERE position = 'manager';
 
 "insert new manager"
 (insert_manager.sql)
-INSERT INTO employee (id, username, password, name, start_date, salary, shifts, position) VALUES (6, 'tempM', 'tempMPass', 'temp Manager', '2011-10-31', 30, 'Monday-Sunday (9 - 5)', 'manager');
+INSERT INTO employee (id, username, password, name, start_date, salary, position) VALUES (6, 'tempM', 'tempMPass', 'temp Manager', '2011-10-31', 30, 'manager');
 
 "insert new cashier"
 (insert_cashier.sql)
-INSERT INTO employee (id, username, password, name, start_date, salary, shifts, position) VALUES (6, 'tempC', 'tempCPass', 'temp Cashier', '2019-10-31', 1, 'Monday-Sunday (9 - 5)', 'cashier');
+INSERT INTO employee (id, username, password, name, start_date, salary, position) VALUES (6, 'tempC', 'tempCPass', 'temp Cashier', '2019-10-31', 1, 'cashier');
 
-"list all shifts"
-(list_shifts.sql)
-SELECT name, shifts FROM employee;
+"list all lulu drinks"
+(list_lulu.sql)
+SELECT name FROM menu WHERE name LIKE '%LuLu%';
 
 "list all milk tea"
 (list_milk_tea.sql)
