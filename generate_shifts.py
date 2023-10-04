@@ -15,8 +15,8 @@ with open("./simulation/employee_shift.csv", "w", newline='') as employeeShiftJu
         for day in range(7):
             for shift in range(len(shifts)):
                 employeeShiftJunctionWriter.writerow([id,shift,1,month+1,day+1])
+                id += 1
                 
-    id += 1
     month = 1
     # all 12 months
     while month < 13:
@@ -34,10 +34,14 @@ with open("./simulation/employee_shift.csv", "w", newline='') as employeeShiftJu
                     # chooses a random shift that is later than shifts already worked
                     if i < 3-2:
                         # chooses a random shift that is later than the shift already worked, but not all the way until the final shift
-                        shift = random.randrange(shift+1,shift+3+1)
+                        shift = random.randrange(shift+2,shift+3+1)
                     else:
                         # last second goes until the final shift
-                        shift = random.randrange(shift,8+1)
+                        # if the shift is 
+                        if (shift+2 >= 8):
+                            shift = 8
+                        else:
+                            shift = random.randrange(shift+2,8+1)
                     id += 1
                 
             day_of_week += 1
