@@ -1,11 +1,11 @@
 # csce315-project-2
-POS system for The Alley.  Team 8M
+Unofficial POS system for The Alley with fake data.  Team 08M
 
 Replace jeffooi with your netid without periods or dashes  
 Replace 971 with your section number  
 psql -h csce-315-db.engr.tamu.edu -U csce315_971_jeffooi -d csce315331_08m_db  
 
 Compile and run GUI  
-javac *.java  
-Not Mac: java -cp ".;postgresql-42.2.8.jar" <name of main java file>  
-Mac: java -cp ".:postgresql-42.2.8.jar" <name of main java file>  
+javac <path/to/java/directory/*.java>  
+Not Mac: java -cp ".;<path/to/file/postgresql-42.2.8.jar>" <path/to/java/file.java>  
+Mac: java -cp ".:<path/to/file/postgresql-42.2.8.jar>" <path/to/java/file.java>  
