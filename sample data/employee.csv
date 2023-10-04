@@ -1,6 +1,6 @@
-﻿id,username,password,name,start_date,salary,shifts,position
-1,mleathercharm,hEroWLOGYmpO,Monica Leathercharm,10/31/2010,20,Monday-Sunday (9 - 5),manager
-2,jferreira,rAVetCHaNTIt,Jacenty Ferreira,11/2/2015,16,Monday-Sunday (9 - 5),cashier
-3,xtroy,HIVerMANgThE,Xasan Troy,11/16/2019,12,Monday-Sunday (9 - 5),cashier
-4,esummer,PritIEniANEc,Enes Summer,4/8/2018,12,Monday-Sunday (9 - 5),cashier
-5,kkarstensen,oisHrOnsEsTo,Koby Karstensen,7/23/2021,12,Monday-Sunday (9 - 5),cashier
+﻿id,username,password,name,start_date,salary,position
+1,mleathercharm,hEroWLOGYmpO,Monica Leathercharm,10/31/2010,20,manager
+2,jferreira,rAVetCHaNTIt,Jacenty Ferreira,11/2/2015,16,cashier
+3,xtroy,HIVerMANgThE,Xasan Troy,11/16/2019,12,cashier
+4,esummer,PritIEniANEc,Enes Summer,4/8/2018,12,cashier
+5,kkarstensen,oisHrOnsEsTo,Koby Karstensen,7/23/2021,12,cashier
