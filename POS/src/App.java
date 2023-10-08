@@ -17,20 +17,20 @@ public class App {
 
         Database conn = new Database(username, pswd);
 
-        conn.addEmployee(5555, "tempM", "tempM", "tempM", "2011-10-31", 20, "manager");
-        conn.deleteEmployee(5555);
+        // conn.addEmployee(5555, "tempM", "tempM", "tempM", "2011-10-31", 20, "manager");
+        // conn.deleteEmployee(5555);
 
-        conn.addInventoryItem(5555, "tempii", "2023-02-18", 10000, 790);
-        conn.updateInventoryItemAmountRemaining(5555, 1000);
-        conn.updateInventoryItemAmountUsed(5555, 800);
-        conn.updateInventoryItemName(5555, "tempII");
-        conn.restockInventoryItem(5555, "2023-10-07", 1000);
-        conn.deleteInventoryItem(5555);
+        // conn.addInventoryItem(5555, "tempii", "2023-02-18", 10000, 790);
+        // conn.updateInventoryItemAmountRemaining(5555, 1000);
+        // conn.updateInventoryItemAmountUsed(5555, 800);
+        // conn.updateInventoryItemName(5555, "tempII");
+        // conn.restockInventoryItem(5555, "2023-10-07", 1000);
+        // conn.deleteInventoryItem(5555);
 
-        conn.addMenuItem(5555, "tempmi", 45.59);
-        conn.updateMenuItemName(5555, "tempMI");
-        conn.updateMenuItemPrice(5555, 5.59);
-        conn.deleteMenuItem(5555);
+        // conn.addMenuItem(5555, "tempmi", 45.59);
+        // conn.updateMenuItemName(5555, "tempMI");
+        // conn.updateMenuItemPrice(5555, 5.59);
+        // conn.deleteMenuItem(5555);
 
         conn.closeDatabase();
         // try {
