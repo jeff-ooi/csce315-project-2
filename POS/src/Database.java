@@ -105,10 +105,10 @@ public class Database {
             inventory = createStatement.executeQuery(
                 "SELECT * FROM inventory;"
             );
-            System.out.println("Got Employees");
+            System.out.println("Got Inventory");
         }
         catch (Exception e) {
-            System.out.println("Failed to get Employees");
+            System.out.println("Failed to get Inventory");
             e.printStackTrace();
         }
         return inventory;
@@ -235,10 +235,10 @@ public class Database {
             menu = createStatement.executeQuery(
                 "SELECT * FROM menu;"
             );
-            System.out.println("Got Employees");
+            System.out.println("Got Menu");
         }
         catch (Exception e) {
-            System.out.println("Failed to get Employees");
+            System.out.println("Failed to get Menu");
             e.printStackTrace();
         }
         return menu;
