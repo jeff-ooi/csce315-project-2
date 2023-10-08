@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -22,7 +23,6 @@ public class App {
             conn = new Database(username, password);
         }
         input.close();
-
 
         // conn.addEmployee(5555, "tempM", "tempM", "tempM", "2011-10-31", 20, "manager");
         // conn.deleteEmployee(5555);

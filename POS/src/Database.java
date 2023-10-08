@@ -1,7 +1,6 @@
 // import java.rmi.server.ExportException;
 import java.sql.*;
-// import java.util.Scanner;
-
+import java.util.ArrayList;
 public class Database {
 
     private Connection conn;
@@ -47,6 +46,21 @@ public class Database {
     }
 
     // EMPLOYEE SECTION
+
+    public ResultSet getSingleEmployee(int id) {
+        ResultSet employee = null;
+        try {
+            employee = createStatement.executeQuery(
+                "SELECT * FROM employee where id = " + id + ";"
+            );
+            System.out.println("Got Employee " + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Employee " + id);
+            e.printStackTrace();
+        }
+        return employee;
+    }
     
     // returns all the employees in the employee table
     public ResultSet getEmployees() {
@@ -98,6 +112,21 @@ public class Database {
     }
 
     // INVENTORY SECTION
+
+    public ResultSet getSingleInventoryItem(int id) {
+        ResultSet inventoryItem = null;
+        try {
+            inventoryItem = createStatement.executeQuery(
+                "SELECT * FROM inventory where id = " + id + ";"
+            );
+            System.out.println("Got Inventory Item " + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Inventory Item " + id);
+            e.printStackTrace();
+        }
+        return inventoryItem;
+    }
 
     public ResultSet getInventory() {
         ResultSet inventory = null;
@@ -229,6 +258,21 @@ public class Database {
 
     // MENU SECTION
 
+    public ResultSet getSingleMenuItem(int id) {
+        ResultSet menuItem = null;
+        try {
+            menuItem = createStatement.executeQuery(
+                "SELECT * FROM menu where id = " + id + ";"
+            );
+            System.out.println("Got Menu Item " + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Menu Item " + id);
+            e.printStackTrace();
+        }
+        return menuItem;
+    }
+
     public ResultSet getMenu() {
         ResultSet menu = null;
         try {
@@ -304,6 +348,51 @@ public class Database {
             System.out.println("Failed to update Menu Item " + id + " name");
             e.printStackTrace();
         }
+    }
+
+    public void updateMenuItemInventoryItems(int id) {
+        return;
+    }
+
+    // ORDERS SECTION
+
+    public ResultSet getSingleOrder(int id) {
+        ResultSet order = null;
+        try {
+            order = createStatement.executeQuery(
+                "SELECT * FROM orders where id = " + id + ";"
+            );
+            System.out.println("Got Order " + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Order " + id);
+            e.printStackTrace();
+        }
+        return order;
+    }
+
+    public ResultSet getAllOrders() {
+        ResultSet orders = null;
+        try {
+            orders = createStatement.executeQuery(
+                "SELECT * FROM orders;"
+            );
+            System.out.println("Got Orders");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Orders");
+            e.printStackTrace();
+        }
+        return orders;
+    }
+
+    // this one is going to be hard
+    public void addOrder(int id, double price, String dateTime, ArrayList<Integer> menuItemIds, ArrayList<ArrayList<Integer>> addOnIdsForEachMenuItem) {        
+        return;
+    }
+
+    public void deleteOrder(int id) {
+        return;
     }
 
 }
