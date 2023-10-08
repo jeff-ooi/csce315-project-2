@@ -29,6 +29,10 @@ public class Database {
         }
     }
 
+    public boolean isConnected() {
+        return conn != null;
+    }
+
     public void closeDatabase() {
         if (conn != null) {
             try {
@@ -43,8 +47,24 @@ public class Database {
     }
 
     // EMPLOYEE SECTION
+    
+    // returns all the employees in the employee table
+    public ResultSet getEmployees() {
+        ResultSet employees = null;
+        try {
+            employees = createStatement.executeQuery(
+                "SELECT * FROM employee;"
+            );
+            System.out.println("Got Employees");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Employees");
+            e.printStackTrace();
+        }
+        return employees;
+    }
 
-    // adds an Employee to the employee table. returns the added Employee on success and null on fail.
+    // adds an Employee to the employee table
     public void addEmployee(int id, String userName, String password, String name, String startDate, double salary, String position) {
         // ResultSet newEmployee = null;
         try {
@@ -79,7 +99,22 @@ public class Database {
 
     // INVENTORY SECTION
 
-    // adds an Inventory Item to the inventory table. returns the added Inventory Item on success and null on fail.
+    public ResultSet getInventory() {
+        ResultSet inventory = null;
+        try {
+            inventory = createStatement.executeQuery(
+                "SELECT * FROM inventory;"
+            );
+            System.out.println("Got Employees");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Employees");
+            e.printStackTrace();
+        }
+        return inventory;
+    }
+
+    // adds an Inventory Item to the inventory table
     public void addInventoryItem(int id, String name, String lastRestockDate, int amountRemaining, int amountUsed) {
         // ResultSet newInventoryItem = null;
         try {
@@ -151,7 +186,7 @@ public class Database {
             System.out.println("Successfully updated Inventory Item " + id + " amount used");
         }
         catch (Exception e) {
-            System.out.println("Failed to update Inventor Item " + id + " Amount used");
+            System.out.println("Failed to update Inventory Item " + id + " Amount used");
             e.printStackTrace();
         }
     }
@@ -194,7 +229,22 @@ public class Database {
 
     // MENU SECTION
 
-    // adds a Menu Item to the menu table. returns the added Menu Item on success and null on fail.
+    public ResultSet getMenu() {
+        ResultSet menu = null;
+        try {
+            menu = createStatement.executeQuery(
+                "SELECT * FROM menu;"
+            );
+            System.out.println("Got Employees");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Employees");
+            e.printStackTrace();
+        }
+        return menu;
+    }
+
+    // adds a Menu Item to the menu table
     public void addMenuItem(int id, String name, double price) {
         // ResultSet newMenuItem = null;
         try {

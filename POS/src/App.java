@@ -7,15 +7,25 @@ public class App {
         // final String teamName = "08m";
         // final String dbName = "csce315331_" + teamName + "_db";
         // final String dbConnectionString = "jdbc:postgresql://csce-315-db.engr.tamu.edu/" + dbName;
-
         Scanner input = new Scanner(System.in);
         System.out.print("Enter username: ");
         String username = input.nextLine();
         System.out.print("Enter password: ");
-        String pswd = input.nextLine();
+        String password = input.nextLine();
+        // input.close();
+
+        Database conn = new Database(username, password);
+
+        while (!conn.isConnected()) {
+            System.out.print("Enter username: ");
+            username = input.nextLine();
+            System.out.print("Enter password: ");
+            password = input.nextLine();
+
+            conn = new Database(username, password);
+        }
         input.close();
 
-        Database conn = new Database(username, pswd);
 
         // conn.addEmployee(5555, "tempM", "tempM", "tempM", "2011-10-31", 20, "manager");
         // conn.deleteEmployee(5555);
