@@ -386,6 +386,34 @@ public class Database {
         return orders;
     }
 
+    public ResultSet getMenuItemsFromOrder(int id) {
+        ResultSet orderItems = null;
+        try {
+            orderItems = createStatement.executeQuery(
+                "SELECT * FROM order_menu WHERE order_id = " + id + ";"
+            );
+            System.out.println("Got Menu Items for Order " + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Menu Items for Order " + id);
+        }
+        return orderItems;
+    }
+
+    public ResultSet getAddOnsForMenuItemInOrder(int orderId, int menuItemId) {
+        ResultSet addOns = null;
+        try {
+            addOns = createStatement.executeQuery(
+                "SELECT * FROM order_add_ons WHERE order_menu_junction id = (" + 
+                "SELECT id FROM order_menu WHERE order_id = " + orderId + " AND menu_id = " + menuItemId + ");"
+            );
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Add-Ons for Menu Item in an Order");
+        }
+        return addOns;
+    }
+
     // this one is going to be hard
     public void addOrder(int id, double price, String dateTime, ArrayList<Integer> menuItemIds, ArrayList<ArrayList<Integer>> addOnIdsForEachMenuItem) {        
         return;
