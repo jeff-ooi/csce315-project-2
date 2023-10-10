@@ -7,5 +7,15 @@ psql -h csce-315-db.engr.tamu.edu -U csce315_971_jeffooi -d csce315331_08m_db
 
 Compile and run GUI  
 javac <path/to/java/directory/*.java>  
-Not Mac: java -cp ".;<path/to/file/postgresql-42.2.8.jar>" <path/to/java/file.java>  
-Mac: java -cp ".:<path/to/file/postgresql-42.2.8.jar>" <path/to/java/file.java>  
+Not Mac:  
+java -cp ".;<path/to/file/postgresql-42.2.8.jar>" <path/to/java/file.java>  
+Mac:  
+java -cp ".:<path/to/file/postgresql-42.2.8.jar>" <path/to/java/file.java>  
+  
+Compile and run ManagerGUI  
+cd into ManagerGUI/src/main/java  
+javac /com/mycompany/managergui/*.java  
+Not Mac:  
+java -cp ".;com/mycompany/managergui/postgresql-42.2.8.jar" com/mycompany/managergui/ManagerGUI  
+Mac:  
+java -cp ".:com/mycompany/managergui/postgresql-42.2.8.jar" com/mycompany/managergui/ManagerGUI  
