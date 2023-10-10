@@ -1,12 +1,16 @@
 package com.mycompany.managergui;
 
+import java.sql.ResultSet;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class ManagerPOS extends javax.swing.JFrame {
 
     /**
      * Creates new form ManagerPOS
      */
+    
+    Database database = new Database("csce315_971_arnav_sood", "arnav_sood");
     public ManagerPOS() {
         initComponents();
     }
@@ -30,6 +34,7 @@ public class ManagerPOS extends javax.swing.JFrame {
         employees_label = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         employee_table = new javax.swing.JTable();
+        load_data_employee = new javax.swing.JButton();
         sales_panel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         sales_table = new javax.swing.JTable();
@@ -51,7 +56,6 @@ public class ManagerPOS extends javax.swing.JFrame {
         setTitle("Manager POS");
         setMaximumSize(new java.awt.Dimension(1150, 700));
         setMinimumSize(new java.awt.Dimension(1150, 700));
-        setPreferredSize(new java.awt.Dimension(1150, 700));
 
         employees_button.setText("Employees");
         employees_button.addActionListener(new java.awt.event.ActionListener() {
@@ -90,36 +94,69 @@ public class ManagerPOS extends javax.swing.JFrame {
 
         layered_pane.setMaximumSize(new java.awt.Dimension(20000, 20000));
         layered_pane.setMinimumSize(new java.awt.Dimension(980, 650));
-        layered_pane.setPreferredSize(new java.awt.Dimension(980, 650));
         layered_pane.setLayout(new java.awt.CardLayout());
 
         employees_panel.setMaximumSize(new java.awt.Dimension(20000, 20000));
         employees_panel.setMinimumSize(new java.awt.Dimension(980, 650));
         employees_panel.setPreferredSize(new java.awt.Dimension(980, 650));
-        employees_panel.setLayout(new java.awt.BorderLayout());
 
         employees_label.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         employees_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         employees_label.setText("Employees");
         employees_label.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         employees_label.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        employees_panel.add(employees_label, java.awt.BorderLayout.NORTH);
 
         employee_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "username", "password", "name", "start_date", "salary", "position"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         employee_table.setPreferredSize(new java.awt.Dimension(300, 100));
         jScrollPane1.setViewportView(employee_table);
 
-        employees_panel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        load_data_employee.setText("Load Data");
+        load_data_employee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                load_data_employeeActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout employees_panelLayout = new javax.swing.GroupLayout(employees_panel);
+        employees_panel.setLayout(employees_panelLayout);
+        employees_panelLayout.setHorizontalGroup(
+            employees_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(employees_panelLayout.createSequentialGroup()
+                .addGroup(employees_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(employees_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(load_data_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(employees_label, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(119, 119, 119))
+        );
+        employees_panelLayout.setVerticalGroup(
+            employees_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(employees_panelLayout.createSequentialGroup()
+                .addGroup(employees_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employees_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(load_data_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(employees_label))
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         layered_pane.add(employees_panel, "card2");
 
@@ -309,43 +346,66 @@ public class ManagerPOS extends javax.swing.JFrame {
         // TODO add your handling code here:
         switchPanel(schedule_panel);
     }//GEN-LAST:event_schedule_buttonActionPerformed
+
+    private void load_data_employeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_data_employeeActionPerformed
+        // TODO add your handling code here:
+        ResultSet employeeData = database.getEmployees();
+        try{
+            while(employeeData.next()){
+                String id = employeeData.getString("id");
+                String username = employeeData.getString("username");
+                String password = employeeData.getString("password");
+                String name = employeeData.getString("name");
+                String start_date = employeeData.getString("start_date");
+                String salary = String.valueOf(employeeData.getInt("salary"));
+                String position = employeeData.getString("position");
+                String data[] = {id,username,password,name,start_date,salary,position};
+                DefaultTableModel model = (DefaultTableModel)employee_table.getModel();
+                model.addRow(data);
+            }
+            database.closeDatabase();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+    }//GEN-LAST:event_load_data_employeeActionPerformed
     
     
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ManagerPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ManagerPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ManagerPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ManagerPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ManagerPOS().setVisible(true);
-            }
-        });
-//    new ManagerPOS().setVisible(true);
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(ManagerPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(ManagerPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(ManagerPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(ManagerPOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ManagerPOS().setVisible(true);
+//            }
+//        });
+////    new ManagerPOS().setVisible(true);
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable employee_table;
@@ -362,6 +422,7 @@ public class ManagerPOS extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLayeredPane layered_pane;
+    private javax.swing.JButton load_data_employee;
     private javax.swing.JButton menu_button;
     private javax.swing.JLabel menu_label;
     private javax.swing.JPanel menu_panel;
