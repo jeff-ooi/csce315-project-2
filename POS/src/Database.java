@@ -352,7 +352,7 @@ public class Database {
 
     public void updateMenuItemInventoryItems(int id, ArrayList<Integer> inventoryIds) {
         try {
-            createStatement.executeQuery(
+            createStatement.execute(
                 "DELETE FROM menu_inventory WHERE menu_id = " + id + ";"
             );
 
@@ -432,8 +432,46 @@ public class Database {
     }
 
     // this one is going to be hard
-    public void addOrder(int id, double price, String dateTime, ArrayList<Integer> menuItemIds, ArrayList<ArrayList<Integer>> addOnIdsForEachMenuItem) {        
-        return;
+    public void addOrder(int id, double price, java.util.Date dateTime, ArrayList<Integer> menuItemIds, ArrayList<ArrayList<Integer>> addOnIdsForEachMenuItem) {        
+        try {
+            createStatement.execute(
+                "INSERT INTO orders (id, price, date_time) VALUES (" +
+                id + ", " + price + ", " + dateTime + ");"
+            );
+
+            // update order menu junction table
+            ResultSet maxIdSet = null;
+            maxId = createStatement.executeQuery (
+                "SELECT id FROM order_menu ORDER BY id DESC LIMIT 1"
+            );
+            int maxId = maxIdSet.getInt("id");
+
+            for (int menuId : menuItemIds) {
+                maxId += 1;
+
+                createStatement.execute(
+                    "INSERT INTO order_menu (id, order_id, menu_id) VALUES (" +
+                    maxId + ", " + id + ", " + menuId + ");"
+                );
+            }
+
+            // update order add on junction table
+            ResultSet maxIdSet = null;
+            maxId = createStatement.executeQuery (
+                "SELECT id FROM order_menu ORDER BY id DESC LIMIT 1"
+            );
+            int maxId = maxIdSet.getInt("id");
+
+            for (int menuId : menuItemIds) {
+                maxId += 1;
+
+                createStatement.execute(
+                    "INSERT INTO order_menu (id, order_id, menu_id) VALUES (" +
+                    maxId + ", " + id + ", " + menuId + ");"
+                );
+            }
+
+        }
     }
 
     public void deleteOrder(int id) {
