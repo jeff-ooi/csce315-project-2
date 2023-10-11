@@ -3,6 +3,9 @@ package com.mycompany.managergui;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * @author Jeff Ooi, Suhu Lavu
+ */
 public class Database {
 
     private Connection conn;
@@ -50,7 +53,7 @@ public class Database {
     }
 
     /**
-     * closed the connection to the database
+     * closes the connection to the database
      */
     public void closeDatabase() {
         if (conn != null) {
@@ -692,7 +695,7 @@ public class Database {
     }
 
     // adds a Menu Item to the menu table
-    public void addMenuItem(int id, String name, double price) {
+    public boolean addMenuItem(int id, String name, double price) {
         // ResultSet newMenuItem = null;
         try {
             // newMenuItem = createStatement.executeQuery(
@@ -701,29 +704,33 @@ public class Database {
                 id + ", \'" + name + "\', " + price + ");"
             );
             System.out.println("Successfully added Menu Item " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to add Menu Item");
             e.printStackTrace();
+            return false;
         }
         // return newMenuItem;
     }
 
-    public void deleteMenuItem(int id) {
+    public boolean deleteMenuItem(int id) {
         try {
             createStatement.execute(
                 "DELETE FROM menu WHERE id = " + id + ";"
             );
             System.out.println("Successfully deleted Menu Item " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to delete Menu Item " + id);
             e.printStackTrace();
+            return false;
         }
     }
 
     // updates the price of a Menu Item
-    public void updateMenuItemPrice(int id, double newPrice) {
+    public boolean updateMenuItemPrice(int id, double newPrice) {
         try {
             createStatement.execute(
                 "UPDATE menu " +
@@ -731,14 +738,16 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Menu Item " + id + " price");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Faled to update Menu Item " + id + " price");
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void updateMenuItemName(int id, String newName) {
+    public boolean updateMenuItemName(int id, String newName) {
         try {
             createStatement.execute(
                 "UPDATE menu " + 
@@ -746,10 +755,12 @@ public class Database {
                 "WHERE id = " + id + ";" 
             );
             System.out.println("Successfully updated Menu Item " + id + " name");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Menu Item " + id + " name");
             e.printStackTrace();
+            return false;
         }
     }
 
