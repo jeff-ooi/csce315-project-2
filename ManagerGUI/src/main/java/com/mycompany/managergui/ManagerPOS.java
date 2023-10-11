@@ -61,6 +61,21 @@ public class ManagerPOS extends javax.swing.JFrame {
         inventory_label = new javax.swing.JLabel();
         load_data_inventory = new javax.swing.JButton();
         add_inventory_button = new javax.swing.JButton();
+        id_label_inventory_panel = new javax.swing.JLabel();
+        name_label_inventory_panel = new javax.swing.JLabel();
+        last_restock_date_label_inventory_panel = new javax.swing.JLabel();
+        amount_remaining_label_inventory_panel = new javax.swing.JLabel();
+        amount_used_label_inventory_panel = new javax.swing.JLabel();
+        id_textField_inventory_panel = new javax.swing.JTextField();
+        name_textField_inventory_panel = new javax.swing.JTextField();
+        last_restock_date_textField_inventory_panel = new javax.swing.JTextField();
+        amount_remaining_textField_inventory_panel = new javax.swing.JTextField();
+        amount_used_textField_inventory_panel = new javax.swing.JTextField();
+        delete_id_button_inventory_panel = new javax.swing.JButton();
+        update_name_button_inventory_panel = new javax.swing.JButton();
+        update_last_restock_date_button_inventory_panel = new javax.swing.JButton();
+        update_amount_remaining_button_inventory_panel = new javax.swing.JButton();
+        update_amount_used_button_inventory_panel = new javax.swing.JButton();
         schedule_panel = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         schedule_table = new javax.swing.JTable();
@@ -426,12 +441,33 @@ public class ManagerPOS extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        inventory_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inventory_tableMouseClicked(evt);
+            }
         });
         jScrollPane4.setViewportView(inventory_table);
+        if (inventory_table.getColumnModel().getColumnCount() > 0) {
+            inventory_table.getColumnModel().getColumn(0).setResizable(false);
+            inventory_table.getColumnModel().getColumn(0).setPreferredWidth(20);
+            inventory_table.getColumnModel().getColumn(1).setResizable(false);
+            inventory_table.getColumnModel().getColumn(2).setResizable(false);
+            inventory_table.getColumnModel().getColumn(2).setPreferredWidth(80);
+            inventory_table.getColumnModel().getColumn(3).setResizable(false);
+            inventory_table.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         inventory_label.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         inventory_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -456,21 +492,113 @@ public class ManagerPOS extends javax.swing.JFrame {
             }
         });
 
+        id_label_inventory_panel.setText("id");
+
+        name_label_inventory_panel.setText("name");
+
+        last_restock_date_label_inventory_panel.setText("last_restock_date");
+
+        amount_remaining_label_inventory_panel.setText("amount_remaining");
+
+        amount_used_label_inventory_panel.setText("amount_used");
+
+        delete_id_button_inventory_panel.setForeground(new java.awt.Color(255, 0, 0));
+        delete_id_button_inventory_panel.setText("delete item");
+        delete_id_button_inventory_panel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_id_button_inventory_panelActionPerformed(evt);
+            }
+        });
+
+        update_name_button_inventory_panel.setText("update name");
+        update_name_button_inventory_panel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_name_button_inventory_panelActionPerformed(evt);
+            }
+        });
+
+        update_last_restock_date_button_inventory_panel.setText("update last_restock_date");
+        update_last_restock_date_button_inventory_panel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_last_restock_date_button_inventory_panelActionPerformed(evt);
+            }
+        });
+
+        update_amount_remaining_button_inventory_panel.setText("update amount_remaining");
+        update_amount_remaining_button_inventory_panel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_amount_remaining_button_inventory_panelActionPerformed(evt);
+            }
+        });
+
+        update_amount_used_button_inventory_panel.setText("update amount_used");
+        update_amount_used_button_inventory_panel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_amount_used_button_inventory_panelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout inventory_panelLayout = new javax.swing.GroupLayout(inventory_panel);
         inventory_panel.setLayout(inventory_panelLayout);
         inventory_panelLayout.setHorizontalGroup(
             inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inventory_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(inventory_panelLayout.createSequentialGroup()
+                        .addComponent(load_data_inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(inventory_label, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(add_inventory_button, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(inventory_panelLayout.createSequentialGroup()
+                        .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(inventory_panelLayout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(delete_id_button_inventory_panel))
+                            .addGroup(inventory_panelLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(id_label_inventory_panel)
+                                    .addComponent(id_textField_inventory_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(17, 17, 17)
+                        .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(name_label_inventory_panel)
+                            .addGroup(inventory_panelLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(update_name_button_inventory_panel))
+                            .addComponent(name_textField_inventory_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(inventory_panelLayout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(update_last_restock_date_button_inventory_panel)
+                                .addGap(21, 21, 21))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inventory_panelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(last_restock_date_label_inventory_panel)
+                                    .addComponent(last_restock_date_textField_inventory_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(60, 60, 60)))
+                        .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(inventory_panelLayout.createSequentialGroup()
+                                .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(amount_remaining_label_inventory_panel)
+                                    .addComponent(amount_remaining_textField_inventory_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(amount_used_label_inventory_panel)
+                                    .addComponent(amount_used_textField_inventory_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34))
+                            .addGroup(inventory_panelLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(update_amount_remaining_button_inventory_panel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(update_amount_used_button_inventory_panel)
+                                .addContainerGap())))))
+            .addGroup(inventory_panelLayout.createSequentialGroup()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(inventory_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(load_data_inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inventory_label, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(add_inventory_button, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         inventory_panelLayout.setVerticalGroup(
             inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -484,6 +612,27 @@ public class ManagerPOS extends javax.swing.JFrame {
                         .addComponent(load_data_inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id_label_inventory_panel)
+                    .addComponent(name_label_inventory_panel)
+                    .addComponent(last_restock_date_label_inventory_panel)
+                    .addComponent(amount_remaining_label_inventory_panel)
+                    .addComponent(amount_used_label_inventory_panel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id_textField_inventory_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name_textField_inventory_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(last_restock_date_textField_inventory_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(amount_remaining_textField_inventory_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(amount_used_textField_inventory_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(delete_id_button_inventory_panel)
+                    .addComponent(update_name_button_inventory_panel)
+                    .addComponent(update_last_restock_date_button_inventory_panel)
+                    .addComponent(update_amount_remaining_button_inventory_panel)
+                    .addComponent(update_amount_used_button_inventory_panel))
                 .addContainerGap())
         );
 
@@ -676,6 +825,26 @@ public class ManagerPOS extends javax.swing.JFrame {
         }
     }
     
+    public void loadDataInventory(){
+        DefaultTableModel tempModel = (DefaultTableModel)inventory_table.getModel();
+        tempModel.setRowCount(0);
+        ResultSet inventoryData = database.getInventory();
+        try{
+            while(inventoryData.next()){
+                String id = String.valueOf(inventoryData.getInt("id"));
+                String name = inventoryData.getString("name");
+                String last_restock_date = inventoryData.getString("last_restock_date");
+                String amount_remaining = String.valueOf(inventoryData.getInt("amount_remaining"));
+                String amount_used = String.valueOf(inventoryData.getInt("amount_used"));
+                String data[] = {id,name,last_restock_date,amount_remaining,amount_used};
+                DefaultTableModel model = (DefaultTableModel)inventory_table.getModel();
+                model.addRow(data);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
     private void load_data_employeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_data_employeeActionPerformed
         // TODO add your handling code here:
         DefaultTableModel tempModel = (DefaultTableModel)employee_table.getModel();
@@ -723,23 +892,7 @@ public class ManagerPOS extends javax.swing.JFrame {
 
     private void load_data_inventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_data_inventoryActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tempModel = (DefaultTableModel)inventory_table.getModel();
-        tempModel.setRowCount(0);
-        ResultSet inventoryData = database.getInventory();
-        try{
-            while(inventoryData.next()){
-                String id = String.valueOf(inventoryData.getInt("id"));
-                String name = inventoryData.getString("name");
-                String last_restock_date = inventoryData.getString("last_restock_date");
-                String amount_remaining = String.valueOf(inventoryData.getInt("amount_remaining"));
-                String amount_used = String.valueOf(inventoryData.getInt("amount_used"));
-                String data[] = {id,name,last_restock_date,amount_remaining,amount_used};
-                DefaultTableModel model = (DefaultTableModel)inventory_table.getModel();
-                model.addRow(data);
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
+        loadDataInventory();
     }//GEN-LAST:event_load_data_inventoryActionPerformed
 
     private void load_data_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_data_menuActionPerformed
@@ -827,9 +980,6 @@ public class ManagerPOS extends javax.swing.JFrame {
             if(database.updateMenuItemName(Integer.parseInt(id_textField_menu.getText()), name_textField_menu.getText())){
                 loadDataMenu();
                 throwSuccessMessage(0);
-//                id_textField_menu.setText("");
-//                name_textField_menu.setText("");
-//                price_textField_menu.setText("");
             }else{
                 throwErrorMessage();
             }
@@ -846,9 +996,6 @@ public class ManagerPOS extends javax.swing.JFrame {
             if(database.updateMenuItemPrice(Integer.parseInt(id_textField_menu.getText()), Double.parseDouble(price_textField_menu.getText()))){
                 loadDataMenu();
                 throwSuccessMessage(0);
-//                id_textField_menu.setText("");
-//                name_textField_menu.setText("");
-//                price_textField_menu.setText("");
             }else{
                 throwErrorMessage();
             }
@@ -856,6 +1003,94 @@ public class ManagerPOS extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_update_price_button_menu_panelActionPerformed
+
+    private void update_name_button_inventory_panelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_name_button_inventory_panelActionPerformed
+        // TODO add your handling code here:
+        if(isNumber(name_textField_inventory_panel.getText())||name_textField_inventory_panel.getText().isBlank()){
+            throwErrorMessage();
+        }else{
+            if(database.updateInventoryItemName(Integer.parseInt(id_textField_inventory_panel.getText()), name_textField_inventory_panel.getText())){
+                loadDataInventory();
+                throwSuccessMessage(0);
+            }else{
+                throwErrorMessage();
+            }
+            
+            
+        }
+        
+    }//GEN-LAST:event_update_name_button_inventory_panelActionPerformed
+
+    private void delete_id_button_inventory_panelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_id_button_inventory_panelActionPerformed
+        // TODO add your handling code here:
+        if(!isNumber(id_textField_inventory_panel.getText())||id_textField_inventory_panel.getText().isBlank()){
+            throwErrorMessage();
+        }else{
+            if(database.deleteInventoryItem(Integer.parseInt(id_textField_inventory_panel.getText()))){
+                loadDataInventory();
+                throwSuccessMessage(0);
+                id_textField_inventory_panel.setText("");
+                name_textField_inventory_panel.setText("");
+                last_restock_date_textField_inventory_panel.setText("");
+                amount_remaining_textField_inventory_panel.setText("");
+                amount_used_textField_inventory_panel.setText("");
+                
+            }else{
+                throwErrorMessage();
+            }
+            
+            
+        }
+    }//GEN-LAST:event_delete_id_button_inventory_panelActionPerformed
+
+    private void inventory_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventory_tableMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)inventory_table.getModel();
+        int selected_row_index = inventory_table.getSelectedRow();
+        
+        id_textField_inventory_panel.setText(model.getValueAt(selected_row_index,0).toString());
+        name_textField_inventory_panel.setText(model.getValueAt(selected_row_index,1).toString());
+        last_restock_date_textField_inventory_panel.setText(model.getValueAt(selected_row_index,2).toString());
+        amount_remaining_textField_inventory_panel.setText(model.getValueAt(selected_row_index,3).toString());
+        amount_used_textField_inventory_panel.setText(model.getValueAt(selected_row_index,4).toString());
+    }//GEN-LAST:event_inventory_tableMouseClicked
+
+    private void update_last_restock_date_button_inventory_panelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_last_restock_date_button_inventory_panelActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_update_last_restock_date_button_inventory_panelActionPerformed
+
+    private void update_amount_remaining_button_inventory_panelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_amount_remaining_button_inventory_panelActionPerformed
+        // TODO add your handling code here:
+        if(!isNumber(amount_remaining_textField_inventory_panel.getText())||amount_remaining_textField_inventory_panel.getText().isBlank()){
+            throwErrorMessage();
+        }else{
+            if(database.updateInventoryItemAmountRemaining(Integer.parseInt(id_textField_inventory_panel.getText()), Integer.parseInt(amount_remaining_textField_inventory_panel.getText()))){
+                loadDataInventory();
+                throwSuccessMessage(0);
+            }else{
+                throwErrorMessage();
+            }
+            
+            
+        }
+    }//GEN-LAST:event_update_amount_remaining_button_inventory_panelActionPerformed
+
+    private void update_amount_used_button_inventory_panelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_amount_used_button_inventory_panelActionPerformed
+        // TODO add your handling code here:
+        if(!isNumber(amount_used_textField_inventory_panel.getText())||amount_used_textField_inventory_panel.getText().isBlank()){
+            throwErrorMessage();
+        }else{
+            if(database.updateInventoryItemAmountUsed(Integer.parseInt(id_textField_inventory_panel.getText()), Integer.parseInt(amount_used_textField_inventory_panel.getText()))){
+                loadDataInventory();
+                throwSuccessMessage(0);
+            }else{
+                throwErrorMessage();
+            }
+            
+            
+        }
+    }//GEN-LAST:event_update_amount_used_button_inventory_panelActionPerformed
     
     
     /**
@@ -897,12 +1132,19 @@ public class ManagerPOS extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_inventory_button;
     private javax.swing.JButton add_menu_button;
+    private javax.swing.JLabel amount_remaining_label_inventory_panel;
+    private javax.swing.JTextField amount_remaining_textField_inventory_panel;
+    private javax.swing.JLabel amount_used_label_inventory_panel;
+    private javax.swing.JTextField amount_used_textField_inventory_panel;
+    private javax.swing.JButton delete_id_button_inventory_panel;
     private javax.swing.JButton delete_id_button_menu_panel;
     private javax.swing.JTable employee_table;
     private javax.swing.JButton employees_button;
     private javax.swing.JLabel employees_label;
     private javax.swing.JPanel employees_panel;
+    private javax.swing.JLabel id_label_inventory_panel;
     private javax.swing.JLabel id_label_menu_panel;
+    private javax.swing.JTextField id_textField_inventory_panel;
     private javax.swing.JTextField id_textField_menu;
     private javax.swing.JButton inventory_button;
     private javax.swing.JLabel inventory_label;
@@ -913,6 +1155,8 @@ public class ManagerPOS extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel last_restock_date_label_inventory_panel;
+    private javax.swing.JTextField last_restock_date_textField_inventory_panel;
     private javax.swing.JLayeredPane layered_pane;
     private javax.swing.JButton load_data_employee;
     private javax.swing.JButton load_data_inventory;
@@ -923,7 +1167,9 @@ public class ManagerPOS extends javax.swing.JFrame {
     private javax.swing.JLabel menu_label;
     private javax.swing.JPanel menu_panel;
     private javax.swing.JTable menu_table;
+    private javax.swing.JLabel name_label_inventory_panel;
     private javax.swing.JLabel name_label_menu_panel;
+    private javax.swing.JTextField name_textField_inventory_panel;
     private javax.swing.JTextField name_textField_menu;
     private javax.swing.JLabel price_label_menu_panel;
     private javax.swing.JTextField price_textField_menu;
@@ -935,6 +1181,10 @@ public class ManagerPOS extends javax.swing.JFrame {
     private javax.swing.JLabel schedule_label;
     private javax.swing.JPanel schedule_panel;
     private javax.swing.JTable schedule_table;
+    private javax.swing.JButton update_amount_remaining_button_inventory_panel;
+    private javax.swing.JButton update_amount_used_button_inventory_panel;
+    private javax.swing.JButton update_last_restock_date_button_inventory_panel;
+    private javax.swing.JButton update_name_button_inventory_panel;
     private javax.swing.JButton update_name_button_menu_panel;
     private javax.swing.JButton update_price_button_menu_panel;
     // End of variables declaration//GEN-END:variables

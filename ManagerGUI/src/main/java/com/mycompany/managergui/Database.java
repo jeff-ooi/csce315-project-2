@@ -426,7 +426,7 @@ public class Database {
     }
 
     // adds an Inventory Item to the inventory table
-    public void addInventoryItem(int id, String name, String lastRestockDate, int amountRemaining, int amountUsed) {
+    public boolean addInventoryItem(int id, String name, String lastRestockDate, int amountRemaining, int amountUsed) {
         // ResultSet newInventoryItem = null;
         try {
             // newInventoryItem = createStatement.executeQuery(
@@ -435,28 +435,32 @@ public class Database {
                 id + ", \'" + name + "\', \'" + lastRestockDate + "\', " + amountRemaining + ", " + amountUsed + ");"
             );
             System.out.println("Successfully added Inventory Item " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to add Inventory Item");
             e.printStackTrace();
+            return false;
         }
         // return newInventoryItem;
     }
 
-    public void deleteInventoryItem(int id) {
+    public boolean deleteInventoryItem(int id) {
         try {
             createStatement.execute(
                 "DELETE FROM inventory WHERE id = " + id + ";"
             );
             System.out.println("Successfully deleted Inventory Item " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to delete Inventory Item " + id);
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void updateInventoryItemAmountRemaining(int id, int newAmountRemaining) {
+    public boolean updateInventoryItemAmountRemaining(int id, int newAmountRemaining) {
         try {
             // ResultSet inventoryItem = createStatement.executeQuery(
             //     "SELECT * FROM inventory WHERE id = " + id + ";"
@@ -480,14 +484,16 @@ public class Database {
             );
             // System.out.println("Successfully updated Inventory Item " + id + " amounts");
             System.out.println("Successfully updated Inventory Item " + id + " amount remaining");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Inventory Item " + id + " Amount remaining");
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void updateInventoryItemAmountUsed(int id, int newAmountUsed) {
+    public boolean updateInventoryItemAmountUsed(int id, int newAmountUsed) {
         try {
             createStatement.execute(
                 "UPDATE inventory " +
@@ -495,14 +501,16 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Inventory Item " + id + " amount used");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Inventory Item " + id + " Amount used");
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void updateInventoryItemName(int id, String newName) {
+    public boolean updateInventoryItemName(int id, String newName) {
         try {
             createStatement.execute(
                 "UPDATE inventory " +
@@ -510,10 +518,12 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Inventory Item " + id + " name");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Inventory Item " + id + " name");
             e.printStackTrace();
+            return false;
         }
     }
 

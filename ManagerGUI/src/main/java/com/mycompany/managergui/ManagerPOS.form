@@ -668,17 +668,81 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jScrollPane4" min="-2" pref="980" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="load_data_inventory" min="-2" pref="107" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="inventory_label" min="-2" pref="709" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="add_inventory_button" min="-2" pref="107" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      <Component id="delete_id_button_inventory_panel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="id_label_inventory_panel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="id_textField_inventory_panel" min="-2" pref="150" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="name_label_inventory_panel" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                      <Component id="update_name_button_inventory_panel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="name_textField_inventory_panel" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="update_last_restock_date_button_inventory_panel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="last_restock_date_label_inventory_panel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="last_restock_date_textField_inventory_panel" min="-2" pref="150" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="amount_remaining_label_inventory_panel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="amount_remaining_textField_inventory_panel" min="-2" pref="151" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="amount_used_label_inventory_panel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="amount_used_textField_inventory_panel" min="-2" pref="135" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                      <Component id="update_amount_remaining_button_inventory_panel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="update_amount_used_button_inventory_panel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="load_data_inventory" min="-2" pref="107" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="inventory_label" min="-2" pref="709" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="add_inventory_button" min="-2" pref="107" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane4" min="-2" pref="980" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -697,6 +761,30 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="502" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="id_label_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="name_label_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="last_restock_date_label_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="amount_remaining_label_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="amount_used_label_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="id_textField_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="name_textField_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="last_restock_date_textField_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="amount_remaining_textField_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="amount_used_textField_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="delete_id_button_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="update_name_button_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="update_last_restock_date_button_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="update_amount_remaining_button_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="update_amount_used_button_inventory_panel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -714,36 +802,36 @@
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="5" rowCount="0">
-                        <Column editable="true" title="id" type="java.lang.String"/>
-                        <Column editable="true" title="name" type="java.lang.String"/>
-                        <Column editable="true" title="last_restock_date" type="java.lang.String"/>
+                        <Column editable="false" title="id" type="java.lang.String"/>
+                        <Column editable="false" title="name" type="java.lang.String"/>
+                        <Column editable="false" title="last_restock_date" type="java.lang.String"/>
                         <Column editable="true" title="amount_remaining" type="java.lang.Integer"/>
-                        <Column editable="true" title="amount_used" type="java.lang.Integer"/>
+                        <Column editable="false" title="amount_used" type="java.lang.Integer"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="20" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="80" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -754,6 +842,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inventory_tableMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -791,6 +882,84 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_inventory_buttonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="id_label_inventory_panel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="id"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="name_label_inventory_panel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="name"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="last_restock_date_label_inventory_panel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="last_restock_date"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="amount_remaining_label_inventory_panel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="amount_remaining"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="amount_used_label_inventory_panel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="amount_used"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="id_textField_inventory_panel">
+            </Component>
+            <Component class="javax.swing.JTextField" name="name_textField_inventory_panel">
+            </Component>
+            <Component class="javax.swing.JTextField" name="last_restock_date_textField_inventory_panel">
+            </Component>
+            <Component class="javax.swing.JTextField" name="amount_remaining_textField_inventory_panel">
+            </Component>
+            <Component class="javax.swing.JTextField" name="amount_used_textField_inventory_panel">
+            </Component>
+            <Component class="javax.swing.JButton" name="delete_id_button_inventory_panel">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="delete item"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delete_id_button_inventory_panelActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="update_name_button_inventory_panel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="update name"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="update_name_button_inventory_panelActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="update_last_restock_date_button_inventory_panel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="update last_restock_date"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="update_last_restock_date_button_inventory_panelActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="update_amount_remaining_button_inventory_panel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="update amount_remaining"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="update_amount_remaining_button_inventory_panelActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="update_amount_used_button_inventory_panel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="update amount_used"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="update_amount_used_button_inventory_panelActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
