@@ -41,15 +41,15 @@ public class Errors extends javax.swing.JFrame {
         error_pane.setLayout(error_paneLayout);
         error_paneLayout.setHorizontalGroup(
             error_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 200, Short.MAX_VALUE)
             .addGroup(error_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(error_label, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                .addComponent(error_label, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
         );
         error_paneLayout.setVerticalGroup(
             error_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 150, Short.MAX_VALUE)
             .addGroup(error_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(error_label, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                .addComponent(error_label, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
         );
 
         getContentPane().add(error_pane, "card2");

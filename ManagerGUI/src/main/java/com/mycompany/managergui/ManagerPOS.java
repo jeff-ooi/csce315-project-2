@@ -259,9 +259,16 @@ public class ManagerPOS extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         menu_table.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -270,6 +277,11 @@ public class ManagerPOS extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(menu_table);
+        if (menu_table.getColumnModel().getColumnCount() > 0) {
+            menu_table.getColumnModel().getColumn(0).setResizable(false);
+            menu_table.getColumnModel().getColumn(1).setResizable(false);
+            menu_table.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         menu_label.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         menu_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -310,8 +322,18 @@ public class ManagerPOS extends javax.swing.JFrame {
         });
 
         update_name_button_menu_panel.setText("update name");
+        update_name_button_menu_panel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_name_button_menu_panelActionPerformed(evt);
+            }
+        });
 
         update_price_button_menu_panel.setText("update price");
+        update_price_button_menu_panel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_price_button_menu_panelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menu_panelLayout = new javax.swing.GroupLayout(menu_panel);
         menu_panel.setLayout(menu_panelLayout);
@@ -336,13 +358,15 @@ public class ManagerPOS extends javax.swing.JFrame {
                     .addGroup(menu_panelLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(delete_id_button_menu_panel)))
-                .addGap(226, 226, 226)
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(name_textField_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(name_label_menu_panel)
                     .addGroup(menu_panelLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(update_name_button_menu_panel)))
+                        .addGap(240, 240, 240)
+                        .addComponent(update_name_button_menu_panel))
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(name_label_menu_panel)
+                            .addComponent(name_textField_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_panelLayout.createSequentialGroup()
@@ -594,11 +618,16 @@ public class ManagerPOS extends javax.swing.JFrame {
         error.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         error.setTitle("ERROR Message");
     }
-    public void throwSuccessMessage(){
+    public void throwSuccessMessage(int successType){
         Successes success = new Successes();
+        JPanel dialogPanel = success.getSuccessPanel();
+        if (successType == 1){
+            dialogPanel = success.getSuccessAddMessagePanel();
+        }
+        success.switchDialogPanel(dialogPanel);
+        success.setLocationRelativeTo(null);
         success.setVisible(true);
         success.pack();
-        success.setLocationRelativeTo(null);
         success.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         success.setTitle("Success Message");
     }
@@ -628,7 +657,7 @@ public class ManagerPOS extends javax.swing.JFrame {
         switchPanel(schedule_panel);
     }//GEN-LAST:event_schedule_buttonActionPerformed
     
-    private void loadDataMenu(){
+    public void loadDataMenu(){
         DefaultTableModel tempModel = (DefaultTableModel)menu_table.getModel();
         tempModel.setRowCount(0);
         ResultSet menuData = database.getMenu();
@@ -778,7 +807,7 @@ public class ManagerPOS extends javax.swing.JFrame {
         }else{
             if(database.deleteMenuItem(Integer.parseInt(id_textField_menu.getText()))){
                 loadDataMenu();
-                throwSuccessMessage();
+                throwSuccessMessage(0);
                 id_textField_menu.setText("");
                 name_textField_menu.setText("");
                 price_textField_menu.setText("");
@@ -789,6 +818,44 @@ public class ManagerPOS extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_delete_id_button_menu_panelActionPerformed
+
+    private void update_name_button_menu_panelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_name_button_menu_panelActionPerformed
+        // TODO add your handling code here:
+        if(isNumber(name_textField_menu.getText())||name_textField_menu.getText().isBlank()){
+            throwErrorMessage();
+        }else{
+            if(database.updateMenuItemName(Integer.parseInt(id_textField_menu.getText()), name_textField_menu.getText())){
+                loadDataMenu();
+                throwSuccessMessage(0);
+//                id_textField_menu.setText("");
+//                name_textField_menu.setText("");
+//                price_textField_menu.setText("");
+            }else{
+                throwErrorMessage();
+            }
+            
+            
+        }
+    }//GEN-LAST:event_update_name_button_menu_panelActionPerformed
+
+    private void update_price_button_menu_panelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_price_button_menu_panelActionPerformed
+        // TODO add your handling code here:
+        if(!isNumber(price_textField_menu.getText())||price_textField_menu.getText().isBlank()){
+            throwErrorMessage();
+        }else{
+            if(database.updateMenuItemPrice(Integer.parseInt(id_textField_menu.getText()), Double.parseDouble(price_textField_menu.getText()))){
+                loadDataMenu();
+                throwSuccessMessage(0);
+//                id_textField_menu.setText("");
+//                name_textField_menu.setText("");
+//                price_textField_menu.setText("");
+            }else{
+                throwErrorMessage();
+            }
+            
+            
+        }
+    }//GEN-LAST:event_update_price_button_menu_panelActionPerformed
     
     
     /**

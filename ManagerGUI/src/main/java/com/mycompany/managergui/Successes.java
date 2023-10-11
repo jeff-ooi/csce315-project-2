@@ -4,6 +4,8 @@
  */
 package com.mycompany.managergui;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author arnavsood
@@ -26,29 +28,74 @@ public class Successes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        success_pane = new javax.swing.JPanel();
+        layered_pane = new javax.swing.JLayeredPane();
+        success_panel = new javax.swing.JPanel();
         success_label = new javax.swing.JLabel();
+        success_add_message_panel = new javax.swing.JPanel();
+        success_add_label = new javax.swing.JLabel();
+        success_add_message_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
+
+        layered_pane.setLayout(new java.awt.CardLayout());
 
         success_label.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         success_label.setForeground(new java.awt.Color(0, 204, 0));
         success_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         success_label.setText("SUCCESS");
 
-        javax.swing.GroupLayout success_paneLayout = new javax.swing.GroupLayout(success_pane);
-        success_pane.setLayout(success_paneLayout);
-        success_paneLayout.setHorizontalGroup(
-            success_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(success_label, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout success_panelLayout = new javax.swing.GroupLayout(success_panel);
+        success_panel.setLayout(success_panelLayout);
+        success_panelLayout.setHorizontalGroup(
+            success_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, success_panelLayout.createSequentialGroup()
+                .addComponent(success_label, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        success_paneLayout.setVerticalGroup(
-            success_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(success_label, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+        success_panelLayout.setVerticalGroup(
+            success_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(success_panelLayout.createSequentialGroup()
+                .addComponent(success_label, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(success_pane, "card2");
+        layered_pane.add(success_panel, "card2");
+
+        success_add_label.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        success_add_label.setForeground(new java.awt.Color(0, 204, 0));
+        success_add_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        success_add_label.setText("SUCCESS");
+
+        success_add_message_label.setText("Please Reload the Data");
+
+        javax.swing.GroupLayout success_add_message_panelLayout = new javax.swing.GroupLayout(success_add_message_panel);
+        success_add_message_panel.setLayout(success_add_message_panelLayout);
+        success_add_message_panelLayout.setHorizontalGroup(
+            success_add_message_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(success_add_message_panelLayout.createSequentialGroup()
+                .addGroup(success_add_message_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(success_add_message_panelLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(success_add_label))
+                    .addGroup(success_add_message_panelLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(success_add_message_label)))
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+        success_add_message_panelLayout.setVerticalGroup(
+            success_add_message_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(success_add_message_panelLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(success_add_label, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(success_add_message_label)
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+
+        layered_pane.add(success_add_message_panel, "card3");
+
+        getContentPane().add(layered_pane, "card3");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -88,9 +135,26 @@ public class Successes extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+   public void switchDialogPanel(JPanel panel){
+        layered_pane.removeAll();
+        layered_pane.add(panel);
+        layered_pane.repaint();
+        layered_pane.revalidate();
+   }
+   public JPanel getSuccessAddMessagePanel() {
+        return success_add_message_panel;
+    }
+   public JPanel getSuccessPanel() {
+        return success_panel;
+    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLayeredPane layered_pane;
+    private javax.swing.JLabel success_add_label;
+    private javax.swing.JLabel success_add_message_label;
+    private javax.swing.JPanel success_add_message_panel;
     private javax.swing.JLabel success_label;
-    private javax.swing.JPanel success_pane;
+    private javax.swing.JPanel success_panel;
     // End of variables declaration//GEN-END:variables
 }

@@ -444,13 +444,17 @@
                               <Component id="delete_id_button_menu_panel" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="name_textField_menu" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
-                          <Component id="name_label_menu_panel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
                               <Component id="update_name_button_menu_panel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="name_label_menu_panel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="name_textField_menu" min="-2" pref="207" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -521,24 +525,24 @@
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="3" rowCount="0">
-                        <Column editable="true" title="id" type="java.lang.String"/>
-                        <Column editable="true" title="name" type="java.lang.String"/>
-                        <Column editable="true" title="price" type="java.lang.Integer"/>
+                        <Column editable="false" title="id" type="java.lang.String"/>
+                        <Column editable="false" title="name" type="java.lang.String"/>
+                        <Column editable="false" title="price" type="java.lang.Integer"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -628,11 +632,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="update name"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="update_name_button_menu_panelActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="update_price_button_menu_panel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="update price"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="update_price_button_menu_panelActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -26,17 +26,22 @@ public class Dialogs extends javax.swing.JFrame {
     
     public void throwErrorMessage(){
         Errors error = new Errors();
+        error.setLocationRelativeTo(null);
         error.setVisible(true);
         error.pack();
-        error.setLocationRelativeTo(null);
         error.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         error.setTitle("ERROR Message");
     }
-    public void throwSuccessMessage(){
+    public void throwSuccessMessage(int successType){
         Successes success = new Successes();
+        JPanel dialogPanel = success.getSuccessPanel();
+        if (successType == 1){
+            dialogPanel = success.getSuccessAddMessagePanel();
+        }
+        success.switchDialogPanel(dialogPanel);
+        success.setLocationRelativeTo(null);
         success.setVisible(true);
         success.pack();
-        success.setLocationRelativeTo(null);
         success.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         success.setTitle("Success Message");
     }
@@ -173,7 +178,7 @@ public class Dialogs extends javax.swing.JFrame {
               throwErrorMessage();
         }else{
             if (database.addMenuItem(Integer.parseInt(id_menu_add_textField.getText()), name_menu_add_textField.getText(), Double.parseDouble(price_menu_add_textField.getText()))){
-                throwSuccessMessage();
+                throwSuccessMessage(1);
                 id_menu_add_textField.setText("");
                 name_menu_add_textField.setText("");
                 price_menu_add_textField.setText("");

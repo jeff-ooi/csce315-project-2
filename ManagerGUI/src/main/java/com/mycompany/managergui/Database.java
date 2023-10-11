@@ -606,7 +606,7 @@ public class Database {
     }
 
     // updates the price of a Menu Item
-    public void updateMenuItemPrice(int id, double newPrice) {
+    public boolean updateMenuItemPrice(int id, double newPrice) {
         try {
             createStatement.execute(
                 "UPDATE menu " +
@@ -614,14 +614,16 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Menu Item " + id + " price");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Faled to update Menu Item " + id + " price");
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void updateMenuItemName(int id, String newName) {
+    public boolean updateMenuItemName(int id, String newName) {
         try {
             createStatement.execute(
                 "UPDATE menu " + 
@@ -629,10 +631,12 @@ public class Database {
                 "WHERE id = " + id + ";" 
             );
             System.out.println("Successfully updated Menu Item " + id + " name");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Menu Item " + id + " name");
             e.printStackTrace();
+            return false;
         }
     }
 
