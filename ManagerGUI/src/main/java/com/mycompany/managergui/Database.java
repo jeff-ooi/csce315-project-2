@@ -54,18 +54,21 @@ public class Database {
 
     /**
      * closes the connection to the database
+     * @return boolean stating whether the database connection was successfully closed
      */
-    public void closeDatabase() {
+    public boolean closeDatabase() {
         if (conn != null) {
             try {
                 conn.close();
                 System.out.println("Database Connection Closed");
+                return true;
             }
             catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Database Connection NOT Closed");
             }
         }
+        return false;
     }
 
     // EMPLOYEE SECTION
@@ -73,7 +76,7 @@ public class Database {
     /**
      * gets the information of a single Employee from the database
      * @param id the id of the Employee
-     * @return ResultSet of the Employee data in the database
+     * @return ResultSet of the Employee data in the database or null
      */
     public ResultSet getSingleEmployee(int id) {
         ResultSet employee = null;
@@ -92,7 +95,7 @@ public class Database {
     
     /**
      * gets all the Employees from the database
-     * @return ResultSet containing all of the Employee data in the database
+     * @return ResultSet containing all of the Employee data in the database or null
      */
     public ResultSet getEmployees() {
         ResultSet employees = null;
@@ -118,8 +121,9 @@ public class Database {
      * @param startDate the start date of the employee in "YYYY-MM-DD" format
      * @param salary the salary of the employee
      * @param position the position of the employee
+     * @return boolean stating whether the Employee was successfully added
      */
-    public void addEmployee(int id, String userName, String password, String name, String startDate, double salary, String position) {
+    public boolean addEmployee(int id, String userName, String password, String name, String startDate, double salary, String position) {
         // ResultSet newEmployee = null;
         try {
             // why doesn't java have raw strings?????
@@ -130,37 +134,43 @@ public class Database {
                 "\', " + salary + ", \'" + position + "\');"
             );
             System.out.println("Successfully added Employee " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to add Employee");
             e.printStackTrace();
         }
         // return newEmployee;
+        return false;
     }
 
     /**
      * attempts to delete an Employee
      * @param id the id of the Employee to be deleted
+     * @return boolean stating whether the Employee was successfully deleted
      */
-    public void deleteEmployee(int id) {
+    public boolean deleteEmployee(int id) {
         try {
             createStatement.execute(
                 "DELETE FROM employee WHERE id = " + id + ";"
             );
             System.out.println("Successfully deleted Employee " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to delete Employee " + id);
             e.printStackTrace();
         }
+        return false;
     }
 
     /**
      * attempts to update the username of an Employee
      * @param id the id of the Employee
      * @param newUsername the new username of the Employee
+     * @return boolean stating whether the Employee's username was successfully updated
      */
-    public void updateEmployeeUsername(int id, String newUsername) {
+    public boolean updateEmployeeUsername(int id, String newUsername) {
         try {
             createStatement.execute(
                 "UPDATE employee " + 
@@ -168,19 +178,22 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee " + id + " username");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Employee " + id + " username");
             e.printStackTrace();
         }
+        return false;
     }
 
     /**
      * attempts to update the password of an Employee
      * @param id the id of the Employee
      * @param newPassword the new password of the Employee
+     * @return boolean stating whether the Employee's password was successfully updated
      */
-    public void updateEmployeePassword(int id, String newPassword) {
+    public boolean updateEmployeePassword(int id, String newPassword) {
         try {
             createStatement.execute(
                 "UPDATE employee " + 
@@ -188,19 +201,22 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee " + id + " password");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Employee " + id + " password");
             e.printStackTrace();
         }
+        return false;
     }
 
     /**
      * attempts to update the name of an Employee
      * @param id the id of the Employee
      * @param newName the new name of the Employee
+     * @return boolean stating whether the Employee's name was successfully updated
      */
-    public void updateEmployeeName(int id, String newName) {
+    public boolean updateEmployeeName(int id, String newName) {
         try {
             createStatement.execute(
                 "UPDATE employee " + 
@@ -208,19 +224,22 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee " + id + " name");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Employee " + id + " name");
             e.printStackTrace();
         }
+        return false;
     }
 
     /**
      * attempts to update the start date of an Employee
      * @param id the id of the Employee
-     * @param newStartDate the new start date of the Employee
+     * @param newStartDate the new start date of the Employee in "YYYY-MM-DD" format
+     * @return boolean stating whether the Employee's start date was successfully updated
      */
-    public void updateEmployeeStartDate(int id, String newStartDate) {
+    public boolean updateEmployeeStartDate(int id, String newStartDate) {
         try {
             createStatement.execute(
                 "UPDATE employee " + 
@@ -228,19 +247,22 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee " + id + " start_date");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Employee " + id + " start_date");
             e.printStackTrace();
         }
+        return false;
     }
 
     /**
      * attempts to update the salary of an Employee
      * @param id the id of the Employee
      * @param newSalary the new salary of the Employee
+     * @return boolean stating whether the Employee's salary was successfully updated
      */
-    public void updateEmployeeSalary(int id, double newSalary) {
+    public boolean updateEmployeeSalary(int id, double newSalary) {
         try {
             createStatement.execute(
                 "UPDATE employee " + 
@@ -248,19 +270,22 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee " + id + " salary");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Employee " + id + " salary");
             e.printStackTrace();
         }
+        return false;
     }
 
     /**
      * attempts to update the position of an Employee
      * @param id the id of the Employee
      * @param newPosition the new salary of the Employee
+     * @return boolean stating whether the Employee's position was successfully updated
      */
-    public void updateEmployeePosition(int id, String newPosition) {
+    public boolean updateEmployeePosition(int id, String newPosition) {
         try {
             createStatement.execute(
                 "UPDATE employee " + 
@@ -268,19 +293,21 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee " + id + " position");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to updated Employee " + id + " salary");
             e.printStackTrace();
         }
+        return false;
     }
 
     // SHIFT SECTION
 
     /**
-     * this is to get a single shift time
-     * @param id
-     * @return ResultSet with the shift start and end times or null
+     * gets the information of a single Shift
+     * @param id the id of the Shift
+     * @return ResultSet with the Shift data or null
      */
     public ResultSet getSingleShift(int id) {
         ResultSet shift = null;
@@ -297,39 +324,56 @@ public class Database {
         return shift;
     }
 
-    public void addShift(int id, int startTime, int endTime) {
+    /**
+     * attempts to add a shift to the database
+     * @param id the id of the new Shift
+     * @param startTime the start time of the new Shift in 24-hour format (i.e. 1 PM is 13, 12 AM or midnight is 0)
+     * @param endTime the end time of the new Shift in 24-format (i.e. 1 PM is 13, 12 AM or midnight is 24)
+     * @return boolean stating whether the Shift was successfully added
+     */
+    public boolean addShift(int id, int startTime, int endTime) {
         try {
             createStatement.execute(
                 "INSERT INTO shifts (id, start_time, end_time) VALUES(" +
                 id + ", " + startTime + ", " + endTime + ");"
             );
             System.out.println("Successfully added Shift " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to add Shift");
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void deleteShift (int id) {
+    /**
+     * attempts to delete a Shift from the database
+     * @param id the id of the Shift to be deleted
+     * @return boolean stating whether the Shift was successfully deleted
+     */
+    public boolean deleteShift (int id) {
         try {
             createStatement.execute(
                 "DELETE FROM shifts WHERE id = " + id + ";"
             );
             System.out.println("Successfully deleted Shift " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to delete Shift " + id);
             e.printStackTrace();
         }
+        return false;
     }
 
     /**
      * updates the shift start time in 24-HOUR FORMAT (i.e. 1 PM is 13, 12 AM or midnight is 0)
-     * @param id
-     * @param newStartTime
+     * @param id the id of the Shift
+     * @param newStartTime the new start time of the Shift in 24-hour format (i.e. 1 PM is 13, 12 AM or midnight is 0)
+     * @return boolean stating whether the Shift's start time was successfully updated
      */
-    public void updateShiftStartTime(int id, int newStartTime) {
+    public boolean updateShiftStartTime(int id, int newStartTime) {
         try {
             createStatement.execute(
                 "UPDATE shifts " +
@@ -339,19 +383,22 @@ public class Database {
             System.out.println(
                 "Successfully updated Shift " + id + " start_time"
             );
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Shift " + id +  " start_time");
             e.printStackTrace();
         }
+        return false;
     }
 
     /**
      * updates the shift end time in 24-HOUR FORMAT (i.e. 1 PM is 13, 12 AM or midnight is 24)
-     * @param id
-     * @param newEndTime
+     * @param id the id of the Shift
+     * @param newEndTime the new end time of the Shift in 24-hour format (i.e. 1 PM is 13, 12 AM or midnight is 24)
+     * @return boolean stating whether the Shift's end time was successfully updated
      */
-    public void updateShiftEndTime(int id, int newEndTime) {
+    public boolean updateShiftEndTime(int id, int newEndTime) {
         try {
             createStatement.execute(
                 "UPDATE shifts " +
@@ -361,15 +408,17 @@ public class Database {
             System.out.println(
                 "Successfully updated Shift " + id + " end_time"
             );
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Shift " + id +  " end_time");
             e.printStackTrace();
         }
+        return false;
     }
 
     /**
-     * this is to get the shift ids and times
+     * gets all the Shifts from the database 
      * NOT the actual employee shifts
      * @return ResultSet with all the shift ids and times or null
      */
@@ -391,8 +440,8 @@ public class Database {
     // EMPLOYEE_SHIFTS JUNCTION TABLE SECTION
 
     /**
-     * this gets the shifts of a single employee
-     * @param id
+     * gets the Shifts of a single Employee
+     * @param id the id of the Employee
      * @return ResultSet of the Employee Shifts for the Employee or null
      */
     public ResultSet getSingleEmployeeShifts(int id) {
@@ -411,9 +460,9 @@ public class Database {
     }
 
     /**
-     * this gets all the shifts each employee works
+     * gets all the shifts each Employee works 
      * not to be confused with getAllShifts which gets all the start and end times of the shifts
-     * @return ResultSet of all the Employee Shifts or null
+     * @return ResultSet of All the Employee Shifts or null
      */
     public ResultSet getAllEmployeeShifts() {
         ResultSet employeeShifts = null;
@@ -430,34 +479,58 @@ public class Database {
         return employeeShifts;
     }
 
-    public void addEmployeeShift(int id, int shiftId, int employeeId, int month, int dayOfWeek) {
+    /**
+     * attempts to add an Employee Shift to the database
+     * @param id the id of the new Employee Shift
+     * @param shiftId the id of the Shift
+     * @param employeeId the id of the Employee
+     * @param month the month that the Shift is in effect
+     * @param dayOfWeek the day of the week that the Shift is in effect
+     * @return boolean stating whether the Employee Shift was successfully added
+     */
+    public boolean addEmployeeShift(int id, int shiftId, int employeeId, int month, int dayOfWeek) {
         try {
             createStatement.execute(
                 "INSERT INTO employee_shift (id, shift_id, employee_id, month, day_of_week) VALUES (" +
                 id + ", " + shiftId + ", " + employeeId + ", " + month + ", " + dayOfWeek + ");"
             );
             System.out.println("Successfully added Employee Shift");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to add Employee Shift");
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void deleteEmployeeShift(int id) {
+    /**
+     * attempts to delete an Employee Shift
+     * @param id the id of the Employee Shift to be deleted (not the Employee id or Shift id)
+     * @return boolean stating whether the Employee Shift was successfully deleted
+     */
+    public boolean deleteEmployeeShift(int id) {
         try {
             createStatement.execute(
                 "DELETE FROM employee_shift WHERE id = " + id + ";"
             );
             System.out.println("Successfully deleted Employee Shift " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to delete Employee Shift " + id);
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void updateShiftId(int id, int newShiftId) {
+    /**
+     * attempts to update the Shift that the Employee Shift is covering
+     * @param id the id of the Employee Shift
+     * @param newShiftId the id of the new Shift that the Employee is working
+     * @return boolean stating whether the Employee Shift's Shift was successfully updated
+     */
+    public boolean updateShiftId(int id, int newShiftId) {
         try {
             createStatement.execute(
                 "UPDATE employee_shift " + 
@@ -465,14 +538,22 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee Shift " + id + " shift_id");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Employee Shift " + id + " shift_id");
             e.printStackTrace();
         }
+        return false;
     }
     
-    public void updateEmployeeId(int id, int newEmployeeId) {
+    /**
+     * attempts to update the Employee that is working the Employee Shift
+     * @param id the id of the Employee Shift
+     * @param newEmployeeId the id of the new Employee that is working this shift
+     * @return boolean stating whether the Employee Shift's Employee was successfully updated
+     */
+    public boolean updateEmployeeId(int id, int newEmployeeId) {
         try {
             createStatement.execute(
                 "UPDATE employee_shift " + 
@@ -480,14 +561,22 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee Shift " + id + " employee_id");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Employee Shift " + id + " employee_id");
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void updateMonth(int id, int newMonth) {
+    /**
+     * attempts to update the Month that the Employee Shift covers
+     * @param id the id of the Employee Shift
+     * @param newMonth the new Month that the Employee Shift covers
+     * @return boolean stating whether the Employee Shift's Month was successfully updated
+     */
+    public boolean updateMonth(int id, int newMonth) {
         try {
             createStatement.execute(
                 "UPDATE employee_shift " + 
@@ -495,14 +584,22 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee Shift " + id + " month");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Employee Shift " + id + " month");
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void updateDayOfWeek(int id, int newDayOfWeek) {
+    /**
+     * attempts to update the Day of Week that the Employee Shift covers
+     * @param id the id of the Employee Shift
+     * @param newDayOfWeek the new Day of Week that the Employee Shift will cover
+     * @return boolean stating whether the Employee Shift's Day of Week was successfully updated
+     */
+    public boolean updateDayOfWeek(int id, int newDayOfWeek) {
         try {
             createStatement.execute(
                 "UPDATE employee_shift " + 
@@ -510,15 +607,22 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee Shift " + id + " day_of_week");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Employee Shift " + id + " day_of_week");
             e.printStackTrace();
         }
+        return false;
     }
 
     // INVENTORY SECTION
 
+    /**
+     * gets the information of a single Inventory Item from the database
+     * @param id the id of the Inventory Item
+     * @return ResultSet containing the Inventory Item data or null
+     */
     public ResultSet getSingleInventoryItem(int id) {
         ResultSet inventoryItem = null;
         try {
@@ -534,6 +638,10 @@ public class Database {
         return inventoryItem;
     }
 
+    /**
+     * gets the information of All the Inventory Items from the database
+     * @return ResultSet containing the data of All the Inventory Items or null
+     */
     public ResultSet getInventory() {
         ResultSet inventory = null;
         try {
@@ -549,8 +657,16 @@ public class Database {
         return inventory;
     }
 
-    // adds an Inventory Item to the inventory table
-    public void addInventoryItem(int id, String name, String lastRestockDate, int amountRemaining, int amountUsed) {
+    /**
+     * attempts to add an Inventory Item to the database
+     * @param id the id of the new Inventory Item
+     * @param name the name of the new Inventory Item
+     * @param lastRestockDate the last Restock Date of the new Inventory Item in "YYYY-MM-DD" format
+     * @param amountRemaining the amount remaining of the new Inventory Item
+     * @param amountUsed the amount used of the new Inventory Item (usually 0)
+     * @return boolean stating whether the new Inventory Item was successfully added to the database
+     */
+    public boolean addInventoryItem(int id, String name, String lastRestockDate, int amountRemaining, int amountUsed) {
         // ResultSet newInventoryItem = null;
         try {
             // newInventoryItem = createStatement.executeQuery(
@@ -559,28 +675,43 @@ public class Database {
                 id + ", \'" + name + "\', \'" + lastRestockDate + "\', " + amountRemaining + ", " + amountUsed + ");"
             );
             System.out.println("Successfully added Inventory Item " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to add Inventory Item");
             e.printStackTrace();
         }
+        return false;
         // return newInventoryItem;
     }
 
-    public void deleteInventoryItem(int id) {
+    /**
+     * attempts to delete an Inventory Item from the database
+     * @param id the id of the Inventory Item to be deleted
+     * @return boolean stating whether the Inventory Item was successfully deleted
+     */
+    public boolean deleteInventoryItem(int id) {
         try {
             createStatement.execute(
                 "DELETE FROM inventory WHERE id = " + id + ";"
             );
             System.out.println("Successfully deleted Inventory Item " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to delete Inventory Item " + id);
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void updateInventoryItemAmountRemaining(int id, int newAmountRemaining) {
+    /**
+     * attempts to update the amount remaining of an Inventory Item
+     * @param id the id of the Inventory Item
+     * @param newAmountRemaining the new amount remaining of the Inventory Item
+     * @return boolean stating whether the Inventory Item's amount remaining was successfully updated
+     */
+    public boolean updateInventoryItemAmountRemaining(int id, int newAmountRemaining) {
         try {
             // ResultSet inventoryItem = createStatement.executeQuery(
             //     "SELECT * FROM inventory WHERE id = " + id + ";"
@@ -604,14 +735,22 @@ public class Database {
             );
             // System.out.println("Successfully updated Inventory Item " + id + " amounts");
             System.out.println("Successfully updated Inventory Item " + id + " amount remaining");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Inventory Item " + id + " Amount remaining");
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void updateInventoryItemAmountUsed(int id, int newAmountUsed) {
+    /**
+     * attempts to update the amount used of an Inventory Item
+     * @param id the id of the Inventory Item
+     * @param newAmountUsed the new amount used of the Inventory Item
+     * @return boolean stating whether the Inventory Item's amount used was successfully updated
+     */
+    public boolean updateInventoryItemAmountUsed(int id, int newAmountUsed) {
         try {
             createStatement.execute(
                 "UPDATE inventory " +
@@ -619,14 +758,22 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Inventory Item " + id + " amount used");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Inventory Item " + id + " Amount used");
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void updateInventoryItemName(int id, String newName) {
+    /**
+     * attempts to update the name of an Inventory Item
+     * @param id the id of the Inventory Item
+     * @param newName the new name of the Inventory Item
+     * @return boolean stating whether the Inventory Item's name was updated
+     */
+    public boolean updateInventoryItemName(int id, String newName) {
         try {
             createStatement.execute(
                 "UPDATE inventory " +
@@ -634,14 +781,23 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Inventory Item " + id + " name");
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to update Inventory Item " + id + " name");
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void restockInventoryItem(int id, String restockDate, int restockAmount) {
+    /**
+     * attempts to restock an Inventory Item
+     * @param id the id of the Inventory Item
+     * @param restockDate the date of the restock in "YYYY-MM-DD" format
+     * @param restockAmount the amount restocked
+     * @return boolean stating if the restock was successful
+     */
+    public boolean restockInventoryItem(int id, String restockDate, int restockAmount) {
         try {
             ResultSet inventoryItem = createStatement.executeQuery(
                 "SELECT * FROM inventory WHERE id = "+ id + ";"
@@ -655,15 +811,22 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully restocked Inventory Item " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to restock Inventory Item " + id);
             e.printStackTrace();
         }
+        return false;
     }
 
     // MENU SECTION
 
+    /**
+     * gets the information of a single Menu Item from the database
+     * @param id the id of the Menu Item
+     * @return ResultSet containing the Menu Item data or null
+     */
     public ResultSet getSingleMenuItem(int id) {
         ResultSet menuItem = null;
         try {
@@ -679,6 +842,10 @@ public class Database {
         return menuItem;
     }
 
+    /**
+     * gets the information of All the Menu Items from the database
+     * @return ResultSet containing the data of All the Menu Items or null
+     */
     public ResultSet getMenu() {
         ResultSet menu = null;
         try {
@@ -694,7 +861,13 @@ public class Database {
         return menu;
     }
 
-    // adds a Menu Item to the menu table
+    /**
+     * attempts to add a Menu Item to the database
+     * @param id the id of the new Menu Item
+     * @param name the name of the new Menu Item
+     * @param price the price of the new Menu Item
+     * @return boolean stating whether the Menu Item was successfully added
+     */
     public boolean addMenuItem(int id, String name, double price) {
         // ResultSet newMenuItem = null;
         try {
@@ -714,6 +887,11 @@ public class Database {
         // return newMenuItem;
     }
 
+    /**
+     * attempts to delete a Menu Item from the database
+     * @param id the id of the Menu Item to be deleted
+     * @return boolean stating whether the Menu Item was successfully deleted
+     */
     public boolean deleteMenuItem(int id) {
         try {
             createStatement.execute(
@@ -729,7 +907,12 @@ public class Database {
         }
     }
 
-    // updates the price of a Menu Item
+    /**
+     * attempts to update the price of a Menu Item
+     * @param id the id of the Menu Item
+     * @param newPrice the new price of the Menu Item
+     * @return boolean stating whether the Menu Item was successfully deleted
+     */
     public boolean updateMenuItemPrice(int id, double newPrice) {
         try {
             createStatement.execute(
@@ -747,6 +930,12 @@ public class Database {
         }
     }
 
+    /**
+     * attempts to update the name of a Menu Item
+     * @param id the id of the Menu Item
+     * @param newName the new name of the Menu Item
+     * @return boolean stating whether the Menu Item's name was successfully updated
+     */
     public boolean updateMenuItemName(int id, String newName) {
         try {
             createStatement.execute(
@@ -764,12 +953,17 @@ public class Database {
         }
     }
 
-    public void updateMenuItemInventoryItems(int id) {
-        return;
+    public boolean updateMenuItemInventoryItems(int id) {
+        return false;
     }
 
     // ORDERS SECTION
 
+    /**
+     * gets the information of a single Order from the database
+     * @param id the id of the Order
+     * @return ResultSet containing the Order data or null
+     */
     public ResultSet getSingleOrder(int id) {
         ResultSet order = null;
         try {
@@ -785,6 +979,10 @@ public class Database {
         return order;
     }
 
+    /**
+     * gets the information of All the Orders from the database
+     * @return ResultSet containing the data of All the Orders or null
+     */
     public ResultSet getAllOrders() {
         ResultSet orders = null;
         try {
@@ -800,6 +998,11 @@ public class Database {
         return orders;
     }
 
+    /**
+     * gets the Menu Item information for an Order
+     * @param id the id of the Order
+     * @return ResultSet containing the Order's Menu Item data or null
+     */
     public ResultSet getMenuItemsFromOrder(int id) {
         ResultSet orderItems = null;
         try {
@@ -814,6 +1017,12 @@ public class Database {
         return orderItems;
     }
 
+    /**
+     * gets the Add-Ons for a Menu Item in an Order
+     * @param orderId the id of the Order
+     * @param menuItemId the id of the Menu Item
+     * @return ResultSet containing the Order's Menu Item's Add-Ons data or null
+     */
     public ResultSet getAddOnsForMenuItemInOrder(int orderId, int menuItemId) {
         ResultSet addOns = null;
         try {
@@ -829,11 +1038,11 @@ public class Database {
     }
 
     // this one is going to be hard
-    public void addOrder(int id, double price, String dateTime, ArrayList<Integer> menuItemIds, ArrayList<ArrayList<Integer>> addOnIdsForEachMenuItem) {        
-        return;
+    public boolean addOrder(int id, double price, String dateTime, ArrayList<Integer> menuItemIds, ArrayList<ArrayList<Integer>> addOnIdsForEachMenuItem) {        
+        return false;
     }
 
-    public void deleteOrder(int id) {
+    public boolean deleteOrder(int id) {
         try {
             ResultSet orderMenuItems = createStatement.executeQuery(
                 "SELECT * FROM order_menu WHERE order_id = " + id + ";"
@@ -856,12 +1065,13 @@ public class Database {
                 "DELETE FROM orders WHERE id = " + id + ";"
             );
             System.out.println("Successfully deleted Order " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to completely delete Order " + id);
             e.printStackTrace();
         }
-        return;
+        return false;
     }
 
 }
