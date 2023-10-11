@@ -374,8 +374,16 @@ public class Database {
     public ResultSet getMenuItemInventoryItems(int id) {
         ResultSet invItems = null;
         try {
-            invItems = createStatement.
+            invItems = createStatement.executeQuery(
+                "SELECT * FROM menu_inventory WHERE menu_id = " + id + ";"
+            );
+            System.out.println("Got inventory items for Menu Item " + id);
         }
+        catch (Exception e) {
+            System.out.println("Failed to get inventory items from Menu Item " + id);
+            e.printStackTrace();
+        }
+        return invItems;
     }
 
     // ORDERS SECTION
@@ -472,6 +480,7 @@ public class Database {
         }
         catch (Exception e) {
             System.out.println("Failed to add Order");
+            e.printStackTrace();
         }
     }
 
