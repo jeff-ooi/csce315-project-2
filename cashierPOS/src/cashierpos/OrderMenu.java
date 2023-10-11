@@ -60,7 +60,6 @@ public class OrderMenu extends javax.swing.JFrame {
         checkout_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 960));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 86)); // NOI18N
         jLabel1.setText("Menu");
@@ -170,37 +169,82 @@ public class OrderMenu extends javax.swing.JFrame {
         menu_item_19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         menu_item_19.setText("Milk Tea Cold Brew");
         menu_item_19.setMinimumSize(new java.awt.Dimension(122, 21));
+        menu_item_19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_19ActionPerformed(evt);
+            }
+        });
 
         menu_item_2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         menu_item_2.setText("Strawb LuLu");
         menu_item_2.setMinimumSize(new java.awt.Dimension(122, 21));
+        menu_item_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_2ActionPerformed(evt);
+            }
+        });
 
         menu_item_8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         menu_item_8.setText("Alley Milk Tea");
         menu_item_8.setMinimumSize(new java.awt.Dimension(122, 21));
+        menu_item_8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_8ActionPerformed(evt);
+            }
+        });
 
         menu_item_10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         menu_item_10.setText("Lychee Gr Tea");
         menu_item_10.setMinimumSize(new java.awt.Dimension(122, 21));
+        menu_item_10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_10ActionPerformed(evt);
+            }
+        });
 
         menu_item_12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         menu_item_12.setText("Yog Purp Rice");
         menu_item_12.setMinimumSize(new java.awt.Dimension(122, 21));
+        menu_item_12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_12ActionPerformed(evt);
+            }
+        });
 
         menu_item_14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         menu_item_14.setText("Peach Oo Purp Rice");
+        menu_item_14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_14ActionPerformed(evt);
+            }
+        });
 
         menu_item_16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         menu_item_16.setText("Taro Smoothie");
         menu_item_16.setMinimumSize(new java.awt.Dimension(122, 21));
+        menu_item_16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_16ActionPerformed(evt);
+            }
+        });
 
         menu_item_18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         menu_item_18.setText("CCream Cold Brew");
         menu_item_18.setMinimumSize(new java.awt.Dimension(122, 21));
+        menu_item_18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_18ActionPerformed(evt);
+            }
+        });
 
         menu_item_20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         menu_item_20.setText("Orange LuLu");
         menu_item_20.setMinimumSize(new java.awt.Dimension(122, 21));
+        menu_item_20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_20ActionPerformed(evt);
+            }
+        });
 
         order_text.setColumns(20);
         order_text.setRows(5);
@@ -234,6 +278,11 @@ public class OrderMenu extends javax.swing.JFrame {
 
         checkout_button.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         checkout_button.setText("Checkout");
+        checkout_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkout_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -384,52 +433,92 @@ public class OrderMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menu_item_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_3ActionPerformed
-        // TODO add your handling code here:
+        new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_3ActionPerformed
 
     private void menu_item_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_4ActionPerformed
-        // TODO add your handling code here:
+        new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_4ActionPerformed
 
     private void menu_item_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_5ActionPerformed
-        // TODO add your handling code here:
+        new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_5ActionPerformed
 
     private void menu_item_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_6ActionPerformed
-        // TODO add your handling code here:
+        new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_6ActionPerformed
 
     private void menu_item_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_7ActionPerformed
-        // TODO add your handling code here:
+        new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_7ActionPerformed
 
     private void menu_item_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_9ActionPerformed
-        // TODO add your handling code here:
+        new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_9ActionPerformed
 
     private void menu_item_11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_11ActionPerformed
-        // TODO add your handling code here:
+        new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_11ActionPerformed
 
     private void menu_item_13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_13ActionPerformed
-        // TODO add your handling code here:
+        new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_13ActionPerformed
 
     private void menu_item_15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_15ActionPerformed
-        // TODO add your handling code here:
+        new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_15ActionPerformed
 
     private void menu_item_17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_17ActionPerformed
-        // TODO add your handling code here:
+        new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_17ActionPerformed
 
     private void menu_item_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_1ActionPerformed
-        // TODO add your handling code here:
+        new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_1ActionPerformed
-
+    
     private void subtotal_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtotal_textActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_subtotal_textActionPerformed
+
+    private void menu_item_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_2ActionPerformed
+        new AddOnMenu().setVisible(true);
+    }//GEN-LAST:event_menu_item_2ActionPerformed
+
+    private void menu_item_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_8ActionPerformed
+        new AddOnMenu().setVisible(true);
+    }//GEN-LAST:event_menu_item_8ActionPerformed
+
+    private void menu_item_10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_10ActionPerformed
+        new AddOnMenu().setVisible(true);
+    }//GEN-LAST:event_menu_item_10ActionPerformed
+
+    private void menu_item_12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_12ActionPerformed
+        new AddOnMenu().setVisible(true);
+    }//GEN-LAST:event_menu_item_12ActionPerformed
+
+    private void menu_item_14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_14ActionPerformed
+        new AddOnMenu().setVisible(true);
+    }//GEN-LAST:event_menu_item_14ActionPerformed
+
+    private void menu_item_16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_16ActionPerformed
+        new AddOnMenu().setVisible(true);
+    }//GEN-LAST:event_menu_item_16ActionPerformed
+
+    private void menu_item_18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_18ActionPerformed
+        new AddOnMenu().setVisible(true);
+    }//GEN-LAST:event_menu_item_18ActionPerformed
+
+    private void menu_item_19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_19ActionPerformed
+        new AddOnMenu().setVisible(true);
+    }//GEN-LAST:event_menu_item_19ActionPerformed
+
+    private void menu_item_20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_20ActionPerformed
+        new AddOnMenu().setVisible(true);
+    }//GEN-LAST:event_menu_item_20ActionPerformed
+
+    private void checkout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkout_buttonActionPerformed
+        order_text.setText("");
+    }//GEN-LAST:event_checkout_buttonActionPerformed
 
     /**
      * @param args the command line arguments
