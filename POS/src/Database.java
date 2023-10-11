@@ -371,6 +371,13 @@ public class Database {
         }
     }
 
+    public ResultSet getMenuItemInventoryItems(int id) {
+        ResultSet invItems = null;
+        try {
+            invItems = createStatement.
+        }
+    }
+
     // ORDERS SECTION
 
     public ResultSet getSingleOrder(int id) {
@@ -446,31 +453,25 @@ public class Database {
             );
             int maxId = maxIdSet.getInt("id");
 
-            for (int menuId : menuItemIds) {
+            for (int i = 0; i < menuItemIds.size(); i++) {
                 maxId += 1;
 
                 createStatement.execute(
                     "INSERT INTO order_menu (id, order_id, menu_id) VALUES (" +
-                    maxId + ", " + id + ", " + menuId + ");"
+                    maxId + ", " + id + ", " + menuItemIds.get(i) + ");"
                 );
+
+                // update order add_on junction table
+                for (int addOnId : addOnIdsForEachMenuItem.get(i)) {
+                    createStatement.execute(
+                        "INSERT INTO order_add_ons (order_menu_junction_id, add_on_id) VALUES (" +
+                        maxId + ", " + addOnId + ");"
+                    );
+                }
             }
-
-            // update order add on junction table
-            ResultSet maxIdSet = null;
-            maxId = createStatement.executeQuery (
-                "SELECT id FROM order_menu ORDER BY id DESC LIMIT 1"
-            );
-            int maxId = maxIdSet.getInt("id");
-
-            for (int menuId : menuItemIds) {
-                maxId += 1;
-
-                createStatement.execute(
-                    "INSERT INTO order_menu (id, order_id, menu_id) VALUES (" +
-                    maxId + ", " + id + ", " + menuId + ");"
-                );
-            }
-
+        }
+        catch (Exception e) {
+            System.out.println("Failed to add Order");
         }
     }
 
