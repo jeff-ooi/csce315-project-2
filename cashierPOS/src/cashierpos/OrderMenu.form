@@ -3,9 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1280, 960]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -393,6 +390,9 @@
           <Dimension value="[122, 21]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_item_19ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="menu_item_2">
       <Properties>
@@ -404,6 +404,9 @@
           <Dimension value="[122, 21]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_item_2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="menu_item_8">
       <Properties>
@@ -415,6 +418,9 @@
           <Dimension value="[122, 21]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_item_8ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="menu_item_10">
       <Properties>
@@ -426,6 +432,9 @@
           <Dimension value="[122, 21]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_item_10ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="menu_item_12">
       <Properties>
@@ -437,6 +446,9 @@
           <Dimension value="[122, 21]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_item_12ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="menu_item_14">
       <Properties>
@@ -445,6 +457,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Peach Oo Purp Rice"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_item_14ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="menu_item_16">
       <Properties>
@@ -456,6 +471,9 @@
           <Dimension value="[122, 21]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_item_16ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="menu_item_18">
       <Properties>
@@ -467,6 +485,9 @@
           <Dimension value="[122, 21]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_item_18ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="menu_item_20">
       <Properties>
@@ -478,6 +499,9 @@
           <Dimension value="[122, 21]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_item_20ActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -555,6 +579,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Checkout"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkout_buttonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
