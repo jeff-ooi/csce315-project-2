@@ -401,6 +401,27 @@ public class Database {
         return addOns;
     }
 
+    public void updateMenuItemAddOns(int id, ArrayList<Integer> addOnIds) {
+        try {
+            createStatement.execute(
+                "DELETE FROM menu_add_on WHERE menu_id = " + id + ";"
+            );
+
+            for (int addOnId : addOnIds) {
+                createStatement.execute(
+                    "INSERT INTO menu_add_on (menu_id, add_on_id) VALUES (" +
+                    id + ", " + addOnId + ");"
+                );
+            }
+            System.out.println("Successfully updated Menu Item " + id " \'s add ons");
+
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Menu Item " + id + "\'s add ons");
+            e.printStackTrace();
+        }
+    }
+
     // ORDERS SECTION
 
     public ResultSet getSingleOrder(int id) {
