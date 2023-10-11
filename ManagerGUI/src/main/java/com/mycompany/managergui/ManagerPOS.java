@@ -45,15 +45,27 @@ public class ManagerPOS extends javax.swing.JFrame {
         menu_table = new javax.swing.JTable();
         menu_label = new javax.swing.JLabel();
         load_data_menu = new javax.swing.JButton();
+        add_menu_button = new javax.swing.JButton();
+        id_label_menu_panel = new javax.swing.JLabel();
+        name_label_menu_panel = new javax.swing.JLabel();
+        price_label_menu_panel = new javax.swing.JLabel();
+        id_textField_menu = new javax.swing.JTextField();
+        name_textField_menu = new javax.swing.JTextField();
+        price_textField_menu = new javax.swing.JTextField();
+        delete_id_button_menu_panel = new javax.swing.JButton();
+        update_name_button_menu_panel = new javax.swing.JButton();
+        update_price_button_menu_panel = new javax.swing.JButton();
         inventory_panel = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         inventory_table = new javax.swing.JTable();
         inventory_label = new javax.swing.JLabel();
         load_data_inventory = new javax.swing.JButton();
+        add_inventory_button = new javax.swing.JButton();
         schedule_panel = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         schedule_table = new javax.swing.JTable();
         schedule_label = new javax.swing.JLabel();
+        load_data_schedule = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Manager POS");
@@ -252,6 +264,11 @@ public class ManagerPOS extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        menu_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_tableMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(menu_table);
 
         menu_label.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
@@ -270,6 +287,32 @@ public class ManagerPOS extends javax.swing.JFrame {
             }
         });
 
+        add_menu_button.setText("Add");
+        add_menu_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_menu_buttonActionPerformed(evt);
+            }
+        });
+
+        id_label_menu_panel.setText("id");
+
+        name_label_menu_panel.setText("name");
+
+        price_label_menu_panel.setText("price");
+
+        delete_id_button_menu_panel.setForeground(new java.awt.Color(255, 0, 0));
+        delete_id_button_menu_panel.setText("delete item");
+        delete_id_button_menu_panel.setActionCommand("Delete Item");
+        delete_id_button_menu_panel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_id_button_menu_panelActionPerformed(evt);
+            }
+        });
+
+        update_name_button_menu_panel.setText("update name");
+
+        update_price_button_menu_panel.setText("update price");
+
         javax.swing.GroupLayout menu_panelLayout = new javax.swing.GroupLayout(menu_panel);
         menu_panel.setLayout(menu_panelLayout);
         menu_panelLayout.setHorizontalGroup(
@@ -280,20 +323,66 @@ public class ManagerPOS extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(load_data_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(menu_label, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(menu_label, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(add_menu_button, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(119, 119, 119))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(menu_panelLayout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(id_textField_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(id_label_menu_panel)
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(delete_id_button_menu_panel)))
+                .addGap(226, 226, 226)
+                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(name_textField_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name_label_menu_panel)
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(update_name_button_menu_panel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_panelLayout.createSequentialGroup()
+                        .addComponent(update_price_button_menu_panel)
+                        .addGap(88, 88, 88))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_panelLayout.createSequentialGroup()
+                        .addComponent(price_label_menu_panel)
+                        .addGap(176, 176, 176))
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addComponent(price_textField_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         menu_panelLayout.setVerticalGroup(
             menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_panelLayout.createSequentialGroup()
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menu_label)
+                    .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(menu_label)
+                        .addComponent(add_menu_button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menu_panelLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(load_data_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id_label_menu_panel)
+                    .addComponent(name_label_menu_panel)
+                    .addComponent(price_label_menu_panel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id_textField_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name_textField_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(price_textField_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(delete_id_button_menu_panel)
+                    .addComponent(update_name_button_menu_panel)
+                    .addComponent(update_price_button_menu_panel))
+                .addContainerGap())
         );
 
         layered_pane.add(menu_panel, "card3");
@@ -336,30 +425,42 @@ public class ManagerPOS extends javax.swing.JFrame {
             }
         });
 
+        add_inventory_button.setText("Add");
+        add_inventory_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_inventory_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout inventory_panelLayout = new javax.swing.GroupLayout(inventory_panel);
         inventory_panel.setLayout(inventory_panelLayout);
         inventory_panelLayout.setHorizontalGroup(
             inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inventory_panelLayout.createSequentialGroup()
-                .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(inventory_panelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(load_data_inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inventory_label, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(119, 119, 119))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(inventory_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(load_data_inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inventory_label, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(add_inventory_button, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         inventory_panelLayout.setVerticalGroup(
             inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inventory_panelLayout.createSequentialGroup()
                 .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inventory_label)
+                    .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(inventory_label)
+                        .addComponent(add_inventory_button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(inventory_panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(load_data_inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         layered_pane.add(inventory_panel, "card3");
@@ -367,29 +468,67 @@ public class ManagerPOS extends javax.swing.JFrame {
         schedule_panel.setMaximumSize(new java.awt.Dimension(20000, 20000));
         schedule_panel.setMinimumSize(new java.awt.Dimension(980, 650));
         schedule_panel.setPreferredSize(new java.awt.Dimension(980, 650));
-        schedule_panel.setLayout(new java.awt.BorderLayout());
 
         schedule_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "shift_id", "employee_id", "month", "day_of_week"
             }
-        ));
-        jScrollPane5.setViewportView(schedule_table);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
 
-        schedule_panel.add(jScrollPane5, java.awt.BorderLayout.CENTER);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(schedule_table);
 
         schedule_label.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         schedule_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         schedule_label.setText("Schedule");
         schedule_label.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         schedule_label.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        schedule_panel.add(schedule_label, java.awt.BorderLayout.NORTH);
+
+        load_data_schedule.setText("Load Data");
+        load_data_schedule.setMaximumSize(new java.awt.Dimension(90, 25));
+        load_data_schedule.setMinimumSize(new java.awt.Dimension(90, 25));
+        load_data_schedule.setPreferredSize(new java.awt.Dimension(90, 25));
+        load_data_schedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                load_data_scheduleActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout schedule_panelLayout = new javax.swing.GroupLayout(schedule_panel);
+        schedule_panel.setLayout(schedule_panelLayout);
+        schedule_panelLayout.setHorizontalGroup(
+            schedule_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(schedule_panelLayout.createSequentialGroup()
+                .addGroup(schedule_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(schedule_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(load_data_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(schedule_label, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(119, 119, 119))
+        );
+        schedule_panelLayout.setVerticalGroup(
+            schedule_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(schedule_panelLayout.createSequentialGroup()
+                .addGroup(schedule_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(schedule_label)
+                    .addGroup(schedule_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(load_data_schedule, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         layered_pane.add(schedule_panel, "card3");
 
@@ -426,7 +565,7 @@ public class ManagerPOS extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(layered_pane, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -437,6 +576,31 @@ public class ManagerPOS extends javax.swing.JFrame {
         layered_pane.add(panel);
         layered_pane.repaint();
         layered_pane.revalidate();
+    }
+    public boolean isNumber(String str) {
+    try {
+        Double.parseDouble(str);
+        return true;
+    } catch (NumberFormatException e) {
+        return false;
+    }
+    }
+    
+    public void throwErrorMessage(){
+        Errors error = new Errors();
+        error.setVisible(true);
+        error.pack();
+        error.setLocationRelativeTo(null);
+        error.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        error.setTitle("ERROR Message");
+    }
+    public void throwSuccessMessage(){
+        Successes success = new Successes();
+        success.setVisible(true);
+        success.pack();
+        success.setLocationRelativeTo(null);
+        success.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        success.setTitle("Success Message");
     }
     private void employees_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employees_buttonActionPerformed
         // TODO add your handling code here:
@@ -463,7 +627,26 @@ public class ManagerPOS extends javax.swing.JFrame {
         // TODO add your handling code here:
         switchPanel(schedule_panel);
     }//GEN-LAST:event_schedule_buttonActionPerformed
-
+    
+    private void loadDataMenu(){
+        DefaultTableModel tempModel = (DefaultTableModel)menu_table.getModel();
+        tempModel.setRowCount(0);
+        ResultSet menuData = database.getMenu();
+        try{
+            while(menuData.next()){
+//                String id = String.valueOf(salesData.getInt("id"));
+                String id = menuData.getString("id");
+                String name = menuData.getString("name");
+                String price = String.valueOf(menuData.getDouble("price"));
+                String data[] = {id,name,price};
+                DefaultTableModel model = (DefaultTableModel)menu_table.getModel();
+                model.addRow(data);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
     private void load_data_employeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_data_employeeActionPerformed
         // TODO add your handling code here:
         DefaultTableModel tempModel = (DefaultTableModel)employee_table.getModel();
@@ -532,23 +715,80 @@ public class ManagerPOS extends javax.swing.JFrame {
 
     private void load_data_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_data_menuActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tempModel = (DefaultTableModel)menu_table.getModel();
+        loadDataMenu();
+    }//GEN-LAST:event_load_data_menuActionPerformed
+
+    private void load_data_scheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_data_scheduleActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tempModel = (DefaultTableModel)schedule_table.getModel();
         tempModel.setRowCount(0);
-        ResultSet menuData = database.getMenu();
+        ResultSet scheduleData = database.getAllEmployeeShifts();
         try{
-            while(menuData.next()){
-//                String id = String.valueOf(salesData.getInt("id"));
-                String id = menuData.getString("id");
-                String name = menuData.getString("name");
-                String price = String.valueOf(menuData.getDouble("price"));
-                String data[] = {id,name,price};
-                DefaultTableModel model = (DefaultTableModel)menu_table.getModel();
+            while(scheduleData.next()){
+                String id = String.valueOf(scheduleData.getInt("id"));
+                String shift_id = String.valueOf(scheduleData.getInt("shift_id"));
+                String employee_id = String.valueOf(scheduleData.getInt("employee_id"));
+                String month = String.valueOf(scheduleData.getInt("month"));
+                String day_of_week = scheduleData.getString("day_of_week");
+                String data[] = {id,shift_id,employee_id,month,day_of_week};
+                DefaultTableModel model = (DefaultTableModel)schedule_table.getModel();
                 model.addRow(data);
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-    }//GEN-LAST:event_load_data_menuActionPerformed
+    }//GEN-LAST:event_load_data_scheduleActionPerformed
+
+    private void add_menu_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_menu_buttonActionPerformed
+        // TODO add your handling code here:
+        Dialogs dialog = new Dialogs();
+        dialog.switchDialogPanel(dialog.getMenuAddPanel());
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+        dialog.pack();
+        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dialog.setTitle("Add Menu Item");
+    }//GEN-LAST:event_add_menu_buttonActionPerformed
+
+    private void add_inventory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_inventory_buttonActionPerformed
+        // TODO add your handling code here:
+        Dialogs dialog = new Dialogs();
+        dialog.switchDialogPanel(dialog.getInventoryAddPanel());
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+        dialog.pack();
+        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dialog.setTitle("Add Inventory Item");
+    }//GEN-LAST:event_add_inventory_buttonActionPerformed
+
+    private void menu_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_tableMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)menu_table.getModel();
+        int selected_row_index = menu_table.getSelectedRow();
+        
+        id_textField_menu.setText(model.getValueAt(selected_row_index,0).toString());
+        name_textField_menu.setText(model.getValueAt(selected_row_index,1).toString());
+        price_textField_menu.setText(model.getValueAt(selected_row_index,2).toString());
+    }//GEN-LAST:event_menu_tableMouseClicked
+
+    private void delete_id_button_menu_panelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_id_button_menu_panelActionPerformed
+        // TODO add your handling code here:
+        if(!isNumber(id_textField_menu.getText())||id_textField_menu.getText().isBlank()){
+            throwErrorMessage();
+        }else{
+            if(database.deleteMenuItem(Integer.parseInt(id_textField_menu.getText()))){
+                loadDataMenu();
+                throwSuccessMessage();
+                id_textField_menu.setText("");
+                name_textField_menu.setText("");
+                price_textField_menu.setText("");
+            }else{
+                throwErrorMessage();
+            }
+            
+            
+        }
+    }//GEN-LAST:event_delete_id_button_menu_panelActionPerformed
     
     
     /**
@@ -588,10 +828,15 @@ public class ManagerPOS extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton add_inventory_button;
+    private javax.swing.JButton add_menu_button;
+    private javax.swing.JButton delete_id_button_menu_panel;
     private javax.swing.JTable employee_table;
     private javax.swing.JButton employees_button;
     private javax.swing.JLabel employees_label;
     private javax.swing.JPanel employees_panel;
+    private javax.swing.JLabel id_label_menu_panel;
+    private javax.swing.JTextField id_textField_menu;
     private javax.swing.JButton inventory_button;
     private javax.swing.JLabel inventory_label;
     private javax.swing.JPanel inventory_panel;
@@ -606,10 +851,15 @@ public class ManagerPOS extends javax.swing.JFrame {
     private javax.swing.JButton load_data_inventory;
     private javax.swing.JButton load_data_menu;
     private javax.swing.JButton load_data_sales;
+    private javax.swing.JButton load_data_schedule;
     private javax.swing.JButton menu_button;
     private javax.swing.JLabel menu_label;
     private javax.swing.JPanel menu_panel;
     private javax.swing.JTable menu_table;
+    private javax.swing.JLabel name_label_menu_panel;
+    private javax.swing.JTextField name_textField_menu;
+    private javax.swing.JLabel price_label_menu_panel;
+    private javax.swing.JTextField price_textField_menu;
     private javax.swing.JButton sales_button;
     private javax.swing.JLabel sales_label;
     private javax.swing.JPanel sales_panel;
@@ -618,5 +868,7 @@ public class ManagerPOS extends javax.swing.JFrame {
     private javax.swing.JLabel schedule_label;
     private javax.swing.JPanel schedule_panel;
     private javax.swing.JTable schedule_table;
+    private javax.swing.JButton update_name_button_menu_panel;
+    private javax.swing.JButton update_price_button_menu_panel;
     // End of variables declaration//GEN-END:variables
 }
