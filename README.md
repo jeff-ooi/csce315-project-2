@@ -14,8 +14,17 @@ java -cp ".:<path/to/file/postgresql-42.2.8.jar>" <path/to/java/file.java>
   
 Compile and run ManagerGUI  
 cd into ManagerGUI/src/main/java  
-javac /com/mycompany/managergui/*.java  
+javac com/mycompany/managergui/*.java  
 Not Mac:  
 java -cp ".;com/mycompany/managergui/postgresql-42.2.8.jar" com/mycompany/managergui/ManagerGUI  
 Mac:  
 java -cp ".:com/mycompany/managergui/postgresql-42.2.8.jar" com/mycompany/managergui/ManagerGUI  
+
+Compile and run CashierGUI
+cd into POS/src  
+javac *.java  
+Not Mac:  
+java -cp ".;postgresql-42.2.8.jar" cashierGUI  
+Mac:  
+java -cp ".:postgresql-42.2.8.jar" cashierGUI  
+
