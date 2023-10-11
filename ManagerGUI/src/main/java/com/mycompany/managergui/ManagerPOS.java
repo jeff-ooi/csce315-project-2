@@ -39,14 +39,17 @@ public class ManagerPOS extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         sales_table = new javax.swing.JTable();
         sales_label = new javax.swing.JLabel();
+        load_data_sales = new javax.swing.JButton();
         menu_panel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         menu_table = new javax.swing.JTable();
         menu_label = new javax.swing.JLabel();
+        load_data_menu = new javax.swing.JButton();
         inventory_panel = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         inventory_table = new javax.swing.JTable();
         inventory_label = new javax.swing.JLabel();
+        load_data_inventory = new javax.swing.JButton();
         schedule_panel = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         schedule_table = new javax.swing.JTable();
@@ -126,6 +129,9 @@ public class ManagerPOS extends javax.swing.JFrame {
         jScrollPane1.setViewportView(employee_table);
 
         load_data_employee.setText("Load Data");
+        load_data_employee.setMaximumSize(new java.awt.Dimension(90, 25));
+        load_data_employee.setMinimumSize(new java.awt.Dimension(90, 25));
+        load_data_employee.setPreferredSize(new java.awt.Dimension(90, 25));
         load_data_employee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 load_data_employeeActionPerformed(evt);
@@ -150,11 +156,11 @@ public class ManagerPOS extends javax.swing.JFrame {
             employees_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(employees_panelLayout.createSequentialGroup()
                 .addGroup(employees_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employees_panelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(load_data_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(employees_label))
-                .addGap(5, 5, 5)
+                    .addComponent(employees_label)
+                    .addGroup(employees_panelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(load_data_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -163,87 +169,198 @@ public class ManagerPOS extends javax.swing.JFrame {
         sales_panel.setMaximumSize(new java.awt.Dimension(20000, 20000));
         sales_panel.setMinimumSize(new java.awt.Dimension(980, 650));
         sales_panel.setPreferredSize(new java.awt.Dimension(980, 650));
-        sales_panel.setLayout(new java.awt.BorderLayout());
 
         sales_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "price", "date_time"
             }
-        ));
-        jScrollPane2.setViewportView(sales_table);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
 
-        sales_panel.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(sales_table);
 
         sales_label.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         sales_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sales_label.setText("Sales");
         sales_label.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         sales_label.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        sales_panel.add(sales_label, java.awt.BorderLayout.NORTH);
+
+        load_data_sales.setText("Load Data");
+        load_data_sales.setMaximumSize(new java.awt.Dimension(90, 25));
+        load_data_sales.setMinimumSize(new java.awt.Dimension(90, 25));
+        load_data_sales.setPreferredSize(new java.awt.Dimension(90, 25));
+        load_data_sales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                load_data_salesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout sales_panelLayout = new javax.swing.GroupLayout(sales_panel);
+        sales_panel.setLayout(sales_panelLayout);
+        sales_panelLayout.setHorizontalGroup(
+            sales_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sales_panelLayout.createSequentialGroup()
+                .addGroup(sales_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sales_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(load_data_sales, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sales_label, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(119, 119, 119))
+        );
+        sales_panelLayout.setVerticalGroup(
+            sales_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sales_panelLayout.createSequentialGroup()
+                .addGroup(sales_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sales_label)
+                    .addGroup(sales_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(load_data_sales, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         layered_pane.add(sales_panel, "card3");
 
         menu_panel.setMaximumSize(new java.awt.Dimension(20000, 20000));
         menu_panel.setMinimumSize(new java.awt.Dimension(980, 650));
         menu_panel.setPreferredSize(new java.awt.Dimension(980, 650));
-        menu_panel.setLayout(new java.awt.BorderLayout());
 
         menu_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "name", "price"
             }
-        ));
-        jScrollPane3.setViewportView(menu_table);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
 
-        menu_panel.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(menu_table);
 
         menu_label.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         menu_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menu_label.setText("Menu");
         menu_label.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         menu_label.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        menu_panel.add(menu_label, java.awt.BorderLayout.NORTH);
+
+        load_data_menu.setText("Load Data");
+        load_data_menu.setMaximumSize(new java.awt.Dimension(90, 25));
+        load_data_menu.setMinimumSize(new java.awt.Dimension(90, 25));
+        load_data_menu.setPreferredSize(new java.awt.Dimension(90, 25));
+        load_data_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                load_data_menuActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout menu_panelLayout = new javax.swing.GroupLayout(menu_panel);
+        menu_panel.setLayout(menu_panelLayout);
+        menu_panelLayout.setHorizontalGroup(
+            menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menu_panelLayout.createSequentialGroup()
+                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(load_data_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(menu_label, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(119, 119, 119))
+        );
+        menu_panelLayout.setVerticalGroup(
+            menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menu_panelLayout.createSequentialGroup()
+                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menu_label)
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(load_data_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         layered_pane.add(menu_panel, "card3");
 
         inventory_panel.setMaximumSize(new java.awt.Dimension(20000, 20000));
         inventory_panel.setMinimumSize(new java.awt.Dimension(980, 650));
         inventory_panel.setPreferredSize(new java.awt.Dimension(980, 650));
-        inventory_panel.setLayout(new java.awt.BorderLayout());
 
         inventory_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "name", "last_restock_date", "amount_remaining", "amount_used"
             }
-        ));
-        jScrollPane4.setViewportView(inventory_table);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
 
-        inventory_panel.add(jScrollPane4, java.awt.BorderLayout.CENTER);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(inventory_table);
 
         inventory_label.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         inventory_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inventory_label.setText("Inventory");
         inventory_label.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         inventory_label.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        inventory_panel.add(inventory_label, java.awt.BorderLayout.NORTH);
+
+        load_data_inventory.setText("Load Data");
+        load_data_inventory.setMaximumSize(new java.awt.Dimension(90, 25));
+        load_data_inventory.setMinimumSize(new java.awt.Dimension(90, 25));
+        load_data_inventory.setPreferredSize(new java.awt.Dimension(90, 25));
+        load_data_inventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                load_data_inventoryActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout inventory_panelLayout = new javax.swing.GroupLayout(inventory_panel);
+        inventory_panel.setLayout(inventory_panelLayout);
+        inventory_panelLayout.setHorizontalGroup(
+            inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inventory_panelLayout.createSequentialGroup()
+                .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(inventory_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(load_data_inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(inventory_label, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(119, 119, 119))
+        );
+        inventory_panelLayout.setVerticalGroup(
+            inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inventory_panelLayout.createSequentialGroup()
+                .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inventory_label)
+                    .addGroup(inventory_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(load_data_inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         layered_pane.add(inventory_panel, "card3");
 
@@ -349,6 +466,8 @@ public class ManagerPOS extends javax.swing.JFrame {
 
     private void load_data_employeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_data_employeeActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tempModel = (DefaultTableModel)employee_table.getModel();
+        tempModel.setRowCount(0);
         ResultSet employeeData = database.getEmployees();
         try{
             while(employeeData.next()){
@@ -363,12 +482,73 @@ public class ManagerPOS extends javax.swing.JFrame {
                 DefaultTableModel model = (DefaultTableModel)employee_table.getModel();
                 model.addRow(data);
             }
-            database.closeDatabase();
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
         
     }//GEN-LAST:event_load_data_employeeActionPerformed
+
+    private void load_data_salesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_data_salesActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tempModel = (DefaultTableModel)sales_table.getModel();
+        tempModel.setRowCount(0);
+        ResultSet salesData = database.getAllOrders();
+        try{
+            while(salesData.next()){
+//                String id = String.valueOf(salesData.getInt("id"));
+                String id = salesData.getString("id");
+                String price = salesData.getString("price");
+//                String price = String.valueOf(salesData.getDouble("price"));
+                String date_time = salesData.getString("date_time");
+                String data[] = {id,price,date_time};
+                DefaultTableModel model = (DefaultTableModel)sales_table.getModel();
+                model.addRow(data);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_load_data_salesActionPerformed
+
+    private void load_data_inventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_data_inventoryActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tempModel = (DefaultTableModel)inventory_table.getModel();
+        tempModel.setRowCount(0);
+        ResultSet inventoryData = database.getInventory();
+        try{
+            while(inventoryData.next()){
+                String id = String.valueOf(inventoryData.getInt("id"));
+                String name = inventoryData.getString("name");
+                String last_restock_date = inventoryData.getString("last_restock_date");
+                String amount_remaining = String.valueOf(inventoryData.getInt("amount_remaining"));
+                String amount_used = String.valueOf(inventoryData.getInt("amount_used"));
+                String data[] = {id,name,last_restock_date,amount_remaining,amount_used};
+                DefaultTableModel model = (DefaultTableModel)inventory_table.getModel();
+                model.addRow(data);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_load_data_inventoryActionPerformed
+
+    private void load_data_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_data_menuActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tempModel = (DefaultTableModel)menu_table.getModel();
+        tempModel.setRowCount(0);
+        ResultSet menuData = database.getMenu();
+        try{
+            while(menuData.next()){
+//                String id = String.valueOf(salesData.getInt("id"));
+                String id = menuData.getString("id");
+                String name = menuData.getString("name");
+                String price = String.valueOf(menuData.getDouble("price"));
+                String data[] = {id,name,price};
+                DefaultTableModel model = (DefaultTableModel)menu_table.getModel();
+                model.addRow(data);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_load_data_menuActionPerformed
     
     
     /**
@@ -423,6 +603,9 @@ public class ManagerPOS extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLayeredPane layered_pane;
     private javax.swing.JButton load_data_employee;
+    private javax.swing.JButton load_data_inventory;
+    private javax.swing.JButton load_data_menu;
+    private javax.swing.JButton load_data_sales;
     private javax.swing.JButton menu_button;
     private javax.swing.JLabel menu_label;
     private javax.swing.JPanel menu_panel;
