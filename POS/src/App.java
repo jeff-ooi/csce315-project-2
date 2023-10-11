@@ -1,6 +1,7 @@
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -38,6 +39,14 @@ public class App {
         // conn.updateMenuItemName(5555, "tempMI");
         // conn.updateMenuItemPrice(5555, 5.59);
         // conn.deleteMenuItem(5555);
+
+        // testing update menu inventory junction
+        ArrayList<Integer> ids = new ArrayList<Integer>(Arrays.asList(11, 6, 16, 17));
+        conn.updateMenuItemInventoryItems(1, ids);
+
+        // testing update menu add on junction
+        ArrayList<Integer> addOnIds = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 11));
+        conn.updateMenuItemAddOns(1, addOnIds);
 
         conn.closeDatabase();
     }
