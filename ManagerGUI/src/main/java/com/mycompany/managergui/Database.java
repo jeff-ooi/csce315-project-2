@@ -4,7 +4,9 @@ package com.mycompany.managergui;
 import java.sql.*;
 import java.util.ArrayList;
 
-import javax.naming.spi.DirStateFactory.Result;
+/**
+ * @author Jeff Ooi, Suhu Lavu
+ */
 public class Database {
 
     private Connection conn;
@@ -18,6 +20,11 @@ public class Database {
         createStatement = null;
     }
 
+    /**
+     * Attempts to establish the database connection
+     * @param userName
+     * @param password
+     */
     public Database(String userName, String password) {
         try {
             Class.forName("org.postgresql.Driver");
@@ -33,10 +40,17 @@ public class Database {
         }
     }
 
+    /**
+     * checks whether there is a connection to a database
+     * @return boolean stating whether there is a connection to a database
+     */
     public boolean isConnected() {
         return conn != null;
     }
 
+    /**
+     * closes the connection to the database
+     */
     public void closeDatabase() {
         if (conn != null) {
             try {
@@ -52,6 +66,11 @@ public class Database {
 
     // EMPLOYEE SECTION
 
+    /**
+     * gets a single Employee from the database, whose id corresponds to id
+     * @param id (the id of the Employee)
+     * @return ResultSet containing the Employee information or null
+     */
     public ResultSet getSingleEmployee(int id) {
         ResultSet employee = null;
         try {
@@ -67,7 +86,10 @@ public class Database {
         return employee;
     }
     
-    // returns all the employees in the employee table
+    /**
+     * gets all the Employees from the database
+     * @return ResultSet containing all the Employees' information or null
+     */
     public ResultSet getEmployees() {
         ResultSet employees = null;
         try {
@@ -83,7 +105,16 @@ public class Database {
         return employees;
     }
 
-    // adds an Employee to the employee table
+    /**
+     * adds an Employee to the employee table
+     * @param id (the id of the Employee)
+     * @param userName (the username of the Employee)
+     * @param password (the password of the Employee)
+     * @param name (the name of the Employee)
+     * @param startDate (the start date of the Employee)
+     * @param salary (the salary of the Employee)
+     * @param position (the position of the Employee)
+     */
     public void addEmployee(int id, String userName, String password, String name, String startDate, double salary, String position) {
         // ResultSet newEmployee = null;
         try {
@@ -103,6 +134,10 @@ public class Database {
         // return newEmployee;
     }
 
+    /**
+     * deletes the Employee from the database, whose id corresponds to id
+     * @param id (the id of the Employee to be deleted)
+     */
     public void deleteEmployee(int id) {
         try {
             createStatement.execute(
