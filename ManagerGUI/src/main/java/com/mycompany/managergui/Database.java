@@ -667,6 +667,33 @@ public class Database {
     }
 
     public void deleteOrder(int id) {
+        try {
+            ResultSet orderMenuItems = createStatement.executeQuery(
+                "SELECT * FROM order_menu WHERE order_id = " + id + ";"
+            );
+            while (orderMenuItems.next()) {
+                int orderMenuJunctionId = orderMenuItems.getInt("id");
+                try {
+                    createStatement.executeQuery(
+                        "DELETE FROM order_add_ons WHERE order_menu_junction_id = " + orderMenuJunctionId + ";"
+                    );
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+                createStatement.executeQuery(
+                    "DELETE FROM order_menu WHERE id = " + orderMenuJunctionId + ";"
+                );
+            }
+            createStatement.executeQuery(
+                "DELETE FROM orders WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully deleted Order " + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to completely delete Order " + id);
+            e.printStackTrace();
+        }
         return;
     }
 
