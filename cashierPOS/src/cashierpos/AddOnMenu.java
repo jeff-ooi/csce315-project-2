@@ -6,7 +6,7 @@ package cashierpos;
 
 /**
  *
- * @author Spenc
+ * @author Spencer Logan
  */
 public class AddOnMenu extends javax.swing.JFrame {
 
@@ -485,6 +485,10 @@ public class AddOnMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @param evt event handler for add to order button
+     * @return void
+     */
     private void add_to_orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_to_orderActionPerformed
         // TODO updates database with add-ons
         

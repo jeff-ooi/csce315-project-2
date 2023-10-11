@@ -350,6 +350,11 @@ public class Database {
         }
     }
 
+    /**
+     * Updates the inventory items for a menu item in the database
+     * @param id (id of the menu item to update)
+     * @param inventoryIds (new inventory ids of the menu item)
+     */
     public void updateMenuItemInventoryItems(int id, ArrayList<Integer> inventoryIds) {
         try {
             createStatement.execute(
@@ -371,6 +376,11 @@ public class Database {
         }
     }
 
+    /**
+     * Gets inventory item ids corresponsing to a menu item
+     * @param id (id of the menu item)
+     * @return result set of inventory item ids
+     */
     public ResultSet getMenuItemInventoryItems(int id) {
         ResultSet invItems = null;
         try {
@@ -386,6 +396,11 @@ public class Database {
         return invItems;
     }
 
+    /**
+     * Gets add ons for a menu item
+     * @param id (id of the mneu item)
+     * @return result set of the add on ids
+     */
     public ResultSet getMenuItemAddOns(int id) {
         ResultSet addOns = null;
         try {
@@ -401,6 +416,11 @@ public class Database {
         return addOns;
     }
 
+    /**
+     * Updates possible add ons for a menu item
+     * @param id (id of the menu item)
+     * @param addOnIds (ids for new add ons)
+     */
     public void updateMenuItemAddOns(int id, ArrayList<Integer> addOnIds) {
         try {
             createStatement.execute(
@@ -468,6 +488,12 @@ public class Database {
         return orderItems;
     }
 
+    /**
+     * Gets add ons for a menu item in a given order
+     * @param orderId (order id)
+     * @param menuItemId (menu item id)
+     * @return result set of add on ids
+     */
     public ResultSet getAddOnsForMenuItemInOrder(int orderId, int menuItemId) {
         ResultSet addOns = null;
         try {
@@ -482,7 +508,14 @@ public class Database {
         return addOns;
     }
 
-    // this one is going to be hard
+    /**
+     * Adds an order to the database and updates respective junction tables
+     * @param id (id of the new order)
+     * @param price (price of the new order)
+     * @param dateTime (date and time of the new order)
+     * @param menuItemIds (menu ids of items in the order)
+     * @param addOnIdsForEachMenuItem (corresponding ids for add ons for each menu item)
+    */
     public void addOrder(int id, double price, java.util.Date dateTime, ArrayList<Integer> menuItemIds, ArrayList<ArrayList<Integer>> addOnIdsForEachMenuItem) {        
         try {
             createStatement.execute(
@@ -521,6 +554,10 @@ public class Database {
         }
     }
 
+    /**
+     * Deletes an order from the database
+     * @param id (id of the order to delete)
+     */
     public void deleteOrder(int id) {
         try {
             ResultSet orderMenuItems = createStatement.executeQuery(

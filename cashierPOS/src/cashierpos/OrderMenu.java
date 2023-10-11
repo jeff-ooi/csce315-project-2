@@ -7,7 +7,7 @@ package cashierpos;
 
 /**
  *
- * @author Spenc
+ * @author Spencer Logan
  */
 public class OrderMenu extends javax.swing.JFrame {
 
@@ -432,46 +432,91 @@ public class OrderMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Creates add on menu for this menu item
+     * @param evt button click event
+     * @return void
+     */
     private void menu_item_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_3ActionPerformed
         new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_3ActionPerformed
-
+    /**
+     * Creates add on menu for this menu item
+     * @param evt button click event
+     * @return void
+     */
     private void menu_item_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_4ActionPerformed
         new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_4ActionPerformed
-
+    /**
+     * Creates add on menu for this menu item
+     * @param evt button click event
+     * @return void
+     */
     private void menu_item_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_5ActionPerformed
         new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_5ActionPerformed
-
+    /**
+     * Creates add on menu for this menu item
+     * @param evt button click event
+     * @return void
+     */
     private void menu_item_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_6ActionPerformed
         new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_6ActionPerformed
-
+    /**
+     * Creates add on menu for this menu item
+     * @param evt button click event
+     * @return void
+     */
     private void menu_item_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_7ActionPerformed
         new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_7ActionPerformed
-
+    /**
+     * Creates add on menu for this menu item
+     * @param evt button click event
+     * @return void
+     */
     private void menu_item_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_9ActionPerformed
         new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_9ActionPerformed
-
+    /**
+     * Creates add on menu for this menu item
+     * @param evt button click event
+     * @return void
+     */
     private void menu_item_11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_11ActionPerformed
         new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_11ActionPerformed
-
+    /**
+     * Creates add on menu for this menu item
+     * @param evt button click event
+     * @return void
+     */
     private void menu_item_13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_13ActionPerformed
         new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_13ActionPerformed
-
+    /**
+     * Creates add on menu for this menu item
+     * @param evt button click event
+     * @return void
+     */
     private void menu_item_15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_15ActionPerformed
         new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_15ActionPerformed
-
+    /**
+     * Creates add on menu for this menu item
+     * @param evt button click event
+     * @return void
+     */
     private void menu_item_17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_17ActionPerformed
         new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_17ActionPerformed
-
+    /**
+     * Creates add on menu for this menu item
+     * @param evt button click event
+     * @return void
+     */
     private void menu_item_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_1ActionPerformed
         new AddOnMenu().setVisible(true);
     }//GEN-LAST:event_menu_item_1ActionPerformed
