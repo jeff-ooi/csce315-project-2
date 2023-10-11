@@ -1,10 +1,8 @@
-//import java.rmi.server.ExportException;
 package com.mycompany.managergui;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-import javax.naming.spi.DirStateFactory.Result;
 public class Database {
 
     private Connection conn;
@@ -13,11 +11,21 @@ public class Database {
     final private String dbConnectionString = "jdbc:postgresql://csce-315-db.engr.tamu.edu/" + dbName;
     private Statement createStatement;
 
+    /**
+     * default constructor for the Database class.
+     * Sets everything to null
+     */
     public Database() {
         conn = null;
         createStatement = null;
     }
 
+    /**
+     * the parameterized constructor for the Database class.
+     * Attempts to establish a connection to the database
+     * @param userName the username used to connect to the database
+     * @param password the password used to connect to the database
+     */
     public Database(String userName, String password) {
         try {
             Class.forName("org.postgresql.Driver");
@@ -33,10 +41,17 @@ public class Database {
         }
     }
 
+    /**
+     * Checks if there is an active database connection
+     * @return boolean stating whether there is an active database connection
+     */
     public boolean isConnected() {
         return conn != null;
     }
 
+    /**
+     * closed the connection to the database
+     */
     public void closeDatabase() {
         if (conn != null) {
             try {
@@ -52,6 +67,11 @@ public class Database {
 
     // EMPLOYEE SECTION
 
+    /**
+     * gets the information of a single Employee from the database
+     * @param id the id of the Employee
+     * @return ResultSet of the Employee data in the database
+     */
     public ResultSet getSingleEmployee(int id) {
         ResultSet employee = null;
         try {
@@ -67,7 +87,10 @@ public class Database {
         return employee;
     }
     
-    // returns all the employees in the employee table
+    /**
+     * gets all the Employees from the database
+     * @return ResultSet containing all of the Employee data in the database
+     */
     public ResultSet getEmployees() {
         ResultSet employees = null;
         try {
@@ -83,7 +106,16 @@ public class Database {
         return employees;
     }
 
-    // adds an Employee to the employee table
+    /**
+     * attempts to add an Employee to the database
+     * @param id the id of the Employee
+     * @param userName the username of the Employee
+     * @param password the password of the Employee
+     * @param name the name of the Employee
+     * @param startDate the start date of the employee in "YYYY-MM-DD" format
+     * @param salary the salary of the employee
+     * @param position the position of the employee
+     */
     public void addEmployee(int id, String userName, String password, String name, String startDate, double salary, String position) {
         // ResultSet newEmployee = null;
         try {
@@ -103,6 +135,10 @@ public class Database {
         // return newEmployee;
     }
 
+    /**
+     * attempts to delete an Employee
+     * @param id the id of the Employee to be deleted
+     */
     public void deleteEmployee(int id) {
         try {
             createStatement.execute(
@@ -112,6 +148,126 @@ public class Database {
         }
         catch (Exception e) {
             System.out.println("Failed to delete Employee " + id);
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * attempts to update the username of an Employee
+     * @param id the id of the Employee
+     * @param newUsername the new username of the Employee
+     */
+    public void updateEmployeeUsername(int id, String newUsername) {
+        try {
+            createStatement.execute(
+                "UPDATE employee " + 
+                "SET username = " + newUsername + " " +
+                "WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully updated Employee " + id + " username");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Employee " + id + " username");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * attempts to update the password of an Employee
+     * @param id the id of the Employee
+     * @param newPassword the new password of the Employee
+     */
+    public void updateEmployeePassword(int id, String newPassword) {
+        try {
+            createStatement.execute(
+                "UPDATE employee " + 
+                "SET password = " + newPassword + " " +
+                "WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully updated Employee " + id + " password");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Employee " + id + " password");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * attempts to update the name of an Employee
+     * @param id the id of the Employee
+     * @param newName the new name of the Employee
+     */
+    public void updateEmployeeName(int id, String newName) {
+        try {
+            createStatement.execute(
+                "UPDATE employee " + 
+                "SET name = " + newName + " " + 
+                "WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully updated Employee " + id + " name");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Employee " + id + " name");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * attempts to update the start date of an Employee
+     * @param id the id of the Employee
+     * @param newStartDate the new start date of the Employee
+     */
+    public void updateEmployeeStartDate(int id, String newStartDate) {
+        try {
+            createStatement.execute(
+                "UPDATE employee " + 
+                "SET start_date = " + newStartDate + " " + 
+                "WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully updated Employee " + id + " start_date");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Employee " + id + " start_date");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * attempts to update the salary of an Employee
+     * @param id the id of the Employee
+     * @param newSalary the new salary of the Employee
+     */
+    public void updateEmployeeSalary(int id, double newSalary) {
+        try {
+            createStatement.execute(
+                "UPDATE employee " + 
+                "SET salary = " + newSalary + " " + 
+                "WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully updated Employee " + id + " salary");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Employee " + id + " salary");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * attempts to update the position of an Employee
+     * @param id the id of the Employee
+     * @param newPosition the new salary of the Employee
+     */
+    public void updateEmployeePosition(int id, String newPosition) {
+        try {
+            createStatement.execute(
+                "UPDATE employee " + 
+                "SET position = " + newPosition + " " +
+                "WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully updated Employee " + id + " position");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to updated Employee " + id + " salary");
             e.printStackTrace();
         }
     }
