@@ -3,6 +3,8 @@ package com.mycompany.managergui;
 
 import java.sql.*;
 import java.util.ArrayList;
+
+import javax.naming.spi.DirStateFactory.Result;
 public class Database {
 
     private Connection conn;
@@ -110,6 +112,248 @@ public class Database {
         }
         catch (Exception e) {
             System.out.println("Failed to delete Employee " + id);
+            e.printStackTrace();
+        }
+    }
+
+    // SHIFT SECTION
+
+    /**
+     * this is to get a single shift time
+     * @param id
+     * @return ResultSet with the shift start and end times or null
+     */
+    public ResultSet getSingleShift(int id) {
+        ResultSet shift = null;
+        try {
+            shift = createStatement.executeQuery(
+                "SELECT * FROM shifts WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully got Shift " + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Shift " + id);
+            e.printStackTrace();
+        }
+        return shift;
+    }
+
+    public void addShift(int id, int startTime, int endTime) {
+        try {
+            createStatement.execute(
+                "INSERT INTO shifts (id, start_time, end_time) VALUES(" +
+                id + ", " + startTime + ", " + endTime + ");"
+            );
+            System.out.println("Successfully added Shift " + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to add Shift");
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteShift (int id) {
+        try {
+            createStatement.execute(
+                "DELETE FROM shifts WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully deleted Shift " + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to delete Shift " + id);
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * updates the shift start time in 24-HOUR FORMAT (i.e. 1 PM is 13, 12 AM or midnight is 0)
+     * @param id
+     * @param newStartTime
+     */
+    public void updateShiftStartTime(int id, int newStartTime) {
+        try {
+            createStatement.execute(
+                "UPDATE shifts " +
+                "SET start_time = " + newStartTime + " " + 
+                "WHERE id = " + id + ";"
+            );
+            System.out.println(
+                "Successfully updated Shift " + id + " start_time"
+            );
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Shift " + id +  " start_time");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * updates the shift end time in 24-HOUR FORMAT (i.e. 1 PM is 13, 12 AM or midnight is 24)
+     * @param id
+     * @param newEndTime
+     */
+    public void updateShiftEndTime(int id, int newEndTime) {
+        try {
+            createStatement.execute(
+                "UPDATE shifts " +
+                "SET end_time = " + newEndTime + " " + 
+                "WHERE id = " + id + ";"
+            );
+            System.out.println(
+                "Successfully updated Shift " + id + " end_time"
+            );
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Shift " + id +  " end_time");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * this is to get the shift ids and times
+     * NOT the actual employee shifts
+     * @return ResultSet with all the shift ids and times or null
+     */
+    public ResultSet getAllShifts() {
+        ResultSet shifts = null;
+        try {
+            shifts = createStatement.executeQuery(
+                "SELECT * FROM shifts;"
+            );
+            System.out.println("Successfully got Shifts");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Shifts");
+            e.printStackTrace();
+        }
+        return shifts;
+    }
+
+    // EMPLOYEE_SHIFTS JUNCTION TABLE SECTION
+
+    /**
+     * this gets the shifts of a single employee
+     * @param id
+     * @return ResultSet of the Employee Shifts for the Employee or null
+     */
+    public ResultSet getSingleEmployeeShifts(int id) {
+        ResultSet employeeShift = null;
+        try {
+            employeeShift = createStatement.executeQuery(
+                "SELECT * FROM employee_shift WHERE employee_id = " + id + ";"
+            );
+            System.out.println("Successfully got Employee Shifts for Employee " + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Employee Shifts for Employee " + id);
+            e.printStackTrace();
+        }
+        return employeeShift;
+    }
+
+    /**
+     * this gets all the shifts each employee works
+     * not to be confused with getAllShifts which gets all the start and end times of the shifts
+     * @return ResultSet of all the Employee Shifts or null
+     */
+    public ResultSet getAllEmployeeShifts() {
+        ResultSet employeeShifts = null;
+        try {
+            employeeShifts = createStatement.executeQuery(
+                "SELECT * FROM employee_shift;"
+            );
+            System.out.println("Successfully got Employee Shifts");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Employee Shifts");
+            e.printStackTrace();
+        }
+        return employeeShifts;
+    }
+
+    public void addEmployeeShift(int id, int shiftId, int employeeId, int month, int dayOfWeek) {
+        try {
+            createStatement.execute(
+                "INSERT INTO employee_shift (id, shift_id, employee_id, month, day_of_week) VALUES (" +
+                id + ", " + shiftId + ", " + employeeId + ", " + month + ", " + dayOfWeek + ");"
+            );
+            System.out.println("Successfully added Employee Shift");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to add Employee Shift");
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteEmployeeShift(int id) {
+        try {
+            createStatement.execute(
+                "DELETE FROM employee_shift WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully deleted Employee Shift " + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to delete Employee Shift " + id);
+            e.printStackTrace();
+        }
+    }
+
+    public void updateShiftId(int id, int newShiftId) {
+        try {
+            createStatement.execute(
+                "UPDATE employee_shift " + 
+                "SET shift_id = " + newShiftId + " " + 
+                "WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully updated Employee Shift " + id + " shift_id");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Employee Shift " + id + " shift_id");
+            e.printStackTrace();
+        }
+    }
+    
+    public void updateEmployeeId(int id, int newEmployeeId) {
+        try {
+            createStatement.execute(
+                "UPDATE employee_shift " + 
+                "SET employee_id = " + newEmployeeId + " " + 
+                "WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully updated Employee Shift " + id + " employee_id");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Employee Shift " + id + " employee_id");
+            e.printStackTrace();
+        }
+    }
+
+    public void updateMonth(int id, int newMonth) {
+        try {
+            createStatement.execute(
+                "UPDATE employee_shift " + 
+                "SET month = " + newMonth + " " + 
+                "WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully updated Employee Shift " + id + " month");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Employee Shift " + id + " month");
+            e.printStackTrace();
+        }
+    }
+
+    public void updateDayOfWeek(int id, int newDayOfWeek) {
+        try {
+            createStatement.execute(
+                "UPDATE employee_shift " + 
+                "SET day_of_week = " + newDayOfWeek + " " + 
+                "WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully updated Employee Shift " + id + " day_of_week");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Employee Shift " + id + " day_of_week");
             e.printStackTrace();
         }
     }
