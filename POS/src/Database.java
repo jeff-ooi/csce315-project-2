@@ -375,7 +375,7 @@ public class Database {
         ResultSet invItems = null;
         try {
             invItems = createStatement.executeQuery(
-                "SELECT * FROM menu_inventory WHERE menu_id = " + id + ";"
+                "SELECT inventory_id FROM menu_inventory WHERE menu_id = " + id + ";"
             );
             System.out.println("Got inventory items for Menu Item " + id);
         }
@@ -384,6 +384,21 @@ public class Database {
             e.printStackTrace();
         }
         return invItems;
+    }
+
+    public ResultSet getMenuItemAddOns(int id) {
+        ResultSet addOns = null;
+        try {
+            addOns = createStatement.executeQuery (
+                "SELECT add_on_id FROM menu_add_on WHERE menu_id = " + id + ";"
+            );
+            System.out.println("Got add ons for Menu Item" + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get add ons for Menu Item" + id);
+            e.printStackTrace();
+        }
+        return addOns;
     }
 
     // ORDERS SECTION
