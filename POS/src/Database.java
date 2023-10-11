@@ -493,8 +493,9 @@ public class Database {
             // update order menu junction table
             ResultSet maxIdSet = null;
             maxIdSet = createStatement.executeQuery (
-                "SELECT id FROM order_menu ORDER BY id DESC LIMIT 1"
+                "SELECT id FROM order_menu ORDER BY id DESC LIMIT 1;"
             );
+            maxIdSet.next();
             int maxId = maxIdSet.getInt("id");
 
             for (int i = 0; i < menuItemIds.size(); i++) {
