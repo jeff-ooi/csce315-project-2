@@ -350,8 +350,25 @@ public class Database {
         }
     }
 
-    public void updateMenuItemInventoryItems(int id) {
-        return;
+    public void updateMenuItemInventoryItems(int id, ArrayList<Integer> inventoryIds) {
+        try {
+            createStatement.executeQuery(
+                "DELETE FROM menu_inventory WHERE menu_id = " + id + ";"
+            );
+
+            for (int invId : inventoryIds) {
+                createStatement.execute(
+                    "INSERT INTO menu_inventory (menu_id, inventory_id) VALUES (" +
+                    id + ", " + invId + ");"
+                );
+            }
+            System.out.println("Successfully updated Menu Item " + id " \'s inventory items");
+
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Menu Item " + id + "\'s inventory items");
+            e.printStackTrace();
+        }
     }
 
     // ORDERS SECTION
