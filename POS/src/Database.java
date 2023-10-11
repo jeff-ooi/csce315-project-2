@@ -362,7 +362,7 @@ public class Database {
                     id + ", " + invId + ");"
                 );
             }
-            System.out.println("Successfully updated Menu Item " + id " \'s inventory items");
+            System.out.println("Successfully updated Menu Item " + id + "\'s inventory items");
 
         }
         catch (Exception e) {
@@ -413,7 +413,7 @@ public class Database {
                     id + ", " + addOnId + ");"
                 );
             }
-            System.out.println("Successfully updated Menu Item " + id " \'s add ons");
+            System.out.println("Successfully updated Menu Item " + id + "\'s add ons");
 
         }
         catch (Exception e) {
@@ -492,7 +492,7 @@ public class Database {
 
             // update order menu junction table
             ResultSet maxIdSet = null;
-            maxId = createStatement.executeQuery (
+            maxIdSet = createStatement.executeQuery (
                 "SELECT id FROM order_menu ORDER BY id DESC LIMIT 1"
             );
             int maxId = maxIdSet.getInt("id");
