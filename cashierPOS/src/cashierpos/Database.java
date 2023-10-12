@@ -1,4 +1,4 @@
-package com.mycompany.managergui;
+package cashierpos;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class Database {
      */
     public Database(String userName, String password) {
         try {
-            Class.forName("org.postgresql.Driver");
+            // Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(dbConnectionString, userName, password);
             createStatement = conn.createStatement();
             System.out.println("Database Connection Established");

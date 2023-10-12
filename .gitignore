@@ -1,6 +1,6 @@
 # Compiled classes
 cashierPOS/src/cashierpos/*.class
 ManagerGUI/src/main/java/com/mycompany/managergui/*.class
-ManagerGUI/target/
+ManagerGUI/target/*
 POS/src/*.class
 *.class

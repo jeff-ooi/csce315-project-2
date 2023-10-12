@@ -21,10 +21,10 @@ Mac:
 java -cp ".:com/mycompany/managergui/postgresql-42.2.8.jar" com/mycompany/managergui/ManagerGUI  
 
 Compile and run CashierGUI
-cd into cashierPOS/src/cashierpos  
-javac *.java  
+cd into cashierPOS/src/  
+javac cashierpos/*.java  
 Not Mac:  
-java -cp ".;postgresql-42.2.8.jar" OrderMenu.java  
+java -cp ".;cashierpos/postgresql-42.2.8.jar" cashierpos/OrderMenu  
 Mac:  
-java -cp ".:postgresql-42.2.8.jar" OrderMenu.java  
+java -cp ".:cashierpos/postgresql-42.2.8.jar" cashierpos/OrderMenu  
 
