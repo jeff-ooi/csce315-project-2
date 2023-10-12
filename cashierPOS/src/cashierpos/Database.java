@@ -1,4 +1,4 @@
-// package com.mycompany.managergui;
+package cashierpos;
 
 import java.sql.*;
 import java.util.ArrayList;
