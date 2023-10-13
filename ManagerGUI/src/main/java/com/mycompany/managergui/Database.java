@@ -527,7 +527,7 @@ public class Database {
         }
     }
 
-    public void restockInventoryItem(int id, String restockDate, int restockAmount) {
+    public boolean restockInventoryItem(int id, String restockDate, int restockAmount) {
         try {
             ResultSet inventoryItem = createStatement.executeQuery(
                 "SELECT * FROM inventory WHERE id = "+ id + ";"
@@ -541,10 +541,12 @@ public class Database {
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully restocked Inventory Item " + id);
+            return true;
         }
         catch (Exception e) {
             System.out.println("Failed to restock Inventory Item " + id);
             e.printStackTrace();
+            return false;
         }
     }
 

@@ -60,7 +60,7 @@
                           <Component id="price_menu_add_textField" min="-2" pref="250" max="-2" attributes="0"/>
                           <Component id="name_menu_add_textField" min="-2" pref="250" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="52" max="32767" attributes="0"/>
+                      <EmptySpace pref="55" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
@@ -177,7 +177,7 @@
                               <Component id="add_inventory_item_button" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <EmptySpace pref="35" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -259,6 +259,97 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_inventory_item_buttonActionPerformed"/>
               </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="restock_inventory_item_panel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card4"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                      <Component id="restockInventoryItem_button" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="57" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="last_restock_inventory_amount_label" min="-2" max="-2" attributes="0"/>
+                          <Component id="last_restock_inventory_date_label" min="-2" max="-2" attributes="0"/>
+                          <Component id="id_last_restock_label" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="45" pref="45" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="id_restock_inventory_textField" min="-2" pref="121" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="last_restock_date_textField" alignment="1" min="-2" pref="121" max="-2" attributes="0"/>
+                              <Component id="last_restock_inventory_amount_restocked_textField" alignment="1" min="-2" pref="121" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="id_restock_inventory_textField" min="-2" max="-2" attributes="0"/>
+                          <Component id="id_last_restock_label" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="last_restock_date_textField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="last_restock_inventory_date_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="last_restock_inventory_amount_restocked_textField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="last_restock_inventory_amount_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="64" max="32767" attributes="0"/>
+                      <Component id="restockInventoryItem_button" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JTextField" name="last_restock_date_textField">
+            </Component>
+            <Component class="javax.swing.JTextField" name="last_restock_inventory_amount_restocked_textField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="last_restock_inventory_date_label">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="date_restocked:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="last_restock_inventory_amount_label">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="amount_restocked:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="restockInventoryItem_button">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="restock Inventory Item"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="restockInventoryItem_buttonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="id_restock_inventory_textField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="id_last_restock_label">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="id:"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

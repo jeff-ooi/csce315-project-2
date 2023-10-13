@@ -1040,6 +1040,13 @@ public class ManagerPOS extends javax.swing.JFrame {
 
     private void update_last_restock_date_button_inventory_panelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_last_restock_date_button_inventory_panelActionPerformed
         // TODO add your handling code here:
+        Dialogs dialog = new Dialogs();
+        dialog.switchDialogPanel(dialog.getRestockInventoryItemPanel());
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+        dialog.pack();
+        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dialog.setTitle("Update Restock Date and Amount");
         
     }//GEN-LAST:event_update_last_restock_date_button_inventory_panelActionPerformed
 
