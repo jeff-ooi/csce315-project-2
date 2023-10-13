@@ -31,7 +31,7 @@ public class Database {
      */
     public Database(String userName, String password) {
         try {
-            Class.forName("org.postgresql.Driver");
+            // Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(dbConnectionString, userName, password);
             createStatement = conn.createStatement();
             System.out.println("Database Connection Established");
@@ -174,7 +174,7 @@ public class Database {
         try {
             createStatement.execute(
                 "UPDATE employee " + 
-                "SET username = " + newUsername + " " +
+                "SET username = \'" + newUsername + "\' " +
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee " + id + " username");
@@ -197,7 +197,7 @@ public class Database {
         try {
             createStatement.execute(
                 "UPDATE employee " + 
-                "SET password = " + newPassword + " " +
+                "SET password = \'" + newPassword + "\' " +
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee " + id + " password");
@@ -220,7 +220,7 @@ public class Database {
         try {
             createStatement.execute(
                 "UPDATE employee " + 
-                "SET name = " + newName + " " + 
+                "SET name = \'" + newName + "\' " + 
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee " + id + " name");
@@ -243,7 +243,7 @@ public class Database {
         try {
             createStatement.execute(
                 "UPDATE employee " + 
-                "SET start_date = " + newStartDate + " " + 
+                "SET start_date = \'" + newStartDate + "\' " + 
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee " + id + " start_date");
@@ -289,7 +289,7 @@ public class Database {
         try {
             createStatement.execute(
                 "UPDATE employee " + 
-                "SET position = " + newPosition + " " +
+                "SET position = \'" + newPosition + "\' " +
                 "WHERE id = " + id + ";"
             );
             System.out.println("Successfully updated Employee " + id + " position");
@@ -1043,6 +1043,136 @@ public class Database {
             System.out.println("Failed to update Menu Item " + id + "\'s add ons");
             e.printStackTrace();
         }
+    }
+
+    // ADD-ONS SECTION
+
+    /**
+     * gets the information of a single Add-On in the database
+     * @param id the id of the Add-On
+     * @return ResultSet containing the single Add-On data or null
+     */
+    public ResultSet getSingeAddOn(int id) {
+        ResultSet addOn = null;
+        try {
+            addOn = createStatement.executeQuery(
+                "SELECT * FROM add_on WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully got Add-On " + id);
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get Add-On " + id);
+            e.printStackTrace();
+        }
+        return addOn;
+    }
+
+    /**
+     * gets the information of All the Add-Ons in the database
+     * @return ResultSet containing the data of All the Add-Ons in the database
+     */
+    public ResultSet getAllAddOns() {
+        ResultSet addOns = null;
+        try {
+            addOns = createStatement.executeQuery(
+                "SELECT * FROM add_on;"
+            );
+            System.out.println("Successfully got All Add-Ons");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get All Add-Ons");
+            e.printStackTrace();
+        }
+        return addOns;
+    }
+
+    /**
+     * attempts to delete an Add-On from the database
+     * @param id the id of the Add-On to be deleted
+     * @return boolean containing whether the Add-On was successfully deleted
+     */
+    public boolean deleteAddOn(int id) {
+        try {
+            createStatement.execute(
+                "DELETE FROM add_on WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully deleted Add-On " + id);
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to delete Add-On " + id);
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * attempts to update an Add-On's name
+     * @param id the id of the Add-On
+     * @param newName the new name of the Add-On
+     * @return boolean containing whether the Add-On's name was successfully updated
+     */
+    public boolean updateAddOnName(int id, String newName) {
+        try {
+            createStatement.execute(
+                "UPDATE add_on " + 
+                "SET name = \'" + newName + "\' " +
+                "WHERE id = " + id + ";" 
+            );
+            System.out.println("Successfully updated Add-On " + id + " name");
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Add-On " + id + " name");
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * attempts to update an Add-On's price
+     * @param id the id of the Add-On
+     * @param newPrice the new price of the Add-On
+     * @return boolean containing whether the Add-On's price was successfully updated
+     */
+    public boolean updateAddOnPrice(int id, double newPrice) {
+        try {
+            createStatement.execute(
+                "UPDATE add_on " + 
+                "SET price = " + newPrice + " " + 
+                "WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully updated Add-On " + id + " price");
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Add-On " + id + " price");
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * attempts to update an Add-On's inventory id
+     * @param id the id of the Add-On
+     * @param newInventoryId the new inventory id of the Add-On
+     * @return boolean containing whether the Add-On's inventory id was successfully updated
+     */
+    public boolean updateAddOnInventoryId(int id, int newInventoryId) {
+        try {
+            createStatement.execute(
+                "UPDATE add_on " + 
+                "SET inventory_id = " + newInventoryId + " " + 
+                "WHERE id = " + id + ";"
+            );
+            System.out.println("Successfully updated Add-On " + id + " inventory id");
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println("Failed to update Add-On " + id + " inventory id");
+            e.printStackTrace();
+        }
+        return false;
     }
 
     // ORDERS SECTION
