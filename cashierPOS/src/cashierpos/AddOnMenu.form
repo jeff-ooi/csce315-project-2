@@ -46,136 +46,64 @@
                       <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jLabel13" min="-2" pref="159" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton46" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton47" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton48" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton49" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel12" min="-2" pref="159" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton42" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton43" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton44" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton45" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
                               <Component id="jLabel11" min="-2" pref="159" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton38" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton39" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton40" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton41" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jComboBox11" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel10" min="-2" pref="159" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton34" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton35" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton36" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton37" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jComboBox10" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel9" min="-2" pref="159" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton30" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton31" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton32" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton33" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jComboBox9" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel8" min="-2" pref="159" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton26" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton27" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton28" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton29" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jComboBox8" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel7" min="-2" pref="159" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton22" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton23" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton24" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton25" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jComboBox7" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel6" min="-2" pref="159" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton18" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton19" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton20" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton21" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel5" min="-2" pref="159" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton14" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton15" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton16" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton17" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jComboBox6" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel3" min="-2" pref="159" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton3" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton4" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton5" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel4" min="-2" pref="159" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton10" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton11" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton12" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton13" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jComboBox2" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel2" min="-2" pref="159" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton6" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jComboBox3" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel13" min="-2" pref="159" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton7" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jComboBox1" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel5" min="-2" pref="159" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton8" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jComboBox5" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel4" min="-2" pref="159" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton9" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="jComboBox4" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel12" min="-2" pref="159" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jComboBox12" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -184,7 +112,7 @@
                       <Component id="add_to_order" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="346" max="32767" attributes="0"/>
+              <EmptySpace pref="423" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -196,120 +124,62 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="jButton10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton13" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="jButton14" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton16" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton17" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jComboBox5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="jButton18" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton19" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton20" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton21" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="jButton22" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton23" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton24" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton25" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jComboBox7" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="jButton26" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton27" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton28" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton29" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jComboBox8" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel9" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="jButton30" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton31" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton32" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton33" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jComboBox9" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel10" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="jButton34" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton35" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton36" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton37" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jComboBox10" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel11" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="jButton38" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton39" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton40" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton41" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jComboBox11" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel12" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="jButton42" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton43" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton44" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton45" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jComboBox12" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel13" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                      <Component id="jButton46" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton47" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton48" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton49" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="add_to_order" min="-2" max="-2" attributes="0"/>
@@ -434,245 +304,185 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_to_orderActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="None"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Light"/>
+            <StringItem index="2" value="Normal"/>
+            <StringItem index="3" value="Extra"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JComboBox" name="jComboBox2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Light"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Light"/>
+            <StringItem index="2" value="Normal"/>
+            <StringItem index="3" value="Extra"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JComboBox" name="jComboBox3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Normal"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Light"/>
+            <StringItem index="2" value="Normal"/>
+            <StringItem index="3" value="Extra"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JComboBox" name="jComboBox4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Extra"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Light"/>
+            <StringItem index="2" value="Normal"/>
+            <StringItem index="3" value="Extra"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JComboBox" name="jComboBox5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="None"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Light"/>
+            <StringItem index="2" value="Normal"/>
+            <StringItem index="3" value="Extra"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton7">
+    <Component class="javax.swing.JComboBox" name="jComboBox6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Light"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Light"/>
+            <StringItem index="2" value="Normal"/>
+            <StringItem index="3" value="Extra"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton8">
+    <Component class="javax.swing.JComboBox" name="jComboBox7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Normal"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Light"/>
+            <StringItem index="2" value="Normal"/>
+            <StringItem index="3" value="Extra"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton9">
+    <Component class="javax.swing.JComboBox" name="jComboBox8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Extra"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Light"/>
+            <StringItem index="2" value="Normal"/>
+            <StringItem index="3" value="Extra"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton10">
+    <Component class="javax.swing.JComboBox" name="jComboBox9">
       <Properties>
-        <Property name="text" type="java.lang.String" value="None"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Light"/>
+            <StringItem index="2" value="Normal"/>
+            <StringItem index="3" value="Extra"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton11">
+    <Component class="javax.swing.JComboBox" name="jComboBox10">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Light"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Light"/>
+            <StringItem index="2" value="Normal"/>
+            <StringItem index="3" value="Extra"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton12">
+    <Component class="javax.swing.JComboBox" name="jComboBox11">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Normal"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Light"/>
+            <StringItem index="2" value="Normal"/>
+            <StringItem index="3" value="Extra"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton13">
+    <Component class="javax.swing.JComboBox" name="jComboBox12">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Extra"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Light"/>
+            <StringItem index="2" value="Normal"/>
+            <StringItem index="3" value="Extra"/>
+          </StringArray>
+        </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton14">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="None"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton15">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Light"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton16">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Normal"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton17">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Extra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton18">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="None"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton19">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Light"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton20">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Normal"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton21">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Extra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton22">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="None"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton23">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Light"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton24">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Normal"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton25">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Extra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton26">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="None"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton27">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Light"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton28">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Normal"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton29">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Extra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton30">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="None"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton31">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Light"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton32">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Normal"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton33">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Extra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton34">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="None"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton35">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Light"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton36">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Normal"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton37">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Extra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton38">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="None"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton39">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Light"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton40">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Normal"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton41">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Extra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton42">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="None"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton43">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Light"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton44">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Normal"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton45">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Extra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton46">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="None"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton47">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Light"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton48">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Normal"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton49">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Extra"/>
-      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
