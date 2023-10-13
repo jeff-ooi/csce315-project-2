@@ -7,7 +7,7 @@ package cashierpos;
 
 /**
  *
- * @author Spenc
+ * @author Spencer Logan
  */
 public class OrderMenu extends javax.swing.JFrame {
 
