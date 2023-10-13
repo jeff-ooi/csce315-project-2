@@ -1263,9 +1263,12 @@ public class Database {
      * @param addOnIdsForEachMenuItem (corresponding ids for add ons for each menu item)
     */
     public void addOrder(double price, java.util.Date dateTime, ArrayList<Integer> menuItemIds, ArrayList<ArrayList<Integer>> addOnIdsForEachMenuItem) {        
-        ResultSet id = null;
+        ResultSet idSet = null;
+        int id = -1;
         try {
-            id = createStatement.executeQuery("SELECT id FROM orders ORDER BY id DESC LIMIT 1;");
+            idSet = createStatement.executeQuery("SELECT id FROM orders ORDER BY id DESC LIMIT 1;");
+            idSet.next();
+            id = idSet.getInt("id") + 1;
         }
         catch (Exception e) {
             System.out.println("Failed to get new Order id");
