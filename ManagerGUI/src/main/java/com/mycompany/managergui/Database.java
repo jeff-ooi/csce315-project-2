@@ -31,15 +31,15 @@ public class Database {
      */
     public Database(String userName, String password) {
         try {
-            // Class.forName("org.postgresql.Driver");
+            Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(dbConnectionString, userName, password);
             createStatement = conn.createStatement();
-            System.out.println("Database Connection Established");
+            // System.out.println("Database Connection Established");
         }
         catch (Exception e) {
-            // e.printStackTrace();
-            System.out.println(e.getClass().getName() + ": " + e.getMessage());
-            System.out.println("Databasae Connection Failed");
+            // // e.printStackTrace();
+            // System.out.println(e.getClass().getName() + ": " + e.getMessage());
+            // System.out.println("Databasae Connection Failed");
             // System.exit(0);
         }
     }
@@ -60,12 +60,12 @@ public class Database {
         if (conn != null) {
             try {
                 conn.close();
-                System.out.println("Database Connection Closed");
+                // System.out.println("Database Connection Closed");
                 return true;
             }
             catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Database Connection NOT Closed");
+                // e.printStackTrace();
+                // System.out.println("Database Connection NOT Closed");
             }
         }
         return false;
@@ -84,11 +84,11 @@ public class Database {
             employee = createStatement.executeQuery(
                 "SELECT * FROM employee where id = " + id + ";"
             );
-            System.out.println("Got Employee " + id);
+            // System.out.println("Got Employee " + id);
         }
         catch (Exception e) {
-            System.out.println("Failed to get Employee " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to get Employee " + id);
+            // e.printStackTrace();
         }
         return employee;
     }
@@ -103,11 +103,11 @@ public class Database {
             employees = createStatement.executeQuery(
                 "SELECT * FROM employee;"
             );
-            System.out.println("Got Employees");
+            // System.out.println("Got Employees");
         }
         catch (Exception e) {
-            System.out.println("Failed to get Employees");
-            e.printStackTrace();
+            // System.out.println("Failed to get Employees");
+            // e.printStackTrace();
         }
         return employees;
     }
@@ -133,12 +133,12 @@ public class Database {
                 id + ", \'" + userName + "\', \'" + password + "\', \'" + name + "\', \'" + startDate +
                 "\', " + salary + ", \'" + position + "\');"
             );
-            System.out.println("Successfully added Employee " + id);
+            // System.out.println("Successfully added Employee " + id);
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to add Employee");
-            e.printStackTrace();
+            // System.out.println("Failed to add Employee");
+            // e.printStackTrace();
         }
         // return newEmployee;
         return false;
@@ -154,12 +154,12 @@ public class Database {
             createStatement.execute(
                 "DELETE FROM employee WHERE id = " + id + ";"
             );
-            System.out.println("Successfully deleted Employee " + id);
+            // System.out.println("Successfully deleted Employee " + id);
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to delete Employee " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to delete Employee " + id);
+            // e.printStackTrace();
         }
         return false;
     }
@@ -177,12 +177,12 @@ public class Database {
                 "SET username = \'" + newUsername + "\' " +
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Employee " + id + " username");
+            // System.out.println("Successfully updated Employee " + id + " username");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Employee " + id + " username");
-            e.printStackTrace();
+            // System.out.println("Failed to update Employee " + id + " username");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -200,12 +200,12 @@ public class Database {
                 "SET password = \'" + newPassword + "\' " +
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Employee " + id + " password");
+            // System.out.println("Successfully updated Employee " + id + " password");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Employee " + id + " password");
-            e.printStackTrace();
+            // System.out.println("Failed to update Employee " + id + " password");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -223,12 +223,12 @@ public class Database {
                 "SET name = \'" + newName + "\' " + 
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Employee " + id + " name");
+            // System.out.println("Successfully updated Employee " + id + " name");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Employee " + id + " name");
-            e.printStackTrace();
+            // System.out.println("Failed to update Employee " + id + " name");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -246,12 +246,12 @@ public class Database {
                 "SET start_date = \'" + newStartDate + "\' " + 
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Employee " + id + " start_date");
+            // System.out.println("Successfully updated Employee " + id + " start_date");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Employee " + id + " start_date");
-            e.printStackTrace();
+            // System.out.println("Failed to update Employee " + id + " start_date");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -269,12 +269,12 @@ public class Database {
                 "SET salary = " + newSalary + " " + 
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Employee " + id + " salary");
+            // System.out.println("Successfully updated Employee " + id + " salary");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Employee " + id + " salary");
-            e.printStackTrace();
+            // System.out.println("Failed to update Employee " + id + " salary");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -292,12 +292,12 @@ public class Database {
                 "SET position = \'" + newPosition + "\' " +
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Employee " + id + " position");
+            // System.out.println("Successfully updated Employee " + id + " position");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to updated Employee " + id + " salary");
-            e.printStackTrace();
+            // System.out.println("Failed to updated Employee " + id + " salary");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -315,11 +315,11 @@ public class Database {
             shift = createStatement.executeQuery(
                 "SELECT * FROM shifts WHERE id = " + id + ";"
             );
-            System.out.println("Successfully got Shift " + id);
+            // System.out.println("Successfully got Shift " + id);
         }
         catch (Exception e) {
-            System.out.println("Failed to get Shift " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to get Shift " + id);
+            // e.printStackTrace();
         }
         return shift;
     }
@@ -337,12 +337,12 @@ public class Database {
                 "INSERT INTO shifts (id, start_time, end_time) VALUES(" +
                 id + ", " + startTime + ", " + endTime + ");"
             );
-            System.out.println("Successfully added Shift " + id);
+            // System.out.println("Successfully added Shift " + id);
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to add Shift");
-            e.printStackTrace();
+            // System.out.println("Failed to add Shift");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -357,12 +357,12 @@ public class Database {
             createStatement.execute(
                 "DELETE FROM shifts WHERE id = " + id + ";"
             );
-            System.out.println("Successfully deleted Shift " + id);
+            // System.out.println("Successfully deleted Shift " + id);
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to delete Shift " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to delete Shift " + id);
+            // e.printStackTrace();
         }
         return false;
     }
@@ -380,14 +380,12 @@ public class Database {
                 "SET start_time = " + newStartTime + " " + 
                 "WHERE id = " + id + ";"
             );
-            System.out.println(
-                "Successfully updated Shift " + id + " start_time"
-            );
+            // System.out.println("Successfully updated Shift " + id + " start_time");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Shift " + id +  " start_time");
-            e.printStackTrace();
+            // System.out.println("Failed to update Shift " + id +  " start_time");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -405,14 +403,12 @@ public class Database {
                 "SET end_time = " + newEndTime + " " + 
                 "WHERE id = " + id + ";"
             );
-            System.out.println(
-                "Successfully updated Shift " + id + " end_time"
-            );
+            // System.out.println("Successfully updated Shift " + id + " end_time");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Shift " + id +  " end_time");
-            e.printStackTrace();
+            // System.out.println("Failed to update Shift " + id +  " end_time");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -428,11 +424,11 @@ public class Database {
             shifts = createStatement.executeQuery(
                 "SELECT * FROM shifts;"
             );
-            System.out.println("Successfully got Shifts");
+            // System.out.println("Successfully got Shifts");
         }
         catch (Exception e) {
-            System.out.println("Failed to get Shifts");
-            e.printStackTrace();
+            // System.out.println("Failed to get Shifts");
+            // e.printStackTrace();
         }
         return shifts;
     }
@@ -450,11 +446,11 @@ public class Database {
             employeeShift = createStatement.executeQuery(
                 "SELECT * FROM employee_shift WHERE employee_id = " + id + ";"
             );
-            System.out.println("Successfully got Employee Shifts for Employee " + id);
+            // System.out.println("Successfully got Employee Shifts for Employee " + id);
         }
         catch (Exception e) {
-            System.out.println("Failed to get Employee Shifts for Employee " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to get Employee Shifts for Employee " + id);
+            // e.printStackTrace();
         }
         return employeeShift;
     }
@@ -470,11 +466,11 @@ public class Database {
             employeeShifts = createStatement.executeQuery(
                 "SELECT * FROM employee_shift;"
             );
-            System.out.println("Successfully got Employee Shifts");
+            // System.out.println("Successfully got Employee Shifts");
         }
         catch (Exception e) {
-            System.out.println("Failed to get Employee Shifts");
-            e.printStackTrace();
+            // System.out.println("Failed to get Employee Shifts");
+            // e.printStackTrace();
         }
         return employeeShifts;
     }
@@ -494,12 +490,12 @@ public class Database {
                 "INSERT INTO employee_shift (id, shift_id, employee_id, month, day_of_week) VALUES (" +
                 id + ", " + shiftId + ", " + employeeId + ", " + month + ", " + dayOfWeek + ");"
             );
-            System.out.println("Successfully added Employee Shift");
+            // System.out.println("Successfully added Employee Shift");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to add Employee Shift");
-            e.printStackTrace();
+            // System.out.println("Failed to add Employee Shift");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -514,12 +510,12 @@ public class Database {
             createStatement.execute(
                 "DELETE FROM employee_shift WHERE id = " + id + ";"
             );
-            System.out.println("Successfully deleted Employee Shift " + id);
+            // System.out.println("Successfully deleted Employee Shift " + id);
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to delete Employee Shift " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to delete Employee Shift " + id);
+            // e.printStackTrace();
         }
         return false;
     }
@@ -537,12 +533,12 @@ public class Database {
                 "SET shift_id = " + newShiftId + " " + 
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Employee Shift " + id + " shift_id");
+            // System.out.println("Successfully updated Employee Shift " + id + " shift_id");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Employee Shift " + id + " shift_id");
-            e.printStackTrace();
+            // System.out.println("Failed to update Employee Shift " + id + " shift_id");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -560,12 +556,12 @@ public class Database {
                 "SET employee_id = " + newEmployeeId + " " + 
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Employee Shift " + id + " employee_id");
+            // System.out.println("Successfully updated Employee Shift " + id + " employee_id");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Employee Shift " + id + " employee_id");
-            e.printStackTrace();
+            // System.out.println("Failed to update Employee Shift " + id + " employee_id");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -583,12 +579,12 @@ public class Database {
                 "SET month = " + newMonth + " " + 
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Employee Shift " + id + " month");
+            // System.out.println("Successfully updated Employee Shift " + id + " month");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Employee Shift " + id + " month");
-            e.printStackTrace();
+            // System.out.println("Failed to update Employee Shift " + id + " month");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -606,12 +602,12 @@ public class Database {
                 "SET day_of_week = " + newDayOfWeek + " " + 
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Employee Shift " + id + " day_of_week");
+            // System.out.println("Successfully updated Employee Shift " + id + " day_of_week");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Employee Shift " + id + " day_of_week");
-            e.printStackTrace();
+            // System.out.println("Failed to update Employee Shift " + id + " day_of_week");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -629,11 +625,11 @@ public class Database {
             inventoryItem = createStatement.executeQuery(
                 "SELECT * FROM inventory where id = " + id + ";"
             );
-            System.out.println("Got Inventory Item " + id);
+            // System.out.println("Got Inventory Item " + id);
         }
         catch (Exception e) {
-            System.out.println("Failed to get Inventory Item " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to get Inventory Item " + id);
+            // e.printStackTrace();
         }
         return inventoryItem;
     }
@@ -648,11 +644,11 @@ public class Database {
             inventory = createStatement.executeQuery(
                 "SELECT * FROM inventory;"
             );
-            System.out.println("Got Inventory");
+            // System.out.println("Got Inventory");
         }
         catch (Exception e) {
-            System.out.println("Failed to get Inventory");
-            e.printStackTrace();
+            // System.out.println("Failed to get Inventory");
+            // e.printStackTrace();
         }
         return inventory;
     }
@@ -674,12 +670,12 @@ public class Database {
                 "INSERT INTO inventory (id, name, last_restock_date, amount_remaining, amount_used) VALUES (" +
                 id + ", \'" + name + "\', \'" + lastRestockDate + "\', " + amountRemaining + ", " + amountUsed + ");"
             );
-            System.out.println("Successfully added Inventory Item " + id);
+            // System.out.println("Successfully added Inventory Item " + id);
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to add Inventory Item");
-            e.printStackTrace();
+            // System.out.println("Failed to add Inventory Item");
+            // e.printStackTrace();
         }
         return false;
         // return newInventoryItem;
@@ -695,12 +691,12 @@ public class Database {
             createStatement.execute(
                 "DELETE FROM inventory WHERE id = " + id + ";"
             );
-            System.out.println("Successfully deleted Inventory Item " + id);
+            // System.out.println("Successfully deleted Inventory Item " + id);
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to delete Inventory Item " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to delete Inventory Item " + id);
+            // e.printStackTrace();
         }
         return false;
     }
@@ -718,10 +714,10 @@ public class Database {
             // );
             // inventoryItem.next();
             // int currentAmountRemaining = inventoryItem.getInt("amount_remaining");
-            // System.out.println("Got amount_remaining");
+            // // System.out.println("Got amount_remaining");
             // int currentAmountUsed = inventoryItem.getInt("amount_used");
-            // System.out.println("Got amount_used");
-            // System.out.println(
+            // // System.out.println("Got amount_used");
+            // // System.out.println(
             //     "UPDATE inventory " +
             //     "SET amount_remaining = " + newAmountRemaining + ", " + 
             //     "amount_used = " + (currentAmountUsed + (currentAmountRemaining - newAmountRemaining)) + " " +
@@ -733,13 +729,13 @@ public class Database {
                 // "amount_used = " + (currentAmountUsed + (currentAmountRemaining - newAmountRemaining)) + " " +
                 "WHERE id = " + id + ";"
             );
-            // System.out.println("Successfully updated Inventory Item " + id + " amounts");
-            System.out.println("Successfully updated Inventory Item " + id + " amount remaining");
+            // // System.out.println("Successfully updated Inventory Item " + id + " amounts");
+            // System.out.println("Successfully updated Inventory Item " + id + " amount remaining");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Inventory Item " + id + " Amount remaining");
-            e.printStackTrace();
+            // System.out.println("Failed to update Inventory Item " + id + " Amount remaining");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -757,12 +753,12 @@ public class Database {
                 "SET amount_used = " + newAmountUsed + " " +
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Inventory Item " + id + " amount used");
+            // System.out.println("Successfully updated Inventory Item " + id + " amount used");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Inventory Item " + id + " Amount used");
-            e.printStackTrace();
+            // System.out.println("Failed to update Inventory Item " + id + " Amount used");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -780,12 +776,12 @@ public class Database {
                 "SET name = \'" + newName + "\' " +
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Inventory Item " + id + " name");
+            // System.out.println("Successfully updated Inventory Item " + id + " name");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Inventory Item " + id + " name");
-            e.printStackTrace();
+            // System.out.println("Failed to update Inventory Item " + id + " name");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -810,12 +806,12 @@ public class Database {
                 "last_restock_date = \'" + restockDate + "\' " + 
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully restocked Inventory Item " + id);
+            // System.out.println("Successfully restocked Inventory Item " + id);
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to restock Inventory Item " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to restock Inventory Item " + id);
+            // e.printStackTrace();
         }
         return false;
     }
@@ -833,11 +829,11 @@ public class Database {
             menuItem = createStatement.executeQuery(
                 "SELECT * FROM menu where id = " + id + ";"
             );
-            System.out.println("Got Menu Item " + id);
+            // System.out.println("Got Menu Item " + id);
         }
         catch (Exception e) {
-            System.out.println("Failed to get Menu Item " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to get Menu Item " + id);
+            // e.printStackTrace();
         }
         return menuItem;
     }
@@ -852,11 +848,11 @@ public class Database {
             menu = createStatement.executeQuery(
                 "SELECT * FROM menu;"
             );
-            System.out.println("Got Menu");
+            // System.out.println("Got Menu");
         }
         catch (Exception e) {
-            System.out.println("Failed to get Menu");
-            e.printStackTrace();
+            // System.out.println("Failed to get Menu");
+            // e.printStackTrace();
         }
         return menu;
     }
@@ -876,12 +872,12 @@ public class Database {
                 "INSERT INTO menu (id, name, price) VALUES (" +
                 id + ", \'" + name + "\', " + price + ");"
             );
-            System.out.println("Successfully added Menu Item " + id);
+            // System.out.println("Successfully added Menu Item " + id);
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to add Menu Item");
-            e.printStackTrace();
+            // System.out.println("Failed to add Menu Item");
+            // e.printStackTrace();
             return false;
         }
         // return newMenuItem;
@@ -897,12 +893,12 @@ public class Database {
             createStatement.execute(
                 "DELETE FROM menu WHERE id = " + id + ";"
             );
-            System.out.println("Successfully deleted Menu Item " + id);
+            // System.out.println("Successfully deleted Menu Item " + id);
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to delete Menu Item " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to delete Menu Item " + id);
+            // e.printStackTrace();
             return false;
         }
     }
@@ -920,12 +916,12 @@ public class Database {
                 "SET price = " + newPrice + " " +
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Menu Item " + id + " price");
+            // System.out.println("Successfully updated Menu Item " + id + " price");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Faled to update Menu Item " + id + " price");
-            e.printStackTrace();
+            // System.out.println("Faled to update Menu Item " + id + " price");
+            // e.printStackTrace();
             return false;
         }
     }
@@ -943,12 +939,12 @@ public class Database {
                 "SET name = \'" + newName + "\' " +
                 "WHERE id = " + id + ";" 
             );
-            System.out.println("Successfully updated Menu Item " + id + " name");
+            // System.out.println("Successfully updated Menu Item " + id + " name");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Menu Item " + id + " name");
-            e.printStackTrace();
+            // System.out.println("Failed to update Menu Item " + id + " name");
+            // e.printStackTrace();
             return false;
         }
     }
@@ -970,12 +966,12 @@ public class Database {
                     id + ", " + invId + ");"
                 );
             }
-            System.out.println("Successfully updated Menu Item " + id + "\'s inventory items");
+            // System.out.println("Successfully updated Menu Item " + id + "\'s inventory items");
 
         }
         catch (Exception e) {
-            System.out.println("Failed to update Menu Item " + id + "\'s inventory items");
-            e.printStackTrace();
+            // System.out.println("Failed to update Menu Item " + id + "\'s inventory items");
+            // e.printStackTrace();
         }
     }
 
@@ -990,11 +986,11 @@ public class Database {
             invItems = createStatement.executeQuery(
                 "SELECT inventory_id FROM menu_inventory WHERE menu_id = " + id + ";"
             );
-            System.out.println("Got inventory items for Menu Item " + id);
+            // System.out.println("Got inventory items for Menu Item " + id);
         }
         catch (Exception e) {
-            System.out.println("Failed to get inventory items from Menu Item " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to get inventory items from Menu Item " + id);
+            // e.printStackTrace();
         }
         return invItems;
     }
@@ -1010,11 +1006,11 @@ public class Database {
             addOns = createStatement.executeQuery (
                 "SELECT add_on_id FROM menu_add_on WHERE menu_id = " + id + ";"
             );
-            System.out.println("Got add ons for Menu Item" + id);
+            // System.out.println("Got add ons for Menu Item" + id);
         }
         catch (Exception e) {
-            System.out.println("Failed to get add ons for Menu Item" + id);
-            e.printStackTrace();
+            // System.out.println("Failed to get add ons for Menu Item" + id);
+            // e.printStackTrace();
         }
         return addOns;
     }
@@ -1036,12 +1032,12 @@ public class Database {
                     id + ", " + addOnId + ");"
                 );
             }
-            System.out.println("Successfully updated Menu Item " + id + "\'s add ons");
+            // System.out.println("Successfully updated Menu Item " + id + "\'s add ons");
 
         }
         catch (Exception e) {
-            System.out.println("Failed to update Menu Item " + id + "\'s add ons");
-            e.printStackTrace();
+            // System.out.println("Failed to update Menu Item " + id + "\'s add ons");
+            // e.printStackTrace();
         }
     }
 
@@ -1058,11 +1054,11 @@ public class Database {
             addOn = createStatement.executeQuery(
                 "SELECT * FROM add_on WHERE id = " + id + ";"
             );
-            System.out.println("Successfully got Add-On " + id);
+            // System.out.println("Successfully got Add-On " + id);
         }
         catch (Exception e) {
-            System.out.println("Failed to get Add-On " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to get Add-On " + id);
+            // e.printStackTrace();
         }
         return addOn;
     }
@@ -1077,11 +1073,11 @@ public class Database {
             addOns = createStatement.executeQuery(
                 "SELECT * FROM add_on;"
             );
-            System.out.println("Successfully got All Add-Ons");
+            // System.out.println("Successfully got All Add-Ons");
         }
         catch (Exception e) {
-            System.out.println("Failed to get All Add-Ons");
-            e.printStackTrace();
+            // System.out.println("Failed to get All Add-Ons");
+            // e.printStackTrace();
         }
         return addOns;
     }
@@ -1096,12 +1092,12 @@ public class Database {
             createStatement.execute(
                 "DELETE FROM add_on WHERE id = " + id + ";"
             );
-            System.out.println("Successfully deleted Add-On " + id);
+            // System.out.println("Successfully deleted Add-On " + id);
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to delete Add-On " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to delete Add-On " + id);
+            // e.printStackTrace();
         }
         return false;
     }
@@ -1119,12 +1115,12 @@ public class Database {
                 "SET name = \'" + newName + "\' " +
                 "WHERE id = " + id + ";" 
             );
-            System.out.println("Successfully updated Add-On " + id + " name");
+            // System.out.println("Successfully updated Add-On " + id + " name");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Add-On " + id + " name");
-            e.printStackTrace();
+            // System.out.println("Failed to update Add-On " + id + " name");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -1142,12 +1138,12 @@ public class Database {
                 "SET price = " + newPrice + " " + 
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Add-On " + id + " price");
+            // System.out.println("Successfully updated Add-On " + id + " price");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Add-On " + id + " price");
-            e.printStackTrace();
+            // System.out.println("Failed to update Add-On " + id + " price");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -1165,12 +1161,12 @@ public class Database {
                 "SET inventory_id = " + newInventoryId + " " + 
                 "WHERE id = " + id + ";"
             );
-            System.out.println("Successfully updated Add-On " + id + " inventory id");
+            // System.out.println("Successfully updated Add-On " + id + " inventory id");
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to update Add-On " + id + " inventory id");
-            e.printStackTrace();
+            // System.out.println("Failed to update Add-On " + id + " inventory id");
+            // e.printStackTrace();
         }
         return false;
     }
@@ -1188,11 +1184,11 @@ public class Database {
             order = createStatement.executeQuery(
                 "SELECT * FROM orders where id = " + id + ";"
             );
-            System.out.println("Got Order " + id);
+            // System.out.println("Got Order " + id);
         }
         catch (Exception e) {
-            System.out.println("Failed to get Order " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to get Order " + id);
+            // e.printStackTrace();
         }
         return order;
     }
@@ -1207,11 +1203,11 @@ public class Database {
             orders = createStatement.executeQuery(
                 "SELECT * FROM orders;"
             );
-            System.out.println("Got Orders");
+            // System.out.println("Got Orders");
         }
         catch (Exception e) {
-            System.out.println("Failed to get Orders");
-            e.printStackTrace();
+            // System.out.println("Failed to get Orders");
+            // e.printStackTrace();
         }
         return orders;
     }
@@ -1227,10 +1223,10 @@ public class Database {
             orderItems = createStatement.executeQuery(
                 "SELECT * FROM order_menu WHERE order_id = " + id + ";"
             );
-            System.out.println("Got Menu Items for Order " + id);
+            // System.out.println("Got Menu Items for Order " + id);
         }
         catch (Exception e) {
-            System.out.println("Failed to get Menu Items for Order " + id);
+            // System.out.println("Failed to get Menu Items for Order " + id);
         }
         return orderItems;
     }
@@ -1250,7 +1246,7 @@ public class Database {
             );
         }
         catch (Exception e) {
-            System.out.println("Failed to get Add-Ons for Menu Item in an Order");
+            // System.out.println("Failed to get Add-Ons for Menu Item in an Order");
         }
         return addOns;
     }
@@ -1296,8 +1292,8 @@ public class Database {
             }
         }
         catch (Exception e) {
-            System.out.println("Failed to add Order");
-            e.printStackTrace();
+            // System.out.println("Failed to add Order");
+            // e.printStackTrace();
         }
     }
 
@@ -1314,7 +1310,7 @@ public class Database {
                     );
                 }
                 catch (Exception e) {
-                    e.printStackTrace();
+                    // e.printStackTrace();
                 }
                 createStatement.executeQuery(
                     "DELETE FROM order_menu WHERE id = " + orderMenuJunctionId + ";"
@@ -1323,12 +1319,12 @@ public class Database {
             createStatement.executeQuery(
                 "DELETE FROM orders WHERE id = " + id + ";"
             );
-            System.out.println("Successfully deleted Order " + id);
+            // System.out.println("Successfully deleted Order " + id);
             return true;
         }
         catch (Exception e) {
-            System.out.println("Failed to completely delete Order " + id);
-            e.printStackTrace();
+            // System.out.println("Failed to completely delete Order " + id);
+            // e.printStackTrace();
         }
         return false;
     }
