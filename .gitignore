@@ -4,3 +4,5 @@ ManagerGUI/src/main/java/com/mycompany/managergui/*.class
 ManagerGUI/target/*
 POS/src/*.class
 *.class
+/cashierPOS/nbproject/private/
+/cashierPOS/build/

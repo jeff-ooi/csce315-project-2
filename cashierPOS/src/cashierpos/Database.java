@@ -1052,7 +1052,7 @@ public class Database {
      * @param id the id of the Add-On
      * @return ResultSet containing the single Add-On data or null
      */
-    public ResultSet getSingeAddOn(int id) {
+    public ResultSet getSingleAddOn(int id) {
         ResultSet addOn = null;
         try {
             addOn = createStatement.executeQuery(
@@ -1257,13 +1257,20 @@ public class Database {
 
     /**
      * Adds an order to the database and updates respective junction tables
-     * @param id (id of the new order)
      * @param price (price of the new order)
      * @param dateTime (date and time of the new order)
      * @param menuItemIds (menu ids of items in the order)
      * @param addOnIdsForEachMenuItem (corresponding ids for add ons for each menu item)
     */
-    public void addOrder(int id, double price, java.util.Date dateTime, ArrayList<Integer> menuItemIds, ArrayList<ArrayList<Integer>> addOnIdsForEachMenuItem) {        
+    public void addOrder(double price, java.util.Date dateTime, ArrayList<Integer> menuItemIds, ArrayList<ArrayList<Integer>> addOnIdsForEachMenuItem) {        
+        ResultSet id = null;
+        try {
+            id = createStatement.executeQuery("SELECT id FROM orders ORDER BY id DESC LIMIT 1;");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to get new Order id");
+            e.printStackTrace();
+        }
         try {
             createStatement.execute(
                 "INSERT INTO orders (id, price, date_time) VALUES (" +
