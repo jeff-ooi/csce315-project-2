@@ -80,6 +80,14 @@ public class Dialogs extends javax.swing.JFrame {
         amount_remaing_textField_inventory_add_panel = new javax.swing.JTextField();
         amount_used_textField_inventory_add_panel = new javax.swing.JTextField();
         add_inventory_item_button = new javax.swing.JButton();
+        restock_inventory_item_panel = new javax.swing.JPanel();
+        last_restock_date_textField = new javax.swing.JTextField();
+        last_restock_inventory_amount_restocked_textField = new javax.swing.JTextField();
+        last_restock_inventory_date_label = new javax.swing.JLabel();
+        last_restock_inventory_amount_label = new javax.swing.JLabel();
+        restockInventoryItem_button = new javax.swing.JButton();
+        id_restock_inventory_textField = new javax.swing.JTextField();
+        id_last_restock_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,7 +121,7 @@ public class Dialogs extends javax.swing.JFrame {
                     .addComponent(id_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(price_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(name_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_add_panelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(menu_add_button)
@@ -191,7 +199,7 @@ public class Dialogs extends javax.swing.JFrame {
                     .addGroup(inventory_add_panelLayout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addComponent(add_inventory_item_button)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         inventory_add_panelLayout.setVerticalGroup(
             inventory_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,6 +230,63 @@ public class Dialogs extends javax.swing.JFrame {
         );
 
         layered_pane.add(inventory_add_panel, "card3");
+
+        last_restock_inventory_date_label.setText("date_restocked:");
+
+        last_restock_inventory_amount_label.setText("amount_restocked:");
+
+        restockInventoryItem_button.setText("restock Inventory Item");
+        restockInventoryItem_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restockInventoryItem_buttonActionPerformed(evt);
+            }
+        });
+
+        id_last_restock_label.setText("id:");
+
+        javax.swing.GroupLayout restock_inventory_item_panelLayout = new javax.swing.GroupLayout(restock_inventory_item_panel);
+        restock_inventory_item_panel.setLayout(restock_inventory_item_panelLayout);
+        restock_inventory_item_panelLayout.setHorizontalGroup(
+            restock_inventory_item_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(restock_inventory_item_panelLayout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(restockInventoryItem_button)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, restock_inventory_item_panelLayout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addGroup(restock_inventory_item_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(last_restock_inventory_amount_label)
+                    .addComponent(last_restock_inventory_date_label)
+                    .addComponent(id_last_restock_label))
+                .addGap(45, 45, 45)
+                .addGroup(restock_inventory_item_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(id_restock_inventory_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(restock_inventory_item_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(last_restock_date_textField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(last_restock_inventory_amount_restocked_textField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(68, 68, 68))
+        );
+        restock_inventory_item_panelLayout.setVerticalGroup(
+            restock_inventory_item_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(restock_inventory_item_panelLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(restock_inventory_item_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(id_restock_inventory_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(id_last_restock_label))
+                .addGap(29, 29, 29)
+                .addGroup(restock_inventory_item_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(last_restock_date_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(last_restock_inventory_date_label))
+                .addGap(18, 18, 18)
+                .addGroup(restock_inventory_item_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(last_restock_inventory_amount_restocked_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(last_restock_inventory_amount_label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(restockInventoryItem_button)
+                .addGap(42, 42, 42))
+        );
+
+        layered_pane.add(restock_inventory_item_panel, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -273,6 +338,19 @@ public class Dialogs extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_add_inventory_item_buttonActionPerformed
 
+    private void restockInventoryItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restockInventoryItem_buttonActionPerformed
+        // TODO add your handling code here:
+        if (database.restockInventoryItem(Integer.parseInt(id_restock_inventory_textField.getText()), last_restock_date_textField.getText(), Integer.parseInt(last_restock_inventory_amount_restocked_textField.getText()))){
+                throwSuccessMessage(1);
+                id_restock_inventory_textField.setText("");
+                last_restock_date_textField.setText("");
+                last_restock_inventory_amount_restocked_textField.setText("");
+            
+            }else{
+                throwErrorMessage();
+            }
+    }//GEN-LAST:event_restockInventoryItem_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -319,6 +397,9 @@ public class Dialogs extends javax.swing.JFrame {
     public JPanel getMenuAddPanel() {
         return menu_add_panel;
     }
+    public JPanel getRestockInventoryItemPanel() {
+        return restock_inventory_item_panel;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_inventory_item_button;
@@ -327,11 +408,17 @@ public class Dialogs extends javax.swing.JFrame {
     private javax.swing.JLabel amount_used_label_inventory_add_panel;
     private javax.swing.JTextField amount_used_textField_inventory_add_panel;
     private javax.swing.JLabel id_label_inventory_add_panel;
+    private javax.swing.JLabel id_last_restock_label;
     private javax.swing.JTextField id_menu_add_textField;
+    private javax.swing.JTextField id_restock_inventory_textField;
     private javax.swing.JTextField id_textField_inventory_add_panel;
     private javax.swing.JPanel inventory_add_panel;
     private javax.swing.JLabel last_restock_date_label_inventory_add_panel;
+    private javax.swing.JTextField last_restock_date_textField;
     private javax.swing.JTextField last_restock_date_textField_inventory_add_panel;
+    private javax.swing.JLabel last_restock_inventory_amount_label;
+    private javax.swing.JTextField last_restock_inventory_amount_restocked_textField;
+    private javax.swing.JLabel last_restock_inventory_date_label;
     private javax.swing.JLayeredPane layered_pane;
     private javax.swing.JButton menu_add_button;
     private javax.swing.JLabel menu_add_id_label;
@@ -342,5 +429,7 @@ public class Dialogs extends javax.swing.JFrame {
     private javax.swing.JTextField name_textField_inventory_add_panel;
     private javax.swing.JLabel price_menu_add_label;
     private javax.swing.JTextField price_menu_add_textField;
+    private javax.swing.JButton restockInventoryItem_button;
+    private javax.swing.JPanel restock_inventory_item_panel;
     // End of variables declaration//GEN-END:variables
 }
