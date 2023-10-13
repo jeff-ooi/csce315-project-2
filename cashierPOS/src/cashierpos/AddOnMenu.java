@@ -10,11 +10,16 @@ package cashierpos;
  */
 public class AddOnMenu extends javax.swing.JFrame {
 
+    private int menuID;
     /**
      * Creates new form AddOnMenu
      */
     public AddOnMenu() {
         initComponents();
+    }
+    public AddOnMenu(int menuID) {
+        initComponents();
+        this.menuID = menuID;
     }
 
     /**
