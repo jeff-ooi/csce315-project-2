@@ -6,3 +6,4 @@ POS/src/*.class
 *.class
 /cashierPOS/nbproject/private/
 /cashierPOS/build/
+/cahsierPOS/src/*.dat
