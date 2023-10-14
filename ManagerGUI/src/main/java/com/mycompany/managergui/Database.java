@@ -816,6 +816,32 @@ public class Database {
         return false;
     }
 
+    /**
+     * helper function for addOrder
+     * decreases an Inventory Item's amount remaining by 1
+     * increases an Inventory Item's amount used by 1
+     * @param id the id of the Inventory Item
+     * @return boolean stating whether the update was successful
+     */
+    private boolean useInventoryItem(int id) {
+        try {
+            ResultSet inventoryItem = getSingleInventoryItem(id);
+            inventoryItem.next();
+            int amountRemaining = inventoryItem.getInt("amount_remaining");
+            int amountUsed = inventoryItem.getInt("amount_used");
+            amountRemaining--;
+            amountUsed++;
+            boolean updateAmountRemaining = updateInventoryItemAmountRemaining(id, amountRemaining);
+            boolean updateAmountUsed = updateInventoryItemAmountUsed(id, amountUsed);
+            return updateAmountRemaining && updateAmountUsed;
+        }
+        catch (Exception e) {
+            // System.out.println("Failed to use Inventory Item");
+            // e.printStackTrace();
+        }
+        return false;
+    }
+
     // MENU SECTION
 
     /**
@@ -954,7 +980,7 @@ public class Database {
      * @param id (id of the menu item to update)
      * @param inventoryIds (new inventory ids of the menu item)
      */
-    public void updateMenuItemInventoryItems(int id, ArrayList<Integer> inventoryIds) {
+    public boolean updateMenuItemInventoryItems(int id, ArrayList<Integer> inventoryIds) {
         try {
             createStatement.execute(
                 "DELETE FROM menu_inventory WHERE menu_id = " + id + ";"
@@ -967,12 +993,13 @@ public class Database {
                 );
             }
             // System.out.println("Successfully updated Menu Item " + id + "\'s inventory items");
-
+            return true;
         }
         catch (Exception e) {
             // System.out.println("Failed to update Menu Item " + id + "\'s inventory items");
             // e.printStackTrace();
         }
+        return false;
     }
 
     /**
@@ -1020,7 +1047,7 @@ public class Database {
      * @param id (id of the menu item)
      * @param addOnIds (ids for new add ons)
      */
-    public void updateMenuItemAddOns(int id, ArrayList<Integer> addOnIds) {
+    public boolean updateMenuItemAddOns(int id, ArrayList<Integer> addOnIds) {
         try {
             createStatement.execute(
                 "DELETE FROM menu_add_on WHERE menu_id = " + id + ";"
@@ -1033,12 +1060,13 @@ public class Database {
                 );
             }
             // System.out.println("Successfully updated Menu Item " + id + "\'s add ons");
-
+            return true;
         }
         catch (Exception e) {
             // System.out.println("Failed to update Menu Item " + id + "\'s add ons");
             // e.printStackTrace();
         }
+        return false;
     }
 
     // ADD-ONS SECTION
@@ -1048,7 +1076,7 @@ public class Database {
      * @param id the id of the Add-On
      * @return ResultSet containing the single Add-On data or null
      */
-    public ResultSet getSingeAddOn(int id) {
+    public ResultSet getSingleAddOn(int id) {
         ResultSet addOn = null;
         try {
             addOn = createStatement.executeQuery(
@@ -1253,13 +1281,25 @@ public class Database {
 
     /**
      * Adds an order to the database and updates respective junction tables
-     * @param id (id of the new order)
+     * Updates the counts of the Inventory
      * @param price (price of the new order)
      * @param dateTime (date and time of the new order)
      * @param menuItemIds (menu ids of items in the order)
      * @param addOnIdsForEachMenuItem (corresponding ids for add ons for each menu item)
     */
-    public void addOrder(int id, double price, java.util.Date dateTime, ArrayList<Integer> menuItemIds, ArrayList<ArrayList<Integer>> addOnIdsForEachMenuItem) {        
+    public boolean addOrder(double price, java.util.Date dateTime, ArrayList<Integer> menuItemIds, ArrayList<ArrayList<Integer>> addOnIdsForEachMenuItem) {        
+        ResultSet idSet = null;
+        int id = -1;
+        try {
+            idSet = createStatement.executeQuery("SELECT id FROM orders ORDER BY id DESC LIMIT 1;");
+            idSet.next();
+            id = idSet.getInt("id") + 1;
+        }
+        catch (Exception e) {
+            // System.out.println("Failed to get new Order id");
+            // e.printStackTrace();
+            return false;
+        }
         try {
             createStatement.execute(
                 "INSERT INTO orders (id, price, date_time) VALUES (" +
@@ -1282,19 +1322,30 @@ public class Database {
                     maxId + ", " + id + ", " + menuItemIds.get(i) + ");"
                 );
 
+                // updates the inventory count
+                ResultSet menuItemInventoryItems = getMenuItemInventoryItems(menuItemIds.get(i));
+                while (menuItemInventoryItems.next()) {
+                    int inventoryItemId = menuItemInventoryItems.getInt("inventory_id");
+                    useInventoryItem(inventoryItemId);
+                }
+
                 // update order add_on junction table
                 for (int addOnId : addOnIdsForEachMenuItem.get(i)) {
                     createStatement.execute(
                         "INSERT INTO order_add_ons (order_menu_junction_id, add_on_id) VALUES (" +
                         maxId + ", " + addOnId + ");"
                     );
+                    // updates the inventory count
+                    useInventoryItem(addOnId);
                 }
             }
+            return true;
         }
         catch (Exception e) {
             // System.out.println("Failed to add Order");
             // e.printStackTrace();
         }
+        return false;
     }
 
     public boolean deleteOrder(int id) {
