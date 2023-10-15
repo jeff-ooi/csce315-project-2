@@ -2,6 +2,10 @@ package com.mycompany.managergui;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+
+import javax.naming.spi.DirStateFactory.Result;
 
 /**
  * @author Jeff Ooi, Suhu Lavu
@@ -1379,5 +1383,31 @@ public class Database {
         }
         return false;
     }
+
+    // REPORTS SECTION
+
+    public ResultSet salesReport(String startDateTime, String endDateTime) {
+        ResultSet report = null;
+        return report;
+    }
+
+    public ResultSet excessReport(String timeStamp) {
+        ResultSet report = null;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        String currentDateTimeString = dtf.format(currentDateTime);
+        return report;
+    }
+
+    public ResultSet restockReport() {
+        ResultSet report = null;
+        return report;
+    }
+
+    // Unsure if needed
+    // public ResultSet menuItemsPopularity(String startDateTime, String endDateTime) {
+    //     ResultSet report = null;
+    //     return report;
+    // }
 
 }
