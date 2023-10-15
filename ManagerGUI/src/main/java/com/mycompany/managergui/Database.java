@@ -1393,9 +1393,10 @@ public class Database {
 
     public ResultSet excessReport(String timeStamp) {
         ResultSet report = null;
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        String currentDateTimeString = dtf.format(currentDateTime);
+        // user LOCALTIMESTAMP in the sql command
+        // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        // LocalDateTime currentDateTime = LocalDateTime.now();
+        // String currentDateTimeString = dtf.format(currentDateTime);
         return report;
     }
 
