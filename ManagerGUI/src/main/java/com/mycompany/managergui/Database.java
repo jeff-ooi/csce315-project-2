@@ -1506,10 +1506,9 @@ public class Database {
         return report;
     }
 
-    // Unsure if needed
-    // public ResultSet menuItemsPopularity(String startDateTime, String endDateTime) {
-    //     ResultSet report = null;
-    //     return report;
-    // }
+    public ResultSet menuItemsPopularity(String startDateTime, String endDateTime) {
+        ResultSet report = null;
+        return report;
+    }
 
 }
