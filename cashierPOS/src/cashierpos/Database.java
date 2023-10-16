@@ -804,6 +804,7 @@ public class Database {
                 "UPDATE inventory " + 
                 "SET amount_remaining = " + (amountRemaining + restockAmount) + ", " + 
                 "last_restock_date = \'" + restockDate + "\' " + 
+                "amount_used = 0 " +    // amount_used is the amount used after the last restock
                 "WHERE id = " + id + ";"
             );
             // System.out.println("Successfully restocked Inventory Item " + id);

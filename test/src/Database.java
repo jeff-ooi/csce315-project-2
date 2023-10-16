@@ -1,6 +1,9 @@
 // import java.rmi.server.ExportException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.naming.spi.DirStateFactory.Result;
 public class Database {
 
     private Connection conn;
@@ -387,7 +390,7 @@ public class Database {
             invItems = createStatement.executeQuery(
                 "SELECT inventory_id FROM menu_inventory WHERE menu_id = " + id + ";"
             );
-            System.out.println("Got inventory items for Menu Item " + id);
+            // System.out.println("Got inventory items for Menu Item " + id);
         }
         catch (Exception e) {
             System.out.println("Failed to get inventory items from Menu Item " + id);
@@ -581,6 +584,108 @@ public class Database {
             e.printStackTrace();
         }
         return;
+    }
+
+    /**
+     * generates the Excess Report for Inventory Items given a starting datetime, assuming there are no restocks between the starting datetime and the current time
+     * An inventory Item is in excess when it sells less than 10% of its inventory between the starting datetime and the current time
+     * @param timeStamp the datetime to start from in "yyyy-MM-dd HH:mm:ss" format
+     * @return ResultSet with the Inventory Item Ids that are in excess
+     */
+    public ResultSet excessReport(String timeStamp) {
+        ResultSet report = null;
+        try {
+            ResultSet inventoryItems = getInventory();
+            // Holds the Inventory Items that sold less than 10% of their inventories during the timeframe
+            ArrayList<Integer> excessInventoryIds = new ArrayList<Integer>();
+            // Holds the total inventory of each Inventory Item assuming no restocks occurred during the timeframe
+            HashMap<Integer,Integer> totalInventory = new HashMap<Integer,Integer>();
+            // Holds the amount each Inventory Item is was ordered during the timeframe
+            HashMap<Integer,Integer> totalUsed = new HashMap<Integer,Integer>();
+
+            // for every Inventory Item
+            while (inventoryItems.next()) {
+                int inventoryItemId = inventoryItems.getInt("id");
+                int total = inventoryItems.getInt("amount_remaining") + inventoryItems.getInt("amount_used");
+                // adds the total inventory of the Inventory Item to the totalInventory HashMap
+                totalInventory.put(inventoryItemId, total);
+            }
+
+            // new createStatement to not close the orderMenuCount ResultSet when calling getMenuItemInventoryItems in the while loop
+            Statement createStatement2 = conn.createStatement();
+
+            // gets every Order that happened between the timeStamp and the current timestamp
+            // then gets every Order-Menu Junction associated with those Orders
+            // then groups them by Menu Item
+            // then counts each Order-Menu Junction associated with each Menu Item
+            // then returns those counts along with their associated Menu Items
+            ResultSet orderMenuCount = createStatement2.executeQuery(
+                "SELECT COUNT(*),menu_id FROM order_menu WHERE order_id in (" +
+                "SELECT id FROM orders WHERE date_time BETWEEN \'" + timeStamp + "\' AND LOCALTIMESTAMP" +
+                ") GROUP BY menu_id;"
+            );
+
+            // for every Menu Item ordered in the timeframe
+            while (orderMenuCount.next()) {
+                int menuItemId = orderMenuCount.getInt("menu_id");
+                int count = orderMenuCount.getInt("count");
+                ResultSet menuInventory = getMenuItemInventoryItems(menuItemId);
+
+                // for every Inventory Item used to make the Menu Item
+                while (menuInventory.next()) {
+                    int inventoryItemId = menuInventory.getInt("inventory_id");
+                    // puts count or (count + the value already in the map) into the totalUsed HashMap
+                    totalUsed.merge(inventoryItemId, count, (a,b) -> a+b);
+                }
+            }
+
+            // gets every Order that happened between the timeStamp and the current timestamp
+            // then gets every Order-Menu Junction associated with those Orders
+            // then gets every Order-Add-On Junction associated with those Order-Menu Junctions
+            // the groups them by Add-On
+            // then counts each Order-Add-On Junction associated with each Add-On
+            // then returns those counts along with their associated Add-On
+            ResultSet orderAddOnsCount = createStatement.executeQuery(
+                "SELECT COUNT(*),add_on_id FROM order_add_ons WHERE order_menu_junction_id in (" +
+                "SELECT id FROM order_menu WHERE order_id in " +
+                "(SELECT id FROM orders WHERE date_time BETWEEN \'" + timeStamp + "\' AND LOCALTIMESTAMP)" +
+                ") GROUP BY add_on_id;"
+            );
+
+            // for every Add-On ordered in the timeframe
+            while (orderAddOnsCount.next()) {
+                int addOnId = orderAddOnsCount.getInt("add_on_id");
+                int count = orderAddOnsCount.getInt("count");
+                // adds the count to the totalUsed HashMap
+                totalUsed.put(addOnId, count);
+            }
+
+            for (HashMap.Entry<Integer,Integer> entry : totalUsed.entrySet()) {
+                int inventoryId = entry.getKey();
+                int amountUsed = entry.getValue();
+                System.out.println(inventoryId + " " + amountUsed + " " + (totalInventory.get(inventoryId)*0.1));
+                if (totalInventory.get(inventoryId) * 0.1 > amountUsed) {
+                    excessInventoryIds.add(inventoryId);
+                }
+            }
+            if (!excessInventoryIds.isEmpty()) {
+                String queryStatement = "SELECT id FROM inventory WHERE id in (";
+                for (int i = 0; i < excessInventoryIds.size(); i++) {
+                    queryStatement += excessInventoryIds.get(i);
+                    if (i < excessInventoryIds.size()-1) {
+                        queryStatement += ",";
+                    }
+                }
+                queryStatement += ");";
+                report = createStatement.executeQuery(queryStatement);
+            }
+            System.out.println("Excess Report generated successfully");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to generate excess report");
+            e.printStackTrace();
+        }
+        return report;
     }
 
 }

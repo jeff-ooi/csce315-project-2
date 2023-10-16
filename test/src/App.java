@@ -25,6 +25,13 @@ public class App {
         }
         input.close();
 
+        ResultSet test = conn.excessReport("2022-01-01 00:00:00");
+        System.out.println("ids");
+        while (test.next()) {
+            int id = test.getInt("id");
+            System.out.println(id);
+        }
+
         // conn.addEmployee(5555, "tempM", "tempM", "tempM", "2011-10-31", 20, "manager");
         // conn.deleteEmployee(5555);
 
@@ -41,12 +48,12 @@ public class App {
         // conn.deleteMenuItem(5555);
 
         // testing update menu inventory junction
-        ArrayList<Integer> ids = new ArrayList<Integer>(Arrays.asList(11, 6, 16, 17));
-        conn.updateMenuItemInventoryItems(1, ids);
+        // ArrayList<Integer> ids = new ArrayList<Integer>(Arrays.asList(11, 6, 16, 17));
+        // conn.updateMenuItemInventoryItems(1, ids);
 
-        // testing update menu add on junction
-        ArrayList<Integer> addOnIds = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 11));
-        conn.updateMenuItemAddOns(1, addOnIds);
+        // // testing update menu add on junction
+        // ArrayList<Integer> addOnIds = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 11));
+        // conn.updateMenuItemAddOns(1, addOnIds);
 
         conn.closeDatabase();
     }
