@@ -2,6 +2,8 @@ package cashierpos;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -50,7 +52,7 @@ public class OrderMenu extends javax.swing.JFrame {
         String orderText = "";
         double subtotal = 0;
         double tax = 0;
-        double total = 0;
+        total = 0;
         DecimalFormat df = new DecimalFormat("#.00");
         for (item i : items) {
             orderText += i.getName() + "\t\t$" + i.getPrice() + "\n";
@@ -804,13 +806,19 @@ public class OrderMenu extends javax.swing.JFrame {
 
     private void checkout_buttonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_checkout_buttonActionPerformed
         // TODO Submit order to database
-        // try {
-
-        // database.addOrder(total, )
-        // }
-        // catch (Exception e) {
-
-        // }
+        ArrayList<Integer> item_ids = new ArrayList<Integer>();
+        ArrayList<ArrayList<Integer>> add_on_ids = new ArrayList<ArrayList<Integer>>();
+        for (item i : items) {
+            item_ids.add(i.getId());
+            add_on_ids.add(i.getAddOns());
+        }
+        try {
+            DecimalFormat df = new DecimalFormat("#.00");
+            database.addOrder(Double.parseDouble(df.format(total)), new Timestamp(System.currentTimeMillis()), item_ids, add_on_ids);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
         items.clear();
         updateOrderText();
     }// GEN-LAST:event_checkout_buttonActionPerformed
