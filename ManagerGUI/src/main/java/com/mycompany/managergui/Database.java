@@ -1420,14 +1420,14 @@ public class Database {
                 int total = inventoryItems.getInt("amount_remaining") + inventoryItems.getInt("amount_used");
                 // adds the total inventory of the Inventory Item to the totalInventory HashMap
                 totalInventory.put(inventoryItemId, total);
+                totalUsed.put(inventoryItemId,0);
             }
 
             // new createStatement to not close the orderMenuCount ResultSet when calling
             // getMenuItemInventoryItems in the while loop
             Statement createStatement2 = conn.createStatement();
 
-            // gets every Order that happened between the timeStamp and the current
-            // timestamp
+            // gets every Order that happened between the timeStamp and the current timestamp
             // then gets every Order-Menu Junction associated with those Orders
             // then groups them by Menu Item
             // then counts each Order-Menu Junction associated with each Menu Item
@@ -1452,11 +1452,9 @@ public class Database {
                 }
             }
 
-            // gets every Order that happened between the timeStamp and the current
-            // timestamp
+            // gets every Order that happened between the timeStamp and the current timestamp
             // then gets every Order-Menu Junction associated with those Orders
-            // then gets every Order-Add-On Junction associated with those Order-Menu
-            // Junctions
+            // then gets every Order-Add-On Junction associated with those Order-Menu Junctions
             // the groups them by Add-On
             // then counts each Order-Add-On Junction associated with each Add-On
             // then returns those counts along with their associated Add-On
@@ -1477,7 +1475,7 @@ public class Database {
             for (HashMap.Entry<Integer, Integer> entry : totalUsed.entrySet()) {
                 int inventoryId = entry.getKey();
                 int amountUsed = entry.getValue();
-                System.out.println(inventoryId + " " + amountUsed + " " + (totalInventory.get(inventoryId) * 0.1));
+                // System.out.println(inventoryId + " " + amountUsed + " " + (totalInventory.get(inventoryId) * 0.1));
                 if (totalInventory.get(inventoryId) * 0.1 > amountUsed) {
                     excessInventoryIds.add(inventoryId);
                 }
@@ -1493,10 +1491,10 @@ public class Database {
                 queryStatement += ");";
                 report = createStatement.executeQuery(queryStatement);
             }
-            System.out.println("Excess Report generated successfully");
+            // System.out.println("Excess Report generated successfully");
         } catch (Exception e) {
-            System.out.println("Failed to generate excess report");
-            e.printStackTrace();
+            // System.out.println("Failed to generate excess report");
+            // e.printStackTrace();
         }
         return report;
     }
