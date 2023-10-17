@@ -1499,10 +1499,14 @@ public class Database {
         return report;
     }
 
+    /**
+     * Gets inventory items whose amount remaining is less than the minimum amount required
+     * @return ResultSet of the names of inventory items that require a restock
+     */
     public ResultSet restockReport() {
         ResultSet report = null;
 
-        // get inventory items whose amount remaining is less than the minimum amount required
+        // execute query with exception handling
         try {
             report = conn.executeQuery(
                 "SELECT name FROM inventory" +
@@ -1513,7 +1517,7 @@ public class Database {
             System.out.println("Failed to generate restock report.")
             e.printStackTrace();
         }
-        
+
         return report;
     }
 
