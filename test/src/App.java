@@ -32,6 +32,14 @@ public class App {
         //     System.out.println(id);
         // }
 
+        ArrayList<ArrayList<String>> test = conn.excessReport("2021-12-31 00:00:00");
+        for (ArrayList<String> i : test) {
+            for (String s : i) {
+                System.out.print(s+",");
+            }
+            System.out.print("\n");
+        }
+
         // conn.addEmployee(5555, "tempM", "tempM", "tempM", "2011-10-31", 20, "manager");
         // conn.deleteEmployee(5555);
 
@@ -55,11 +63,11 @@ public class App {
         // ArrayList<Integer> addOnIds = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 11));
         // conn.updateMenuItemAddOns(1, addOnIds);
 
-        ResultSet test = conn.menuItemsPopularity("2022/11/01", "2022/11/27", 10);
-        while (test.next()) {
-            int count = test.getInt("order_count");
-            System.out.println(count);
-        }
+        // ResultSet test = conn.menuItemsPopularity("2022/11/01", "2022/11/27", 10);
+        // while (test.next()) {
+        //     int count = test.getInt("order_count");
+        //     System.out.println(count);
+        // }
 
         conn.closeDatabase();
     }

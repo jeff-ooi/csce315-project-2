@@ -589,15 +589,17 @@ public class Database {
     /**
      * generates the Excess Report for Inventory Items given a starting datetime, assuming there are no restocks between the starting datetime and the current time
      * An inventory Item is in excess when it sells less than 10% of its inventory between the starting datetime and the current time
+     * Each ArrayList<String> returned is in the format:
+     * index 1 is id, index 2 is name, index 3 is amount used, index 4 is total inventory
      * @param timeStamp the datetime to start from in "yyyy-MM-dd HH:mm:ss" format
-     * @return ResultSet with the Inventory Item Ids that are in excess
+     * @return ArrayList<ArrayList<String>> with the Inventory Item Information that are in excess
      */
-    public ResultSet excessReport(String timeStamp) {
-        ResultSet report = null;
+    public ArrayList<ArrayList<String>> excessReport(String timeStamp) {
+        ArrayList<ArrayList<String>> report = new ArrayList<ArrayList<String>>();
         try {
             ResultSet inventoryItems = getInventory();
             // Holds the Inventory Items that sold less than 10% of their inventories during the timeframe
-            ArrayList<Integer> excessInventoryIds = new ArrayList<Integer>();
+            // ArrayList<Integer> excessInventoryIds = new ArrayList<Integer>();
             // Holds the total inventory of each Inventory Item assuming no restocks occurred during the timeframe
             HashMap<Integer,Integer> totalInventory = new HashMap<Integer,Integer>();
             // Holds the amount each Inventory Item is was ordered during the timeframe
@@ -663,22 +665,32 @@ public class Database {
             for (HashMap.Entry<Integer,Integer> entry : totalUsed.entrySet()) {
                 int inventoryId = entry.getKey();
                 int amountUsed = entry.getValue();
-                System.out.println(inventoryId + " " + amountUsed + " " + (totalInventory.get(inventoryId)*0.1));
+                // System.out.println(inventoryId + " " + amountUsed + " " + (totalInventory.get(inventoryId)*0.1));
                 if (totalInventory.get(inventoryId) * 0.1 > amountUsed) {
-                    excessInventoryIds.add(inventoryId);
+                    // excessInventoryIds.add(inventoryId);
+                    ArrayList<String> inventoryItemInfo = new ArrayList<String>();
+                    inventoryItemInfo.add(""+inventoryId);
+                    ResultSet name = createStatement.executeQuery(
+                        "SELECT name FROM inventory WHERE id = " + inventoryId + ";"
+                    );
+                    name.next();
+                    inventoryItemInfo.add(name.getString("name"));
+                    inventoryItemInfo.add(""+amountUsed);
+                    inventoryItemInfo.add(""+totalInventory.get(inventoryId));
+                    report.add(inventoryItemInfo);
                 }
             }
-            if (!excessInventoryIds.isEmpty()) {
-                String queryStatement = "SELECT id FROM inventory WHERE id in (";
-                for (int i = 0; i < excessInventoryIds.size(); i++) {
-                    queryStatement += excessInventoryIds.get(i);
-                    if (i < excessInventoryIds.size()-1) {
-                        queryStatement += ",";
-                    }
-                }
-                queryStatement += ");";
-                report = createStatement.executeQuery(queryStatement);
-            }
+            // if (!excessInventoryIds.isEmpty()) {
+            //     String queryStatement = "SELECT id FROM inventory WHERE id in (";
+            //     for (int i = 0; i < excessInventoryIds.size(); i++) {
+            //         queryStatement += excessInventoryIds.get(i);
+            //         if (i < excessInventoryIds.size()-1) {
+            //             queryStatement += ",";
+            //         }
+            //     }
+            //     queryStatement += ");";
+            //     report = createStatement.executeQuery(queryStatement);
+            // }
             System.out.println("Excess Report generated successfully");
         }
         catch (Exception e) {
