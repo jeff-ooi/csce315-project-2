@@ -1509,20 +1509,50 @@ public class Database {
         // execute query with exception handling
         try {
             report = conn.executeQuery(
-                "SELECT name FROM inventory" +
-                "WHERE amount_remaining < min_amount"
+                "SELECT name FROM inventory " +
+                "WHERE amount_remaining < min_amount;"
             );
         }
         catch (Exception e) {
-            System.out.println("Failed to generate restock report.")
+            System.out.println("Failed to generate restock report.");
             e.printStackTrace();
         }
 
         return report;
     }
 
-    public ResultSet menuItemsPopularity(String startDateTime, String endDateTime) {
+    /**
+     * Gets the most popular K items ordered during a specific time frame ordered by the amount of times
+     * they were bought (descending)
+     * @param startDateTime the start date of the time frame
+     * @param endDateTime the end date of the time frame
+     * @param numMenuItems the number of menu items to select (i.e. the K value)
+     * @return ResultSet containing the top K most popular items and the number of times they were ordered
+     */
+    public ResultSet menuItemsPopularity(String startDateTime, String endDateTime, int numMenuItems) {
         ResultSet report = null;
+
+        // execute query with exception handling
+        try {
+            report = conn.executeQuery(
+                "WITH popular_menu_items AS (" +
+                "SELECT menu_id, COUNT(*) as order_count FROM order_menu " +
+                "WHERE order_id in" +
+                "(SELECT id FROM orders WHERE date_time BETWEEN '" + startDateTime + 
+                "' AND '" + endDateTime + "') " +
+                "GROUP BY menu_id " +
+                "LIMIT " + numMenuItems + ") " + 
+                "SELECT name, order_count FROM " +
+                "popular_menu_items LEFT JOIN menu " + 
+                "ON popular_menu_items.menu_id = menu.id " + 
+                "ORDER BY order_count DESC;"
+            );
+        }
+        catch (Exception e) {
+            System.out.println("Failed to generate popularity report.");
+            e.printStackTrace();
+        }
+
         return report;
     }
 
