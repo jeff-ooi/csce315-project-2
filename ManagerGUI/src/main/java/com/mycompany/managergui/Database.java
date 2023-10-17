@@ -1514,15 +1514,33 @@ public class Database {
             );
         }
         catch (Exception e) {
-            System.out.println("Failed to generate restock report.")
+            System.out.println("Failed to generate restock report.");
             e.printStackTrace();
         }
 
         return report;
     }
 
-    public ResultSet menuItemsPopularity(String startDateTime, String endDateTime) {
+    public ResultSet menuItemsPopularity(String startDateTime, String endDateTime, int numMenuItems) {
         ResultSet report = null;
+
+        // execute query with exception handling
+        try {
+            report = conn.executeQuery(
+                "SELECT menu_id, COUNT(*) FROM order_menu " +
+                "WHERE order_id in" +
+                "(SELECT id FROM orders WHERE date_time BETWEEN '" + startDateTime + 
+                "' AND '" + endDateTime + "') " +
+                "GROUP BY menu_id "
+                "ORDER BY COUNT(*) DESC " +
+                "LIMIT " + numMenuItems + ";"
+            );
+        }
+        catch (Exception e) {
+            System.out.println("Failed to generate popularity report.");
+            e.printStackTrace();
+        }
+
         return report;
     }
 
