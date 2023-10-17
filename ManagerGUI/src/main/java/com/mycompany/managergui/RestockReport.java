@@ -5,21 +5,19 @@
 package com.mycompany.managergui;
 
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author arnavsood
  */
-public class ExcessReport extends javax.swing.JFrame {
-    private ArrayList<ArrayList<String>> excess_report_data;
-
+public class RestockReport extends javax.swing.JFrame {
+    private ResultSet restock_report;
     /**
-     * Creates new form ExcessReport
+     * Creates new form RestockReport
      */
-    public ExcessReport(ArrayList<ArrayList<String>> excess_report_data) {
-        this.excess_report_data = excess_report_data;
+    public RestockReport(ResultSet restock_report) {
+        this.restock_report = restock_report;
         initComponents();
     }
 
@@ -33,24 +31,24 @@ public class ExcessReport extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        excess_report_table = new javax.swing.JTable();
-        load_excess_report_data = new javax.swing.JButton();
+        restock_report_table = new javax.swing.JTable();
+        load_restock_report_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        excess_report_table.setModel(new javax.swing.table.DefaultTableModel(
+        restock_report_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "id", "name", "amount_used", "total_inventory"
+                "name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -61,18 +59,15 @@ public class ExcessReport extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(excess_report_table);
-        if (excess_report_table.getColumnModel().getColumnCount() > 0) {
-            excess_report_table.getColumnModel().getColumn(0).setResizable(false);
-            excess_report_table.getColumnModel().getColumn(1).setResizable(false);
-            excess_report_table.getColumnModel().getColumn(2).setResizable(false);
-            excess_report_table.getColumnModel().getColumn(3).setResizable(false);
+        jScrollPane1.setViewportView(restock_report_table);
+        if (restock_report_table.getColumnModel().getColumnCount() > 0) {
+            restock_report_table.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        load_excess_report_data.setText("Load Excess Report");
-        load_excess_report_data.addActionListener(new java.awt.event.ActionListener() {
+        load_restock_report_button.setText("Load Excess Report");
+        load_restock_report_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                load_excess_report_dataActionPerformed(evt);
+                load_restock_report_buttonActionPerformed(evt);
             }
         });
 
@@ -83,34 +78,42 @@ public class ExcessReport extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(load_excess_report_data)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(load_restock_report_button))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(load_excess_report_data)
+                .addComponent(load_restock_report_button)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void load_excess_report_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_excess_report_dataActionPerformed
-        // TODO add your handling code here:  
-        DefaultTableModel tempModel = (DefaultTableModel)excess_report_table.getModel();
-        tempModel.setRowCount(0);
-//        ArrayList<ArrayList<String>> excess_report_data = database.excessReport(timeStamp);
-        for (ArrayList<String> row : excess_report_data) {
-                tempModel.addRow(row.toArray());
+    private void load_restock_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_restock_report_buttonActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tempModel = (DefaultTableModel)restock_report_table.getModel();
+//        tempModel.setRowCount(0);
+        ResultSet restock_reportData = restock_report;
+        try{
+            while(restock_reportData.next()){
+//                String id = String.valueOf(salesData.getInt("id"));
+//                String id = menuData.getString("id");
+                String name = restock_reportData.getString("name");
+//                String price = String.valueOf(menuData.getDouble("price"));
+                String data[] = {name};
+                DefaultTableModel model = (DefaultTableModel)restock_report_table.getModel();
+                model.addRow(data);
             }
-    }//GEN-LAST:event_load_excess_report_dataActionPerformed
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_load_restock_report_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,29 +132,27 @@ public class ExcessReport extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(ExcessReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(RestockReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(ExcessReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(RestockReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(ExcessReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(RestockReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(ExcessReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(RestockReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new ExcessReport().setVisible(true);
+//                new RestockReport().setVisible(true);
 //            }
 //        });
 //    }
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable excess_report_table;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton load_excess_report_data;
+    private javax.swing.JButton load_restock_report_button;
+    private javax.swing.JTable restock_report_table;
     // End of variables declaration//GEN-END:variables
 }
