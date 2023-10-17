@@ -68,6 +68,14 @@ public class Dialogs extends javax.swing.JFrame {
         price_menu_add_label = new javax.swing.JLabel();
         price_menu_add_textField = new javax.swing.JTextField();
         menu_add_button = new javax.swing.JButton();
+        menu_add_panel1 = new javax.swing.JPanel();
+        menu_add_id_label1 = new javax.swing.JLabel();
+        id_menu_add_textField1 = new javax.swing.JTextField();
+        menu_add_name_label1 = new javax.swing.JLabel();
+        name_menu_add_textField1 = new javax.swing.JTextField();
+        price_menu_add_label1 = new javax.swing.JLabel();
+        price_menu_add_textField1 = new javax.swing.JTextField();
+        menu_add_button1 = new javax.swing.JButton();
         inventory_add_panel = new javax.swing.JPanel();
         id_label_inventory_add_panel = new javax.swing.JLabel();
         name_label_inventory_add_panel = new javax.swing.JLabel();
@@ -88,6 +96,10 @@ public class Dialogs extends javax.swing.JFrame {
         restockInventoryItem_button = new javax.swing.JButton();
         id_restock_inventory_textField = new javax.swing.JTextField();
         id_last_restock_label = new javax.swing.JLabel();
+        excess_report_panel = new javax.swing.JPanel();
+        time_stamp_label = new javax.swing.JLabel();
+        time_stamp_textField = new javax.swing.JTextField();
+        submit_time_stamp_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +117,60 @@ public class Dialogs extends javax.swing.JFrame {
                 menu_add_buttonActionPerformed(evt);
             }
         });
+
+        menu_add_id_label1.setText("id:");
+
+        menu_add_name_label1.setText("name:");
+
+        price_menu_add_label1.setText("price:");
+
+        menu_add_button1.setText("Submit");
+        menu_add_button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_add_button1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout menu_add_panel1Layout = new javax.swing.GroupLayout(menu_add_panel1);
+        menu_add_panel1.setLayout(menu_add_panel1Layout);
+        menu_add_panel1Layout.setHorizontalGroup(
+            menu_add_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menu_add_panel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(menu_add_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(menu_add_name_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(price_menu_add_label1)
+                    .addComponent(menu_add_id_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(menu_add_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(id_menu_add_textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(price_menu_add_textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name_menu_add_textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_add_panel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(menu_add_button1)
+                .addGap(162, 162, 162))
+        );
+        menu_add_panel1Layout.setVerticalGroup(
+            menu_add_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menu_add_panel1Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(menu_add_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(menu_add_id_label1)
+                    .addComponent(id_menu_add_textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(menu_add_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(menu_add_name_label1)
+                    .addComponent(name_menu_add_textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(menu_add_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(price_menu_add_label1)
+                    .addComponent(price_menu_add_textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(menu_add_button1)
+                .addGap(39, 39, 39))
+        );
 
         javax.swing.GroupLayout menu_add_panelLayout = new javax.swing.GroupLayout(menu_add_panel);
         menu_add_panel.setLayout(menu_add_panelLayout);
@@ -126,6 +192,11 @@ public class Dialogs extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(menu_add_button)
                 .addGap(162, 162, 162))
+            .addGroup(menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(menu_add_panelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(menu_add_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         menu_add_panelLayout.setVerticalGroup(
             menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,6 +216,11 @@ public class Dialogs extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(menu_add_button)
                 .addGap(39, 39, 39))
+            .addGroup(menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(menu_add_panelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(menu_add_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         layered_pane.add(menu_add_panel, "card2");
@@ -288,6 +364,44 @@ public class Dialogs extends javax.swing.JFrame {
 
         layered_pane.add(restock_inventory_item_panel, "card4");
 
+        time_stamp_label.setText("time stamp: (yyyy-MM-dd HH:mm:ss)");
+
+        submit_time_stamp_button.setText("Submit");
+        submit_time_stamp_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submit_time_stamp_buttonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout excess_report_panelLayout = new javax.swing.GroupLayout(excess_report_panel);
+        excess_report_panel.setLayout(excess_report_panelLayout);
+        excess_report_panelLayout.setHorizontalGroup(
+            excess_report_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, excess_report_panelLayout.createSequentialGroup()
+                .addContainerGap(169, Short.MAX_VALUE)
+                .addComponent(submit_time_stamp_button)
+                .addGap(162, 162, 162))
+            .addGroup(excess_report_panelLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(excess_report_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(time_stamp_label)
+                    .addComponent(time_stamp_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        excess_report_panelLayout.setVerticalGroup(
+            excess_report_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(excess_report_panelLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(time_stamp_label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(time_stamp_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addComponent(submit_time_stamp_button)
+                .addGap(39, 39, 39))
+        );
+
+        layered_pane.add(excess_report_panel, "card2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -351,6 +465,14 @@ public class Dialogs extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_restockInventoryItem_buttonActionPerformed
 
+    private void menu_add_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_add_button1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_add_button1ActionPerformed
+
+    private void submit_time_stamp_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_time_stamp_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submit_time_stamp_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -407,9 +529,11 @@ public class Dialogs extends javax.swing.JFrame {
     private javax.swing.JLabel amount_remaining_label_inventory_add_panel;
     private javax.swing.JLabel amount_used_label_inventory_add_panel;
     private javax.swing.JTextField amount_used_textField_inventory_add_panel;
+    private javax.swing.JPanel excess_report_panel;
     private javax.swing.JLabel id_label_inventory_add_panel;
     private javax.swing.JLabel id_last_restock_label;
     private javax.swing.JTextField id_menu_add_textField;
+    private javax.swing.JTextField id_menu_add_textField1;
     private javax.swing.JTextField id_restock_inventory_textField;
     private javax.swing.JTextField id_textField_inventory_add_panel;
     private javax.swing.JPanel inventory_add_panel;
@@ -421,15 +545,25 @@ public class Dialogs extends javax.swing.JFrame {
     private javax.swing.JLabel last_restock_inventory_date_label;
     private javax.swing.JLayeredPane layered_pane;
     private javax.swing.JButton menu_add_button;
+    private javax.swing.JButton menu_add_button1;
     private javax.swing.JLabel menu_add_id_label;
+    private javax.swing.JLabel menu_add_id_label1;
     private javax.swing.JLabel menu_add_name_label;
+    private javax.swing.JLabel menu_add_name_label1;
     private javax.swing.JPanel menu_add_panel;
+    private javax.swing.JPanel menu_add_panel1;
     private javax.swing.JLabel name_label_inventory_add_panel;
     private javax.swing.JTextField name_menu_add_textField;
+    private javax.swing.JTextField name_menu_add_textField1;
     private javax.swing.JTextField name_textField_inventory_add_panel;
     private javax.swing.JLabel price_menu_add_label;
+    private javax.swing.JLabel price_menu_add_label1;
     private javax.swing.JTextField price_menu_add_textField;
+    private javax.swing.JTextField price_menu_add_textField1;
     private javax.swing.JButton restockInventoryItem_button;
     private javax.swing.JPanel restock_inventory_item_panel;
+    private javax.swing.JButton submit_time_stamp_button;
+    private javax.swing.JLabel time_stamp_label;
+    private javax.swing.JTextField time_stamp_textField;
     // End of variables declaration//GEN-END:variables
 }
