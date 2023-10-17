@@ -1535,13 +1535,17 @@ public class Database {
         // execute query with exception handling
         try {
             report = conn.executeQuery(
-                "SELECT menu_id, COUNT(*) FROM order_menu " +
+                "WITH popular_menu_items AS (" +
+                "SELECT menu_id, COUNT(*) as order_count FROM order_menu " +
                 "WHERE order_id in" +
                 "(SELECT id FROM orders WHERE date_time BETWEEN '" + startDateTime + 
                 "' AND '" + endDateTime + "') " +
-                "GROUP BY menu_id "
-                "ORDER BY COUNT(*) DESC " +
-                "LIMIT " + numMenuItems + ";"
+                "GROUP BY menu_id " +
+                "LIMIT " + numMenuItems + ")" + 
+                "SELECT name, order_count FROM" +
+                "popular_menu_items LEFT JOIN menu" + 
+                "ON popular_menu_items.menu_id = menu.id" + 
+                "ORDER BY order_count DESC;"
             );
         }
         catch (Exception e) {
