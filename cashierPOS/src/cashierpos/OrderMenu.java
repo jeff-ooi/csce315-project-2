@@ -190,6 +190,7 @@ public class OrderMenu extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 18));
         jTable1.setModel(new JTableButtonModel());
 
         DefaultTableModel model = new DefaultTableModel(new String[] { "Menu Item" }, 0);
@@ -197,18 +198,20 @@ public class OrderMenu extends javax.swing.JFrame {
 
         jTable1.getColumnModel().getColumn(0).setCellRenderer(new JTableButtonRenderer());
         jTable1.getColumnModel().getColumn(0).setCellEditor(new ButtonCellEditor());
-        //add rows to button table
+        // add rows to button table
         for (int i = 0; i < menuIDList.size(); i++) {
             JButton button = new JButton(menuNameList.get(i));
+            button.setFont(new java.awt.Font("Segoe UI", 1, 18));
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     new AddOnMenu(menuIDList.get(jTable1.getSelectedRow())).setVisible(true);
                 }
             });
-            //add new button row
+            // add new button row
             model.addRow(new Object[] { button });
         }
         jTable1.setDefaultEditor(Object.class, null);
+        jTable1.setRowHeight(50);
 
         jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
