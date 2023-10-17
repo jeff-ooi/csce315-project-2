@@ -647,11 +647,11 @@ public class Database {
             inventory = createStatement.executeQuery(
                 "SELECT * FROM inventory;"
             );
-            // System.out.println("Got Inventory");
+//             System.out.println("Got Inventory");
         }
         catch (Exception e) {
-            // System.out.println("Failed to get Inventory");
-            // e.printStackTrace();
+//             System.out.println("Failed to get Inventory");
+//             e.printStackTrace();
         }
         return inventory;
     }
@@ -1386,11 +1386,6 @@ public class Database {
 
     // REPORTS SECTION
 
-    public ResultSet salesReport(String startDateTime, String endDateTime) {
-        ResultSet report = null;
-        return report;
-    }
-
     /**
      * generates the Excess Report for Inventory Items given a starting datetime,
      * assuming there are no restocks between the starting datetime and the current
@@ -1508,7 +1503,7 @@ public class Database {
 
         // execute query with exception handling
         try {
-            report = conn.executeQuery(
+            report = createStatement.executeQuery(
                 "SELECT name FROM inventory " +
                 "WHERE amount_remaining < min_amount;"
             );
@@ -1534,7 +1529,7 @@ public class Database {
 
         // execute query with exception handling
         try {
-            report = conn.executeQuery(
+            report = createStatement.executeQuery(
                 "WITH popular_menu_items AS (" +
                 "SELECT menu_id, COUNT(*) as order_count FROM order_menu " +
                 "WHERE order_id in" +
@@ -1555,5 +1550,83 @@ public class Database {
 
         return report;
     }
+     /**
+     * generates a Sales Report given a time window
+     * the values in the HashMap are the specifics of the order
+     * index 0 is the Order Id, index 1 is the Timestamp
+     * the rest of the indices are the Add-On ids
+     * @param startDateTime the starting time to check from in "yyyy-MM-dd HH:mm:ss" format
+     * @param endDateTime the ending time to check to in "yyyy-MM-dd HH:mm:ss" format
+     * @return HashMap mapping the Menu Items to their respective orders
+     */
+    public HashMap<Integer,ArrayList<ArrayList<String>>> salesReport(String startDateTime, String endDateTime) {
+        HashMap<Integer,ArrayList<ArrayList<String>>> report = new HashMap<Integer,ArrayList<ArrayList<String>>>();
+        try {
+            ResultSet menuItems = getMenu();
+            while (menuItems.next()) {
+                ArrayList<ArrayList<String>> values = new ArrayList<ArrayList<String>>();
+                int menuItemId = menuItems.getInt("id");
+                report.put(menuItemId, values);
+            }
+
+            Statement createStatement2 = conn.createStatement();
+            // I cannot believe this worked
+            // Essentially joins the Orders table, the Order-Menu Junction table, and the Order-Add-Ons Junction table together
+            // with the essential values and sorts by Menu Item (smallest to largest) and time (chronological)
+            ResultSet fullOrder = createStatement2.executeQuery(
+                "SELECT oma.menu_id,o.date_time,o.id,oma.order_menu_junction_id,oma.add_on_id FROM \"orders\" as o FULL OUTER JOIN " +
+                "(SELECT oa.add_on_id,oa.order_menu_junction_id,om.menu_id,om.order_id FROM \"order_add_ons\" as oa FULL OUTER JOIN \"order_menu\" AS om " +
+                "on om.id = oa.order_menu_junction_id GROUP BY om.menu_id,oa.order_menu_junction_id,om.order_id,oa.add_on_id) AS oma " +
+                "on o.id = oma.order_id WHERE o.id in " +
+                "(SELECT id FROM orders WHERE date_time BETWEEN timestamp \'" + startDateTime + "\' AND timestamp \'" + endDateTime + "\')" +
+                "GROUP BY oma.menu_id,o.date_time,o.id,oma.order_menu_junction_id,oma.add_on_id;"
+            );
+
+            fullOrder.next();
+            while (true) {
+                if (fullOrder.isAfterLast()) {
+                    break;
+                }
+                int menuItemId = fullOrder.getInt("menu_id");
+                int orderMenuJunctionId = fullOrder.getInt("order_menu_junction_id");
+                String dateTime = fullOrder.getString("date_time");
+                int orderId = fullOrder.getInt("id");
+                int addOnId = fullOrder.getInt("add_on_id");
+
+                ArrayList<String> value = new ArrayList<String>();
+                value.add(""+orderId);
+                value.add(dateTime);
+
+                // if there is an Add-On
+                if (!fullOrder.wasNull()) {
+                    value.add(""+addOnId);
+                }
+
+                // gets all the Add-On Ids for the Menu Item in the Order
+                while (fullOrder.next()) {
+                    int currentOrderMenuJunctionId = fullOrder.getInt("order_menu_junction_id");
+                    if (orderMenuJunctionId != currentOrderMenuJunctionId || fullOrder.wasNull()) {
+                        break;
+                    }
+                    addOnId = fullOrder.getInt("add_on_id");
+                    if (!fullOrder.wasNull()) {
+                        value.add(""+addOnId);
+                    }
+                }
+
+                // the order of value is:
+                // order_id, date_time, add-ons
+                report.get(menuItemId).add(value);
+            }
+
+            // System.out.println("Successfully generated Sales Report");
+        }
+        catch (Exception e) {
+            // System.out.println("Failed to generate Sales Report");
+            // e.printStackTrace();
+        }
+        return report;
+    }
+
 
 }
