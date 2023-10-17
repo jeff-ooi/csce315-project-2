@@ -67,13 +67,6 @@
                       <Component id="menu_add_button" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="menu_add_panel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -97,13 +90,6 @@
                       <EmptySpace pref="68" max="32767" attributes="0"/>
                       <Component id="menu_add_button" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="menu_add_panel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -138,90 +124,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_add_buttonActionPerformed"/>
               </Events>
             </Component>
-            <Container class="javax.swing.JPanel" name="menu_add_panel1">
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="menu_add_name_label1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="price_menu_add_label1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="menu_add_id_label1" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="id_menu_add_textField1" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
-                              <Component id="price_menu_add_textField1" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
-                              <Component id="name_menu_add_textField1" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="55" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="menu_add_button1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="menu_add_id_label1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="id_menu_add_textField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="menu_add_name_label1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="name_menu_add_textField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="price_menu_add_label1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="price_menu_add_textField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="68" max="32767" attributes="0"/>
-                          <Component id="menu_add_button1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="menu_add_id_label1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="id:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="id_menu_add_textField1">
-                </Component>
-                <Component class="javax.swing.JLabel" name="menu_add_name_label1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="name:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="name_menu_add_textField1">
-                </Component>
-                <Component class="javax.swing.JLabel" name="price_menu_add_label1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="price:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="price_menu_add_textField1">
-                </Component>
-                <Component class="javax.swing.JButton" name="menu_add_button1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Submit"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_add_button1ActionPerformed"/>
-                  </Events>
-                </Component>
-              </SubComponents>
-            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="inventory_add_panel">

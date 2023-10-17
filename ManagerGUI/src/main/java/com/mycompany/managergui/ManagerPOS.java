@@ -190,7 +190,8 @@ public class ManagerPOS extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addComponent(load_data_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         layered_pane.add(employees_panel, "card2");
@@ -267,7 +268,8 @@ public class ManagerPOS extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(load_data_sales, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         layered_pane.add(sales_panel, "card3");
@@ -1125,6 +1127,13 @@ public class ManagerPOS extends javax.swing.JFrame {
 
     private void excess_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excess_report_buttonActionPerformed
         // TODO add your handling code here:
+        Dialogs dialog = new Dialogs();
+        dialog.switchDialogPanel(dialog.getExcessReportPanel());
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+        dialog.pack();
+        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dialog.setTitle("Enter Timestamp for Excess Report");
     }//GEN-LAST:event_excess_report_buttonActionPerformed
     
     
