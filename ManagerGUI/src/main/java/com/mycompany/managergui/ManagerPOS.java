@@ -1119,6 +1119,12 @@ public class ManagerPOS extends javax.swing.JFrame {
 
     private void restock_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restock_report_buttonActionPerformed
         // TODO add your handling code here:
+        RestockReport excess_report = new RestockReport(database.restockReport());
+        excess_report.setLocationRelativeTo(null);
+        excess_report.setVisible(true);
+        excess_report.pack();
+        excess_report.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        excess_report.setTitle("Restock Report");
     }//GEN-LAST:event_restock_report_buttonActionPerformed
 
     private void sales_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sales_report_buttonActionPerformed
