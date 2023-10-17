@@ -40,6 +40,7 @@ public class ManagerPOS extends javax.swing.JFrame {
         sales_table = new javax.swing.JTable();
         sales_label = new javax.swing.JLabel();
         load_data_sales = new javax.swing.JButton();
+        sales_report_button = new javax.swing.JButton();
         menu_panel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         menu_table = new javax.swing.JTable();
@@ -60,7 +61,7 @@ public class ManagerPOS extends javax.swing.JFrame {
         inventory_table = new javax.swing.JTable();
         inventory_label = new javax.swing.JLabel();
         load_data_inventory = new javax.swing.JButton();
-        add_inventory_button = new javax.swing.JButton();
+        add_inventory_item_button = new javax.swing.JButton();
         id_label_inventory_panel = new javax.swing.JLabel();
         name_label_inventory_panel = new javax.swing.JLabel();
         last_restock_date_label_inventory_panel = new javax.swing.JLabel();
@@ -76,6 +77,8 @@ public class ManagerPOS extends javax.swing.JFrame {
         update_last_restock_date_button_inventory_panel = new javax.swing.JButton();
         update_amount_remaining_button_inventory_panel = new javax.swing.JButton();
         update_amount_used_button_inventory_panel = new javax.swing.JButton();
+        restock_report_button = new javax.swing.JButton();
+        excess_report_button = new javax.swing.JButton();
         schedule_panel = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         schedule_table = new javax.swing.JTable();
@@ -84,7 +87,6 @@ public class ManagerPOS extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Manager POS");
-        setMaximumSize(new java.awt.Dimension(1150, 700));
         setMinimumSize(new java.awt.Dimension(1150, 700));
 
         employees_button.setText("Employees");
@@ -231,25 +233,36 @@ public class ManagerPOS extends javax.swing.JFrame {
             }
         });
 
+        sales_report_button.setText("Sales Report");
+        sales_report_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sales_report_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout sales_panelLayout = new javax.swing.GroupLayout(sales_panel);
         sales_panel.setLayout(sales_panelLayout);
         sales_panelLayout.setHorizontalGroup(
             sales_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sales_panelLayout.createSequentialGroup()
-                .addGroup(sales_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(sales_panelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(load_data_sales, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sales_label, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(119, 119, 119))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(sales_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(load_data_sales, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sales_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sales_report_button)
+                .addGap(14, 14, 14))
         );
         sales_panelLayout.setVerticalGroup(
             sales_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sales_panelLayout.createSequentialGroup()
                 .addGroup(sales_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sales_label)
+                    .addGroup(sales_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(sales_label)
+                        .addComponent(sales_report_button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(sales_panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(load_data_sales, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -485,10 +498,10 @@ public class ManagerPOS extends javax.swing.JFrame {
             }
         });
 
-        add_inventory_button.setText("Add");
-        add_inventory_button.addActionListener(new java.awt.event.ActionListener() {
+        add_inventory_item_button.setText("Add");
+        add_inventory_item_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_inventory_buttonActionPerformed(evt);
+                add_inventory_item_buttonActionPerformed(evt);
             }
         });
 
@@ -538,6 +551,20 @@ public class ManagerPOS extends javax.swing.JFrame {
             }
         });
 
+        restock_report_button.setText("Restock Report");
+        restock_report_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restock_report_buttonActionPerformed(evt);
+            }
+        });
+
+        excess_report_button.setText("Excess Report");
+        excess_report_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excess_report_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout inventory_panelLayout = new javax.swing.GroupLayout(inventory_panel);
         inventory_panel.setLayout(inventory_panelLayout);
         inventory_panelLayout.setHorizontalGroup(
@@ -547,10 +574,14 @@ public class ManagerPOS extends javax.swing.JFrame {
                 .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(inventory_panelLayout.createSequentialGroup()
                         .addComponent(load_data_inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inventory_label, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(230, 230, 230)
+                        .addComponent(inventory_label, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(add_inventory_button, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(excess_report_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(restock_report_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(add_inventory_item_button)
                         .addContainerGap())
                     .addGroup(inventory_panelLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
@@ -589,7 +620,9 @@ public class ManagerPOS extends javax.swing.JFrame {
                 .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(inventory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(inventory_label)
-                        .addComponent(add_inventory_button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(add_inventory_item_button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(restock_report_button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(excess_report_button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(inventory_panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(load_data_inventory, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -915,7 +948,7 @@ public class ManagerPOS extends javax.swing.JFrame {
         dialog.setTitle("Add Menu Item");
     }//GEN-LAST:event_add_menu_buttonActionPerformed
 
-    private void add_inventory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_inventory_buttonActionPerformed
+    private void add_inventory_item_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_inventory_item_buttonActionPerformed
         // TODO add your handling code here:
         Dialogs dialog = new Dialogs();
         dialog.switchDialogPanel(dialog.getInventoryAddPanel());
@@ -924,7 +957,7 @@ public class ManagerPOS extends javax.swing.JFrame {
         dialog.pack();
         dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         dialog.setTitle("Add Inventory Item");
-    }//GEN-LAST:event_add_inventory_buttonActionPerformed
+    }//GEN-LAST:event_add_inventory_item_buttonActionPerformed
 
     private void menu_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_tableMouseClicked
         // TODO add your handling code here:
@@ -1081,6 +1114,18 @@ public class ManagerPOS extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_update_amount_used_button_inventory_panelActionPerformed
+
+    private void restock_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restock_report_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_restock_report_buttonActionPerformed
+
+    private void sales_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sales_report_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sales_report_buttonActionPerformed
+
+    private void excess_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excess_report_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_excess_report_buttonActionPerformed
     
     
     /**
@@ -1120,7 +1165,7 @@ public class ManagerPOS extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton add_inventory_button;
+    private javax.swing.JButton add_inventory_item_button;
     private javax.swing.JButton add_menu_button;
     private javax.swing.JLabel amount_remaining_label_inventory_panel;
     private javax.swing.JTextField amount_remaining_textField_inventory_panel;
@@ -1132,6 +1177,7 @@ public class ManagerPOS extends javax.swing.JFrame {
     private javax.swing.JButton employees_button;
     private javax.swing.JLabel employees_label;
     private javax.swing.JPanel employees_panel;
+    private javax.swing.JButton excess_report_button;
     private javax.swing.JLabel id_label_inventory_panel;
     private javax.swing.JLabel id_label_menu_panel;
     private javax.swing.JTextField id_textField_inventory_panel;
@@ -1163,9 +1209,11 @@ public class ManagerPOS extends javax.swing.JFrame {
     private javax.swing.JTextField name_textField_menu;
     private javax.swing.JLabel price_label_menu_panel;
     private javax.swing.JTextField price_textField_menu;
+    private javax.swing.JButton restock_report_button;
     private javax.swing.JButton sales_button;
     private javax.swing.JLabel sales_label;
     private javax.swing.JPanel sales_panel;
+    private javax.swing.JButton sales_report_button;
     private javax.swing.JTable sales_table;
     private javax.swing.JButton schedule_button;
     private javax.swing.JLabel schedule_label;
