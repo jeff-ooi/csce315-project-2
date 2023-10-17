@@ -1509,8 +1509,8 @@ public class Database {
         // execute query with exception handling
         try {
             report = conn.executeQuery(
-                "SELECT name FROM inventory" +
-                "WHERE amount_remaining < min_amount"
+                "SELECT name FROM inventory " +
+                "WHERE amount_remaining < min_amount;"
             );
         }
         catch (Exception e) {
@@ -1541,10 +1541,10 @@ public class Database {
                 "(SELECT id FROM orders WHERE date_time BETWEEN '" + startDateTime + 
                 "' AND '" + endDateTime + "') " +
                 "GROUP BY menu_id " +
-                "LIMIT " + numMenuItems + ")" + 
-                "SELECT name, order_count FROM" +
-                "popular_menu_items LEFT JOIN menu" + 
-                "ON popular_menu_items.menu_id = menu.id" + 
+                "LIMIT " + numMenuItems + ") " + 
+                "SELECT name, order_count FROM " +
+                "popular_menu_items LEFT JOIN menu " + 
+                "ON popular_menu_items.menu_id = menu.id " + 
                 "ORDER BY order_count DESC;"
             );
         }
