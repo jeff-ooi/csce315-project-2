@@ -1129,6 +1129,13 @@ public class ManagerPOS extends javax.swing.JFrame {
 
     private void sales_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sales_report_buttonActionPerformed
         // TODO add your handling code here:
+        Dialogs dialog = new Dialogs();
+        dialog.switchDialogPanel(dialog.getSalesReportPanel());
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+        dialog.pack();
+        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dialog.setTitle("Enter Timestamps for Sales Report");
     }//GEN-LAST:event_sales_report_buttonActionPerformed
 
     private void excess_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excess_report_buttonActionPerformed

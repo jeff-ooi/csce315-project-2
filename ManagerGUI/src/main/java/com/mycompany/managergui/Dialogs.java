@@ -6,6 +6,7 @@ package com.mycompany.managergui;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -95,6 +96,12 @@ public class Dialogs extends javax.swing.JFrame {
         time_stamp_label = new javax.swing.JLabel();
         time_stamp_textField = new javax.swing.JTextField();
         submit_time_stamp_button = new javax.swing.JButton();
+        sales_report_panel = new javax.swing.JPanel();
+        begin_time_stamp_label = new javax.swing.JLabel();
+        end_time_stamp_textField = new javax.swing.JTextField();
+        submit_time_stamps_button = new javax.swing.JButton();
+        end_time_stamp_label = new javax.swing.JLabel();
+        begin_time_stamp_textField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -333,6 +340,52 @@ public class Dialogs extends javax.swing.JFrame {
 
         layered_pane.add(excess_report_panel, "card2");
 
+        begin_time_stamp_label.setText("beginning time stamp: (yyyy-MM-dd HH:mm:ss)");
+
+        submit_time_stamps_button.setText("Submit");
+        submit_time_stamps_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submit_time_stamps_buttonActionPerformed(evt);
+            }
+        });
+
+        end_time_stamp_label.setText("ending time stamp: (yyyy-MM-dd HH:mm:ss)");
+
+        javax.swing.GroupLayout sales_report_panelLayout = new javax.swing.GroupLayout(sales_report_panel);
+        sales_report_panel.setLayout(sales_report_panelLayout);
+        sales_report_panelLayout.setHorizontalGroup(
+            sales_report_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sales_report_panelLayout.createSequentialGroup()
+                .addContainerGap(169, Short.MAX_VALUE)
+                .addComponent(submit_time_stamps_button)
+                .addGap(162, 162, 162))
+            .addGroup(sales_report_panelLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(sales_report_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(begin_time_stamp_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(end_time_stamp_label)
+                    .addComponent(begin_time_stamp_label)
+                    .addComponent(end_time_stamp_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        sales_report_panelLayout.setVerticalGroup(
+            sales_report_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sales_report_panelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(begin_time_stamp_label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(begin_time_stamp_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(end_time_stamp_label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(end_time_stamp_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(submit_time_stamps_button)
+                .addGap(39, 39, 39))
+        );
+
+        layered_pane.add(sales_report_panel, "card2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -412,6 +465,21 @@ public class Dialogs extends javax.swing.JFrame {
         
     }//GEN-LAST:event_submit_time_stamp_buttonActionPerformed
 
+    private void submit_time_stamps_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_time_stamps_buttonActionPerformed
+        // TODO add your handling code here:
+        HashMap<Integer,ArrayList<ArrayList<String>>> sales_report_data = database.salesReport(begin_time_stamp_textField.getText(),end_time_stamp_textField.getText());
+        if(begin_time_stamp_textField.getText().isBlank() || end_time_stamp_textField.getText().isBlank() ||sales_report_data.isEmpty() || end_time_stamp_textField.getText().length() != 19 || begin_time_stamp_textField.getText().length() != 19){
+            throwErrorMessage();
+        }else{
+            SalesReport sales_report = new SalesReport(sales_report_data);
+            sales_report.setLocationRelativeTo(null);
+            sales_report.setVisible(true);
+            sales_report.pack();
+            sales_report.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            sales_report.setTitle("Sales Report");
+        }
+    }//GEN-LAST:event_submit_time_stamps_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -464,6 +532,9 @@ public class Dialogs extends javax.swing.JFrame {
     public JPanel getExcessReportPanel() {
         return excess_report_panel;
     }
+    public JPanel getSalesReportPanel() {
+        return sales_report_panel;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -472,6 +543,10 @@ public class Dialogs extends javax.swing.JFrame {
     private javax.swing.JLabel amount_remaining_label_inventory_add_panel;
     private javax.swing.JLabel amount_used_label_inventory_add_panel;
     private javax.swing.JTextField amount_used_textField_inventory_add_panel;
+    private javax.swing.JLabel begin_time_stamp_label;
+    private javax.swing.JTextField begin_time_stamp_textField;
+    private javax.swing.JLabel end_time_stamp_label;
+    private javax.swing.JTextField end_time_stamp_textField;
     private javax.swing.JPanel excess_report_panel;
     private javax.swing.JLabel id_label_inventory_add_panel;
     private javax.swing.JLabel id_last_restock_label;
@@ -497,7 +572,9 @@ public class Dialogs extends javax.swing.JFrame {
     private javax.swing.JTextField price_menu_add_textField;
     private javax.swing.JButton restockInventoryItem_button;
     private javax.swing.JPanel restock_inventory_item_panel;
+    private javax.swing.JPanel sales_report_panel;
     private javax.swing.JButton submit_time_stamp_button;
+    private javax.swing.JButton submit_time_stamps_button;
     private javax.swing.JLabel time_stamp_label;
     private javax.swing.JTextField time_stamp_textField;
     // End of variables declaration//GEN-END:variables
