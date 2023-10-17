@@ -1521,6 +1521,14 @@ public class Database {
         return report;
     }
 
+    /**
+     * Gets the most popular K items ordered during a specific time frame ordered by the amount of times
+     * they were bought (descending)
+     * @param startDateTime the start date of the time frame
+     * @param endDateTime the end date of the time frame
+     * @param numMenuItems the number of menu items to select (i.e. the K value)
+     * @return ResultSet containing the top K most popular items and the number of times they were ordered
+     */
     public ResultSet menuItemsPopularity(String startDateTime, String endDateTime, int numMenuItems) {
         ResultSet report = null;
 
