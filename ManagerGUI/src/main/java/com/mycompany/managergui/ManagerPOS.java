@@ -1233,13 +1233,18 @@ public class ManagerPOS extends javax.swing.JFrame {
 
     private void get_inventory_items_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_get_inventory_items_buttonActionPerformed
         // TODO add your handling code here:
-        Dialogs dialog = new Dialogs();
-        dialog.switchDialogPanel(dialog.getMenuPopularityReportPanel());
-        dialog.setLocationRelativeTo(null);
-        dialog.setVisible(true);
-        dialog.pack();
-        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        dialog.setTitle("Enter Timestamps for Menu Popularity Report");
+        if(!isNumber(id_textField_menu.getText())||id_textField_menu.getText().isBlank()){
+            throwErrorMessage();
+        }else{
+            InventoryItems inventory_items = new InventoryItems(database.getMenuItemInventoryItems(Integer.parseInt(id_textField_menu.getText())),Integer.parseInt(id_textField_menu.getText()));
+            inventory_items.setLocationRelativeTo(null);
+            inventory_items.setVisible(true);
+            inventory_items.pack();
+            inventory_items.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            inventory_items.setTitle("Inventory Items for Menu Item");
+                  
+        }
+        
     }//GEN-LAST:event_get_inventory_items_buttonActionPerformed
     
     

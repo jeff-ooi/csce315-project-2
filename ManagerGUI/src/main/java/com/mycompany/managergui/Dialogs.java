@@ -274,27 +274,28 @@ public class Dialogs extends javax.swing.JFrame {
         excess_report_panel.setLayout(excess_report_panelLayout);
         excess_report_panelLayout.setHorizontalGroup(
             excess_report_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, excess_report_panelLayout.createSequentialGroup()
-                .addContainerGap(271, Short.MAX_VALUE)
-                .addComponent(submit_time_stamp_button)
-                .addGap(162, 162, 162))
             .addGroup(excess_report_panelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
                 .addGroup(excess_report_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(time_stamp_label)
-                    .addComponent(time_stamp_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(excess_report_panelLayout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(submit_time_stamp_button))
+                    .addGroup(excess_report_panelLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addGroup(excess_report_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(time_stamp_label)
+                            .addComponent(time_stamp_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         excess_report_panelLayout.setVerticalGroup(
             excess_report_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(excess_report_panelLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addContainerGap(146, Short.MAX_VALUE)
                 .addComponent(time_stamp_label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(42, 42, 42)
                 .addComponent(time_stamp_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
                 .addComponent(submit_time_stamp_button)
-                .addGap(39, 39, 39))
+                .addGap(71, 71, 71))
         );
 
         layered_pane.add(excess_report_panel, "card2");
@@ -312,20 +313,25 @@ public class Dialogs extends javax.swing.JFrame {
             }
         });
 
-        menuAddInventoryItemsTable.setModel(new CheckboxTableModel(new Object[] { "Inventory", "Name" }, 0));
-        menuAddInventoryItemsTable.getColumnModel().getColumn(0).setCellRenderer(new CheckboxCellRenderer());
-
-        DefaultTableModel model = (DefaultTableModel) menuAddInventoryItemsTable.getModel();
-
-        try {
-            ResultSet rs = database.getInventory();
-            while (rs.next()) {
-                model.addRow(new Object[] { false, rs.getString("name") });
+        menuAddInventoryItemsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Inventory"
             }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
 
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(menuAddInventoryItemsTable);
         if (menuAddInventoryItemsTable.getColumnModel().getColumnCount() > 0) {
             menuAddInventoryItemsTable.getColumnModel().getColumn(0).setResizable(false);
@@ -588,7 +594,7 @@ public class Dialogs extends javax.swing.JFrame {
             excess_report.setTitle("Excess Report");
         }
         
-    }//GEN-LAST:event_submit_time_stamp_buttonActionPerformed
+    }                                                        
 
     private void submit_time_stamps_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_time_stamps_buttonActionPerformed
         // TODO add your handling code here:

@@ -4,16 +4,23 @@
  */
 package com.mycompany.managergui;
 
+import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author arnavsood
  */
 public class InventoryItems extends javax.swing.JFrame {
-
+    Database database = new Database("csce315_971_arnav_sood", "arnav_sood");
+    private ResultSet inventory_items;
+    private int inv_id;
     /**
      * Creates new form InventoryItems
      */
-    public InventoryItems() {
+    public InventoryItems(ResultSet inventory_items, int inv_id) {
+        this.inventory_items = inventory_items;
+        this.inv_id = inv_id;
         initComponents();
     }
 
@@ -34,15 +41,27 @@ public class InventoryItems extends javax.swing.JFrame {
 
         inventory_items_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "menu_id", "menu_item_name", "inventory_id", "inventory_item_name"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(inventory_items_table);
 
         load_inventory_items_button.setText("Load Inventory Items");
@@ -60,7 +79,7 @@ public class InventoryItems extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(load_inventory_items_button)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -78,6 +97,29 @@ public class InventoryItems extends javax.swing.JFrame {
 
     private void load_inventory_items_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_inventory_items_buttonActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tempModel = (DefaultTableModel)inventory_items_table.getModel();
+//        tempModel.setRowCount(0);
+        try{
+            while(inventory_items.next()){
+                String inv_name = "";
+                String menu_id = inventory_items.getString("menu_id");
+                String name = inventory_items.getString("name");
+                String inventory_id = inventory_items.getString("inventory_id");
+                ResultSet inv_item_name = database.getSingleInventoryItem(Integer.valueOf(inventory_id));
+                
+                while(inv_item_name.next()){
+                    inv_name = inv_item_name.getString("name");
+                }
+                String data[] = {menu_id,name,inventory_id,inv_name};
+                DefaultTableModel model = (DefaultTableModel)inventory_items_table.getModel();
+                if(Integer.parseInt(menu_id) == inv_id){
+                 model.addRow(data);
+                }
+               
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         
     }//GEN-LAST:event_load_inventory_items_buttonActionPerformed
 
