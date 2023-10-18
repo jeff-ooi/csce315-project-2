@@ -389,7 +389,7 @@ public class OrderMenu extends javax.swing.JFrame {
                     menu.setVisible(true);
                     menu.pack();
                     menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    menu.setAlwaysOnTop(true);
+                    // menu.setAlwaysOnTop(true);
                 }
             });
         }
