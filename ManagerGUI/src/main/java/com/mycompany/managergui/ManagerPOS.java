@@ -798,32 +798,56 @@ public class ManagerPOS extends javax.swing.JFrame {
         success.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         success.setTitle("Success Message");
     }
+
+    /**
+     * Employees button action
+     * @param evt the button event
+     */
     private void employees_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employees_buttonActionPerformed
         // TODO add your handling code here:
         switchPanel(employees_panel);
         
     }//GEN-LAST:event_employees_buttonActionPerformed
 
+    /**
+     * Sales button action
+     * @param evt the button event
+     */
     private void sales_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sales_buttonActionPerformed
         // TODO add your handling code here:
         switchPanel(sales_panel);
     }//GEN-LAST:event_sales_buttonActionPerformed
 
+    /**
+     * Inventory button action
+     * @param evt the button event
+     */
     private void inventory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventory_buttonActionPerformed
         // TODO add your handling code here:
         switchPanel(inventory_panel);
     }//GEN-LAST:event_inventory_buttonActionPerformed
 
+    /**
+     * Menu button action
+     * @param evt the button event
+     */
     private void menu_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_buttonActionPerformed
         // TODO add your handling code here:
         switchPanel(menu_panel);
     }//GEN-LAST:event_menu_buttonActionPerformed
 
+    /**
+     * Schedule button action
+     * @param evt the button event
+     */
     private void schedule_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_buttonActionPerformed
         // TODO add your handling code here:
         switchPanel(schedule_panel);
     }//GEN-LAST:event_schedule_buttonActionPerformed
     
+    /**
+     * Loads menu data
+     */
     public void loadDataMenu(){
         DefaultTableModel tempModel = (DefaultTableModel)menu_table.getModel();
         tempModel.setRowCount(0);
@@ -843,6 +867,9 @@ public class ManagerPOS extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Loads inventory data
+     */
     public void loadDataInventory(){
         DefaultTableModel tempModel = (DefaultTableModel)inventory_table.getModel();
         tempModel.setRowCount(0);
@@ -939,6 +966,10 @@ public class ManagerPOS extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_load_data_scheduleActionPerformed
 
+    /**
+     * Handler function for add menu button
+     * @param evt the button event
+     */
     private void add_menu_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_menu_buttonActionPerformed
         // TODO add your handling code here:
         Dialogs dialog = new Dialogs();
@@ -950,6 +981,10 @@ public class ManagerPOS extends javax.swing.JFrame {
         dialog.setTitle("Add Menu Item");
     }//GEN-LAST:event_add_menu_buttonActionPerformed
 
+    /**
+     * Handler function for inventory item button
+     * @param evt the event
+     */
     private void add_inventory_item_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_inventory_item_buttonActionPerformed
         // TODO add your handling code here:
         Dialogs dialog = new Dialogs();
@@ -1117,6 +1152,10 @@ public class ManagerPOS extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_update_amount_used_button_inventory_panelActionPerformed
 
+    /**
+     * Handler function for restock report button
+     * @param evt the button event
+     */
     private void restock_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restock_report_buttonActionPerformed
         // TODO add your handling code here:
         RestockReport excess_report = new RestockReport(database.restockReport());
@@ -1127,6 +1166,10 @@ public class ManagerPOS extends javax.swing.JFrame {
         excess_report.setTitle("Restock Report");
     }//GEN-LAST:event_restock_report_buttonActionPerformed
 
+    /**
+     * Handler function for sales report button
+     * @param evt the button event
+     */
     private void sales_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sales_report_buttonActionPerformed
         // TODO add your handling code here:
         Dialogs dialog = new Dialogs();
@@ -1138,6 +1181,10 @@ public class ManagerPOS extends javax.swing.JFrame {
         dialog.setTitle("Enter Timestamps for Sales Report");
     }//GEN-LAST:event_sales_report_buttonActionPerformed
 
+    /**
+     * Handler function for excess report button
+     * @param evt the button event
+     */
     private void excess_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excess_report_buttonActionPerformed
         // TODO add your handling code here:
         Dialogs dialog = new Dialogs();
