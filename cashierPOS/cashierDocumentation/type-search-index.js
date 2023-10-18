@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"cashierpos","l":"AddOnMenu"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"cashierpos","l":"CashierPOS"},{"p":"cashierpos","l":"Database"},{"p":"cashierpos","l":"item"},{"p":"cashierpos","l":"OrderMenu"}]
