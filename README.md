@@ -10,7 +10,7 @@ javac <path/to/java/directory/*.java>
 Not Mac:  
 java -cp ".;<path/to/file/postgresql-42.2.8.jar>" <path/to/java/file.java>  
 Mac:  
-java -cp ".:<path/to/file/postgresql-42.2.8.jar>" <path/to/java/file.java>  
+java -cp ".:<path/to/file/postgresql-42.2.8.jar>" <path/to/java/file.java> 
   
 Compile and run ManagerGUI  
 cd into ManagerGUI/src/main/java  
@@ -19,6 +19,8 @@ Not Mac:
 java -cp ".;com/mycompany/managergui/postgresql-42.2.8.jar" com/mycompany/managergui/ManagerGUI  
 Mac:  
 java -cp ".:com/mycompany/managergui/postgresql-42.2.8.jar" com/mycompany/managergui/ManagerGUI  
+ManagerGUI Docs:  
+https://people.tamu.edu/~jeffooi/Documentation/com/mycompany/managergui/package-summary.html  
 
 Compile and run CashierGUI
 cd into cashierPOS/src/  
@@ -27,4 +29,6 @@ Not Mac:
 java -cp ".;cashierpos/postgresql-42.2.8.jar" cashierpos/OrderMenu  
 Mac:  
 java -cp ".:cashierpos/postgresql-42.2.8.jar" cashierpos/OrderMenu  
+CashierGUI Docs:  
+https://people.tamu.edu/~jeffooi/cashierDocumentation/cashierpos/package-summary.html  
 
