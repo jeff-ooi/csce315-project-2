@@ -133,40 +133,45 @@ public class Dialogs extends javax.swing.JFrame {
         menu_add_panelLayout.setHorizontalGroup(
             menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_add_panelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(menu_add_name_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(price_menu_add_label)
-                    .addComponent(menu_add_id_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(id_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(price_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(name_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menu_add_panelLayout.createSequentialGroup()
+                        .addGroup(menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(menu_add_panelLayout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addGroup(menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(menu_add_name_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(menu_add_id_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_add_panelLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(price_menu_add_label)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(id_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(name_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(price_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(menu_add_panelLayout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(menu_add_button)))
                 .addContainerGap(55, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_add_panelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(menu_add_button)
-                .addGap(162, 162, 162))
         );
         menu_add_panelLayout.setVerticalGroup(
             menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_add_panelLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(52, 52, 52)
                 .addGroup(menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(menu_add_id_label)
-                    .addComponent(id_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menu_add_id_label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menu_add_name_label)
                     .addComponent(name_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(15, 15, 15)
                 .addGroup(menu_add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(price_menu_add_label)
-                    .addComponent(price_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                    .addComponent(price_menu_add_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(price_menu_add_label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(menu_add_button)
-                .addGap(39, 39, 39))
+                .addGap(43, 43, 43))
         );
 
         layered_pane.add(menu_add_panel, "card2");
@@ -545,10 +550,10 @@ public class Dialogs extends javax.swing.JFrame {
 
     private void submit_time_stamps_popular_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_time_stamps_popular_buttonActionPerformed
         // TODO add your handling code here:
-        ResultSet menu_popular_items_data = database.menuItemsPopularity(popular_start_time_textField.getText(),popular_end_time_textField.getText(),Integer.parseInt(popular_number_of_items_textField.getText()));
         if(popular_end_time_textField.getText().isBlank() || popular_start_time_textField.getText().isBlank() || popular_start_time_textField.getText().length() != 19 || popular_end_time_textField.getText().length() != 19){
             throwErrorMessage();
         }else{
+            ResultSet menu_popular_items_data = database.menuItemsPopularity(popular_start_time_textField.getText(),popular_end_time_textField.getText(),Integer.parseInt(popular_number_of_items_textField.getText()));   
             MenuPopularityReport menu_pop_report = new MenuPopularityReport(menu_popular_items_data);
             menu_pop_report.setLocationRelativeTo(null);
             menu_pop_report.setVisible(true);

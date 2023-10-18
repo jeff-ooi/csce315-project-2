@@ -57,6 +57,7 @@ public class ManagerPOS extends javax.swing.JFrame {
         update_name_button_menu_panel = new javax.swing.JButton();
         update_price_button_menu_panel = new javax.swing.JButton();
         menu_pop_button = new javax.swing.JButton();
+        get_inventory_items_button = new javax.swing.JButton();
         inventory_panel = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         inventory_table = new javax.swing.JTable();
@@ -373,6 +374,13 @@ public class ManagerPOS extends javax.swing.JFrame {
             }
         });
 
+        get_inventory_items_button.setText("get inventory items");
+        get_inventory_items_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                get_inventory_items_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menu_panelLayout = new javax.swing.GroupLayout(menu_panel);
         menu_panel.setLayout(menu_panelLayout);
         menu_panelLayout.setHorizontalGroup(
@@ -391,19 +399,23 @@ public class ManagerPOS extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(menu_panelLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(id_textField_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(id_label_menu_panel)
-                    .addGroup(menu_panelLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(delete_id_button_menu_panel)))
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menu_panelLayout.createSequentialGroup()
-                        .addGap(240, 240, 240)
+                        .addGap(75, 75, 75)
+                        .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(id_textField_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(id_label_menu_panel)))
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(delete_id_button_menu_panel)
+                        .addGap(18, 18, 18)
+                        .addComponent(get_inventory_items_button)))
+                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(189, 189, 189)
                         .addComponent(update_name_button_menu_panel))
                     .addGroup(menu_panelLayout.createSequentialGroup()
-                        .addGap(191, 191, 191)
+                        .addGap(140, 140, 140)
                         .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(name_label_menu_panel)
                             .addComponent(name_textField_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -446,7 +458,8 @@ public class ManagerPOS extends javax.swing.JFrame {
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(delete_id_button_menu_panel)
                     .addComponent(update_name_button_menu_panel)
-                    .addComponent(update_price_button_menu_panel))
+                    .addComponent(update_price_button_menu_panel)
+                    .addComponent(get_inventory_items_button))
                 .addContainerGap())
         );
 
@@ -1217,6 +1230,17 @@ public class ManagerPOS extends javax.swing.JFrame {
         dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         dialog.setTitle("Enter Timestamps for Menu Popularity Report");
     }//GEN-LAST:event_menu_pop_buttonActionPerformed
+
+    private void get_inventory_items_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_get_inventory_items_buttonActionPerformed
+        // TODO add your handling code here:
+        Dialogs dialog = new Dialogs();
+        dialog.switchDialogPanel(dialog.getMenuPopularityReportPanel());
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+        dialog.pack();
+        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dialog.setTitle("Enter Timestamps for Menu Popularity Report");
+    }//GEN-LAST:event_get_inventory_items_buttonActionPerformed
     
     
     /**
@@ -1269,6 +1293,7 @@ public class ManagerPOS extends javax.swing.JFrame {
     private javax.swing.JLabel employees_label;
     private javax.swing.JPanel employees_panel;
     private javax.swing.JButton excess_report_button;
+    private javax.swing.JButton get_inventory_items_button;
     private javax.swing.JLabel id_label_inventory_panel;
     private javax.swing.JLabel id_label_menu_panel;
     private javax.swing.JTextField id_textField_inventory_panel;
