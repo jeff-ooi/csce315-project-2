@@ -894,7 +894,7 @@ public class Database {
      * @param price the price of the new Menu Item
      * @return boolean stating whether the Menu Item was successfully added
      */
-    public boolean addMenuItem(int id, String name, double price) {
+    public boolean addMenuItem(int id, String name, double price, ArrayList<Integer> inventoryIds) {
         // ResultSet newMenuItem = null;
         try {
             // newMenuItem = createStatement.executeQuery(
@@ -903,6 +903,7 @@ public class Database {
                 id + ", \'" + name + "\', " + price + ");"
             );
             // System.out.println("Successfully added Menu Item " + id);
+            updateMenuItemInventoryItems(id, inventoryIds);
             return true;
         }
         catch (Exception e) {
@@ -1015,7 +1016,8 @@ public class Database {
         ResultSet invItems = null;
         try {
             invItems = createStatement.executeQuery(
-                "SELECT inventory_id FROM menu_inventory WHERE menu_id = " + id + ";"
+                "SELECT mi.menu_id,mi.inventory_id,m.name FROM \"menu_inventory\" as mi FULL OUTER JOIN \"menu\" as m on mi.menu_id = m.id " +
+                "ORDER BY mi.menu_id,mi.inventory_id,m.name;"
             );
             // System.out.println("Got inventory items for Menu Item " + id);
         }
