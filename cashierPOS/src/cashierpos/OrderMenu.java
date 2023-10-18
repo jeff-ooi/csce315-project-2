@@ -385,7 +385,11 @@ public class OrderMenu extends javax.swing.JFrame {
                     // Handle the button click action here.
                     // For example, open the AddOnMenu.
                     int row = jTable1.getSelectedRow();
-                    new AddOnMenu(menuIDList.get(row)).setVisible(true);
+                    AddOnMenu menu = new AddOnMenu(menuIDList.get(row));
+                    menu.setVisible(true);
+                    menu.pack();
+                    menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    menu.setAlwaysOnTop(true);
                 }
             });
         }

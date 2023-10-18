@@ -312,26 +312,19 @@ public class Dialogs extends javax.swing.JFrame {
                 menu_add_buttonActionPerformed(evt);
             }
         });
+        menuAddInventoryItemsTable.setModel(new CheckboxTableModel(new Object[] { "Inventory", "Name" }, 0));
+        menuAddInventoryItemsTable.getColumnModel().getColumn(0).setCellRenderer(new CheckboxCellRenderer());
 
-        menuAddInventoryItemsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Inventory"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
+        DefaultTableModel model = (DefaultTableModel) menuAddInventoryItemsTable.getModel();
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        try {
+            ResultSet rs = database.getInventory();
+            while (rs.next()) {
+                model.addRow(new Object[] { false, rs.getString("name") });
             }
-        });
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         jScrollPane1.setViewportView(menuAddInventoryItemsTable);
         if (menuAddInventoryItemsTable.getColumnModel().getColumnCount() > 0) {
             menuAddInventoryItemsTable.getColumnModel().getColumn(0).setResizable(false);
