@@ -56,6 +56,7 @@ public class ManagerPOS extends javax.swing.JFrame {
         delete_id_button_menu_panel = new javax.swing.JButton();
         update_name_button_menu_panel = new javax.swing.JButton();
         update_price_button_menu_panel = new javax.swing.JButton();
+        menu_pop_button = new javax.swing.JButton();
         inventory_panel = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         inventory_table = new javax.swing.JTable();
@@ -365,6 +366,13 @@ public class ManagerPOS extends javax.swing.JFrame {
             }
         });
 
+        menu_pop_button.setText("Menu Popularity Report");
+        menu_pop_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_pop_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menu_panelLayout = new javax.swing.GroupLayout(menu_panel);
         menu_panel.setLayout(menu_panelLayout);
         menu_panelLayout.setHorizontalGroup(
@@ -374,9 +382,11 @@ public class ManagerPOS extends javax.swing.JFrame {
                     .addGroup(menu_panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(load_data_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(menu_label, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(216, 216, 216)
+                        .addComponent(menu_label, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(menu_pop_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(add_menu_button, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -415,7 +425,8 @@ public class ManagerPOS extends javax.swing.JFrame {
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(menu_label)
-                        .addComponent(add_menu_button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(add_menu_button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(menu_pop_button, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menu_panelLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(load_data_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1148,6 +1159,17 @@ public class ManagerPOS extends javax.swing.JFrame {
         dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         dialog.setTitle("Enter Timestamp for Excess Report");
     }//GEN-LAST:event_excess_report_buttonActionPerformed
+
+    private void menu_pop_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_pop_buttonActionPerformed
+        // TODO add your handling code here:
+        Dialogs dialog = new Dialogs();
+        dialog.switchDialogPanel(dialog.getMenuPopularityReportPanel());
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+        dialog.pack();
+        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dialog.setTitle("Enter Timestamps for Menu Popularity Report");
+    }//GEN-LAST:event_menu_pop_buttonActionPerformed
     
     
     /**
@@ -1224,6 +1246,7 @@ public class ManagerPOS extends javax.swing.JFrame {
     private javax.swing.JButton menu_button;
     private javax.swing.JLabel menu_label;
     private javax.swing.JPanel menu_panel;
+    private javax.swing.JButton menu_pop_button;
     private javax.swing.JTable menu_table;
     private javax.swing.JLabel name_label_inventory_panel;
     private javax.swing.JLabel name_label_menu_panel;
