@@ -520,8 +520,7 @@ public class Dialogs extends javax.swing.JFrame {
             throwErrorMessage();
         } else {
             if (database.addMenuItem(Integer.parseInt(id_menu_add_textField.getText()),
-                    name_menu_add_textField.getText(), Double.parseDouble(price_menu_add_textField.getText()))
-                    && database.updateMenuItemInventoryItems(Integer.parseInt(id_menu_add_textField.getText()), inventory_items)) {
+                    name_menu_add_textField.getText(), Double.parseDouble(price_menu_add_textField.getText()), inventory_items)) {
                 throwSuccessMessage(1);
                 id_menu_add_textField.setText("");
                 name_menu_add_textField.setText("");
