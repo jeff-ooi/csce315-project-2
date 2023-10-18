@@ -11,13 +11,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author arnavsood
  */
-public class MenuPopularityReport extends javax.swing.JFrame {
-    private ResultSet menu_pop_report;
+public class InventoryItems extends javax.swing.JFrame {
+    Database database = new Database("csce315_971_arnav_sood", "arnav_sood");
+    private ResultSet inventory_items;
+    private int inv_id;
     /**
-     * Creates new form MenuPopularityReport
+     * Creates new form InventoryItems
      */
-    public MenuPopularityReport(ResultSet menu_pop_report) {
-        this.menu_pop_report = menu_pop_report;
+    public InventoryItems(ResultSet inventory_items, int inv_id) {
+        this.inventory_items = inventory_items;
+        this.inv_id = inv_id;
         initComponents();
     }
 
@@ -31,24 +34,24 @@ public class MenuPopularityReport extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        menu_pop_table = new javax.swing.JTable();
-        popular_load_button = new javax.swing.JButton();
+        inventory_items_table = new javax.swing.JTable();
+        load_inventory_items_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        menu_pop_table.setModel(new javax.swing.table.DefaultTableModel(
+        inventory_items_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "name", "order_count"
+                "menu_id", "menu_item_name", "inventory_id", "inventory_item_name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -59,16 +62,12 @@ public class MenuPopularityReport extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(menu_pop_table);
-        if (menu_pop_table.getColumnModel().getColumnCount() > 0) {
-            menu_pop_table.getColumnModel().getColumn(0).setResizable(false);
-            menu_pop_table.getColumnModel().getColumn(1).setResizable(false);
-        }
+        jScrollPane1.setViewportView(inventory_items_table);
 
-        popular_load_button.setText("Load Menu Popularity Report");
-        popular_load_button.addActionListener(new java.awt.event.ActionListener() {
+        load_inventory_items_button.setText("Load Inventory Items");
+        load_inventory_items_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                popular_load_buttonActionPerformed(evt);
+                load_inventory_items_buttonActionPerformed(evt);
             }
         });
 
@@ -79,15 +78,15 @@ public class MenuPopularityReport extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(popular_load_button)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(load_inventory_items_button)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(popular_load_button)
+                .addComponent(load_inventory_items_button)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -96,24 +95,33 @@ public class MenuPopularityReport extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void popular_load_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popular_load_buttonActionPerformed
+    private void load_inventory_items_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_inventory_items_buttonActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tempModel = (DefaultTableModel)menu_pop_table.getModel();
+        DefaultTableModel tempModel = (DefaultTableModel)inventory_items_table.getModel();
 //        tempModel.setRowCount(0);
         try{
-            while(menu_pop_report.next()){
-//                String id = String.valueOf(salesData.getInt("id"));
-                String name = menu_pop_report.getString("name");
-                String order_count = menu_pop_report.getString("order_count");
-//                String price = String.valueOf(menu_pop_report.getDouble("price"));
-                String data[] = {name,order_count};
-                DefaultTableModel model = (DefaultTableModel)menu_pop_table.getModel();
-                model.addRow(data);
+            while(inventory_items.next()){
+                String inv_name = "";
+                String menu_id = inventory_items.getString("menu_id");
+                String name = inventory_items.getString("name");
+                String inventory_id = inventory_items.getString("inventory_id");
+                ResultSet inv_item_name = database.getSingleInventoryItem(Integer.valueOf(inventory_id));
+                
+                while(inv_item_name.next()){
+                    inv_name = inv_item_name.getString("name");
+                }
+                String data[] = {menu_id,name,inventory_id,inv_name};
+                DefaultTableModel model = (DefaultTableModel)inventory_items_table.getModel();
+                if(Integer.parseInt(menu_id) == inv_id){
+                 model.addRow(data);
+                }
+               
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-    }//GEN-LAST:event_popular_load_buttonActionPerformed
+        
+    }//GEN-LAST:event_load_inventory_items_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,28 +140,27 @@ public class MenuPopularityReport extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(MenuPopularityReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(InventoryItems.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(MenuPopularityReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(InventoryItems.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(MenuPopularityReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(InventoryItems.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(MenuPopularityReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(InventoryItems.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new MenuPopularityReport().setVisible(true);
+//                new InventoryItems().setVisible(true);
 //            }
 //        });
 //    }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable inventory_items_table;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable menu_pop_table;
-    private javax.swing.JButton popular_load_button;
+    private javax.swing.JButton load_inventory_items_button;
     // End of variables declaration//GEN-END:variables
 }
