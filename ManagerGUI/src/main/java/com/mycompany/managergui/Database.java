@@ -1569,8 +1569,7 @@ public class Database {
     /**
      * generates a Sales Report given a time window
      * the values in the HashMap are the specifics of the order
-     * index 0 is the Order Id, index 1 is the Timestamp
-     * the rest of the indices are the Add-On ids
+     * index 0 is the Order Id, index 1 is the Timestamp, index 2 is the Add-Ons for that item in the Order
      * @param startDateTime the starting time to check from in "yyyy-MM-dd HH:mm:ss" format
      * @param endDateTime the ending time to check to in "yyyy-MM-dd HH:mm:ss" format
      * @return HashMap mapping the Menu Items to their respective orders
@@ -1626,7 +1625,7 @@ public class Database {
                     }
                     addOnId = fullOrder.getInt("add_on_id");
                     if (!fullOrder.wasNull()) {
-                        value.add(""+addOnId);
+                        value.set(2,value.get(2)+","+addOnId);
                     }
                 }
 
