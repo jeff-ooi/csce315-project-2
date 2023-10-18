@@ -5,22 +5,19 @@
 package com.mycompany.managergui;
 
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author arnavsood
  */
-public class SalesReport extends javax.swing.JFrame {
-    Database database = new Database("csce315_971_arnav_sood", "arnav_sood");
-    private HashMap<Integer,ArrayList<ArrayList<String>>> sales_report_data;
+public class MenuPopularityReport extends javax.swing.JFrame {
+    private ResultSet menu_pop_report;
     /**
-     * Creates new form SalesReport
+     * Creates new form MenuPopularityReport
      */
-    public SalesReport(HashMap<Integer,ArrayList<ArrayList<String>>> sales_report_data) {
-        this.sales_report_data = sales_report_data;
+    public MenuPopularityReport(ResultSet menu_pop_report) {
+        this.menu_pop_report = menu_pop_report;
         initComponents();
     }
 
@@ -34,24 +31,24 @@ public class SalesReport extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        sales_report_table = new javax.swing.JTable();
-        load_sales_report_button = new javax.swing.JButton();
+        menu_pop_table = new javax.swing.JTable();
+        popular_load_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sales_report_table.setModel(new javax.swing.table.DefaultTableModel(
+        menu_pop_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "menu_item_name", "order_id", "time_stamp", "additional_add_ons"
+                "name", "order_count"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -62,17 +59,16 @@ public class SalesReport extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(sales_report_table);
-        if (sales_report_table.getColumnModel().getColumnCount() > 0) {
-            sales_report_table.getColumnModel().getColumn(1).setMinWidth(20);
-            sales_report_table.getColumnModel().getColumn(2).setMinWidth(100);
-            sales_report_table.getColumnModel().getColumn(3).setMinWidth(20);
+        jScrollPane1.setViewportView(menu_pop_table);
+        if (menu_pop_table.getColumnModel().getColumnCount() > 0) {
+            menu_pop_table.getColumnModel().getColumn(0).setResizable(false);
+            menu_pop_table.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        load_sales_report_button.setText("Load Sales Report");
-        load_sales_report_button.addActionListener(new java.awt.event.ActionListener() {
+        popular_load_button.setText("Load Menu Popularity Report");
+        popular_load_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                load_sales_report_buttonActionPerformed(evt);
+                popular_load_buttonActionPerformed(evt);
             }
         });
 
@@ -83,17 +79,15 @@ public class SalesReport extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(load_sales_report_button)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(popular_load_button)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(load_sales_report_button)
+                .addComponent(popular_load_button)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -102,32 +96,24 @@ public class SalesReport extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void load_sales_report_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_load_sales_report_buttonActionPerformed
+    private void popular_load_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popular_load_buttonActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tempModel = (DefaultTableModel)sales_report_table.getModel();
+        DefaultTableModel tempModel = (DefaultTableModel)menu_pop_table.getModel();
         tempModel.setRowCount(0);
-        for (int key : sales_report_data.keySet()) {
-            ResultSet temp_menu_item = database.getSingleMenuItem(key);
-            String menu_item_name = "";
-            try{ 
-                 while(temp_menu_item.next()){
-                        menu_item_name = temp_menu_item.getString("name");
-                        
-                    }
-                }catch(Exception e){
-                    System.out.println(e.getMessage());
+        try{
+            while(menu_pop_report.next()){
+//                String id = String.valueOf(salesData.getInt("id"));
+                String name = menu_pop_report.getString("name");
+                String order_count = menu_pop_report.getString("order_count");
+//                String price = String.valueOf(menu_pop_report.getDouble("price"));
+                String data[] = {name,order_count};
+                DefaultTableModel model = (DefaultTableModel)menu_pop_table.getModel();
+                model.addRow(data);
             }
-                    
-            for (ArrayList<String> rowData : sales_report_data.get(key)) {
-                rowData.add(0,menu_item_name);
-                tempModel.addRow(rowData.toArray());
-                rowData.remove(0);
-            }
-                
-            }
-        
-        
-    }//GEN-LAST:event_load_sales_report_buttonActionPerformed
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_popular_load_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,27 +132,28 @@ public class SalesReport extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(SalesReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(MenuPopularityReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(SalesReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(MenuPopularityReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(SalesReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(MenuPopularityReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(SalesReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(MenuPopularityReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new SalesReport().setVisible(true);
+//                new MenuPopularityReport().setVisible(true);
 //            }
 //        });
 //    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton load_sales_report_button;
-    private javax.swing.JTable sales_report_table;
+    private javax.swing.JTable menu_pop_table;
+    private javax.swing.JButton popular_load_button;
     // End of variables declaration//GEN-END:variables
 }
